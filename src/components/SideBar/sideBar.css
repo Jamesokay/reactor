@@ -1,0 +1,29 @@
+.sideBar {
+    width: 25%;
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    position: fixed;
+    left: 0;
+    top: 50px;
+}
+
+.sideBarListWrapper {
+    margin-top: 20px;
+    padding: 20px;
+}
+  
+.sideBarList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+  
+.sideBarListItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+  
+.sideBarIcon {
+    margin-right: 15px;
+}
