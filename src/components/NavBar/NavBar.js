@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import PersonIcon from '@mui/icons-material/Person';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function NavBar() {
     return (
@@ -30,7 +31,10 @@ export default function NavBar() {
               <div className="topbarIconItem">
                 <NotificationsIcon />
               </div>
-        </div>
+              <div className="topbarIconItem">
+                <LogoutIcon />
+              </div>
+            </div>
           </div>
         </div>
     )

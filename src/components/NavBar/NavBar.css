@@ -60,12 +60,11 @@
 
   .topbarIcons {
     display: flex;
-    width: 30%;
-    min-width: 140px;
-    justify-content: space-around;
   }
   
   .topbarIconItem {
     cursor: pointer;
     position: relative;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
