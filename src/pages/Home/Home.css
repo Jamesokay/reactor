@@ -1,5 +1,35 @@
 .homeContainer {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
+}
+
+.sideBarContainer {
+    width: 25%;
+}
+
+.feedContainer {
+    width: 50%;
+}
+
+.rightBarContainer {
+    width: 25%;
+}
+
+@media (max-width: 1095px)  {
+    .sideBarContainer {
+      width: 0;
+    }
+    .feedContainer {
+        width: 75%;
+    }
+}
+
+@media (max-width: 895px)  {
+    .rightBarContainer {
+      width: 0;
+    }
+    .feedContainer {
+        width: 100%;
+    }
 }
