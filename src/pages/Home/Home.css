@@ -6,10 +6,13 @@
 
 .sideBarContainer {
     width: 25%;
+    
 }
 
 .feedContainer {
     width: 50%;
+    overflow-y: scroll;
+    background: rgb(223, 221, 221);
 }
 
 .rightBarContainer {
@@ -18,9 +21,11 @@
 
 @media (max-width: 1095px)  {
     .sideBarContainer {
+      visibility: hidden;
       width: 0;
     }
     .feedContainer {
+        visibility: hidden;
         width: 75%;
     }
 }
