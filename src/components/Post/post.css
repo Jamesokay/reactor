@@ -7,10 +7,6 @@
     border-radius: 0.5rem;
   }
 
-.postWrapper {
-    padding: 10px;
-}
-
 .postImg{
     width: 40vw;
     height: 40vw;
@@ -27,11 +23,14 @@
   }
 }
 
+.postCaption {
+  padding: 1rem 0 0 1rem
+}
+
 .postTop {
   display: flex;
   justify-content: space-between;
-  padding-top: calc(1rem - 10px);
-  padding-bottom: 1rem;
+  padding: 1rem;
   align-items: center;
 }
 
@@ -40,9 +39,14 @@
   align-items: center;
 }
 
-.postTopIcon {
+.postIconRight {
   color: rgb(134, 133, 133);
   transform: scale(1.1);
+  transition: color 0.2s ease-in-out;
+}
+
+.postIconRight:hover {
+  color: white;
 }
 
 .profileImg {
@@ -51,17 +55,35 @@
   border-radius: 50%;
   background: mediumpurple;
   margin-right: 0.75rem;
+  object-fit: cover;
+}
+
+.profileName {
+  cursor: pointer;
+}
+
+.profileName:hover {
+  text-decoration: underline;
 }
 
 .postBottom {
   display: flex;
-  justify-content: flex-start;
-  padding-top: 1rem;
-  padding-bottom: calc(1rem - 10px);
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.postBottomLeft {
+  display: flex;
 }
 
 .postIcon {
+  width: fit-content;
   margin-right: 0.75rem;
   color: rgb(134, 133, 133);
-  transform: scale(1.1)
+  transform: scale(1.1);
+  transition: color 0.2s ease-in-out;
+}
+
+.postIcon:hover {
+  color: white;
 }

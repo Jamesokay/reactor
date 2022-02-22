@@ -1,45 +1,62 @@
 export const Posts = [
-    // {
-    //   id: 1,
-    //   caption: "I've become one of those people",
-    //   image: "assets/posts/1.jpg",
-    // },
-
-    {
-      id: 2,
-      caption: "Berlin never disappoints",
-      image: "assets/posts/2.jpg"
-    },
 
     {
       id: 3,
-      caption: "Fireworks!",
+      userId: 6,
+      caption: "Seek no approval",
       image: "assets/posts/3.jpg"
     },
 
     {
+        id: 4,
+        userId: 1,
+        caption: "Tokyo by night",
+        image: "assets/posts/4.jpg"
+    }
+
+]
+
+export const Users = [
+    {
+      id: 1,
+      profileImg: "assets/users/u1.jpg",
+      name: "Benjamin Lawrence"
+     },
+
+    {
+      id: 2,
+      profileImg: "assets/users/u2.jpg",
+      name: "Eric Choi"
+    },
+
+    {
+      id: 3,
+      profileImg: "assets/users/u3.jpg",
+      name: "Thom Kingsley"
+    },
+
+    {
       id: 4,
-      caption: "A very big ferris wheel indeed",
-      image: "assets/posts/4.jpg"
+      profileImg: "assets/users/u4.jpg",
+      name: "Cara Zillman"
     },
 
     {
       id: 5,
-      caption: "Hostel vibes",
-      image: "assets/posts/5.jpg"
+      profileImg: "assets/users/u5.jpg",
+      name: "Laura Lehman"
     },
 
-    // {
-    //   id: 6,
-    //   caption: "Aquarium",
-    //   image: "assets/posts/6.jpg"
-    // },
+    {
+      id: 6,
+      profileImg: "assets/users/u6.jpg",
+      name: "Mira Jukes"
+    },
 
     {
       id: 7,
-      caption: "Osaka by night",
-      image: 'assets/posts/7.jpg'
+      profileImg: "assets/users/u7.jpg",
+      name: "Hannah Gilbert"
     }
-
 
 ]

@@ -1,4 +1,5 @@
 import './rightBar.css'
+import { Users } from '../../sampleData'
 
 export default function RightBar() {
     return (
@@ -6,9 +7,11 @@ export default function RightBar() {
           <div className='rightBarWrapper'>
             <h4 className="rightBarTitle">Online Friends</h4>
             <ul className="rightBarFriendsList">
-              <li>Stan</li>
-              <li>Joe</li>
-              <li>Sarah</li>
+              {Users.map((u) => (
+                <li className="rightbarFriend" key={u.id}>
+                  <span className="rightbarUsername">{u.name}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
