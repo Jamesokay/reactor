@@ -7,7 +7,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 // import BookmarkIcon from '@mui/icons-material/Bookmark';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-export default function Post() {
+export default function Post({ post }) {
     return (
         <div className='post'>
           <div className='postWrapper'>
@@ -18,7 +18,7 @@ export default function Post() {
               </div>
                 <MoreHorizIcon className='postTopIcon'/>
             </div>
-            <div className='postImg' />
+            <img className='postImg' src={post.image} alt='' />
             <div className='postBottom'>
               <FavoriteBorderIcon className='postIcon' />
               <ChatBubbleOutlineIcon className='postIcon' />
