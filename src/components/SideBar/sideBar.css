@@ -17,12 +17,20 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    color: rgb(176, 176, 176);
 }
   
 .sideBarListItem {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    width: fit-content;
+    transition: color 0.2s ease-in-out;
+    cursor: default;
+}
+
+.sideBarListItem:hover {
+    color: white;
 }
   
 .sideBarIcon {

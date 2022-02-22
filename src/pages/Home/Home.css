@@ -2,12 +2,12 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    background: rgb(241, 240, 240);
+    background: rgb(24, 24, 24);
+    color: white;
 }
 
 .sideBarContainer {
     width: 22.5%;
-    background: white;
 }
 
 .feedContainer {
@@ -17,7 +17,6 @@
 
 .rightBarContainer {
     width: 22.5%;
-    background: white;
 }
 
 @media (max-width: 1095px)  {
