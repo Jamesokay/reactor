@@ -1,8 +1,9 @@
 .feed {
     width: 100%;
     position: sticky;
+    padding-top: 30px;
 }
 
 .feedWrapper{
-    padding-top: 50px;
+    padding: 1rem;
 }

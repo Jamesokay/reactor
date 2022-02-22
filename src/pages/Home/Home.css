@@ -2,17 +2,16 @@
     display: flex;
     width: 100%;
     justify-content: flex-start;
+    background: rgb(241, 240, 240);
 }
 
 .sideBarContainer {
     width: 25%;
-    
 }
 
 .feedContainer {
     width: 50%;
     overflow-y: scroll;
-    background: rgb(223, 221, 221);
 }
 
 .rightBarContainer {
@@ -25,13 +24,13 @@
       width: 0;
     }
     .feedContainer {
-        visibility: hidden;
         width: 75%;
     }
 }
 
 @media (max-width: 895px)  {
     .rightBarContainer {
+      visibility: hidden;
       width: 0;
     }
     .feedContainer {
