@@ -7,6 +7,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 // import BookmarkIcon from '@mui/icons-material/Bookmark';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Users } from '../../sampleData'
+import { Link } from "react-router-dom"
 
 export default function Post({ post }) {
     return (
@@ -18,7 +19,7 @@ export default function Post({ post }) {
                      src={Users.filter((u) => u.id === post?.userId)[0].profileImg}
                      alt=''
                 />
-                <span className='profileName'>{Users.filter((u) => u.id === post?.userId)[0].name}</span>
+                <Link to='/profile' className='profileName'>{Users.filter((u) => u.id === post?.userId)[0].name}</Link>
               </div>
               <div className='postIconRight'>
                 <MoreVertIcon />

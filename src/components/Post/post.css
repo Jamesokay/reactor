@@ -60,6 +60,8 @@
 
 .profileName {
   cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
 
 .profileName:hover {

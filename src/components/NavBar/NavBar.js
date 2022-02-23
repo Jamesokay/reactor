@@ -1,7 +1,7 @@
 import './NavBar.css'
 import SearchIcon from '@mui/icons-material/Search'
 import PersonIcon from '@mui/icons-material/Person';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import RssFeedIcon from '@mui/icons-material/RssFeed';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
 
@@ -23,13 +23,13 @@ export default function NavBar() {
           <div className='navBarRight'>
             <div className="topbarIcons">
               <div className="topbarIconItem">
-                <PersonIcon />
-              </div>
-              <div className="topbarIconItem">
-                <ChatBubbleIcon />
+                <RssFeedIcon />
               </div>
               <div className="topbarIconItem">
                 <NotificationsIcon />
+              </div>
+              <div className="topbarIconItem">
+                 <PersonIcon />
               </div>
               <div className="topbarIconItem">
                 <LogoutIcon />

@@ -1,4 +1,3 @@
-import RssFeedIcon from '@mui/icons-material/RssFeed';
 import PeopleIcon from '@mui/icons-material/People';
 import GroupsIcon from '@mui/icons-material/Groups';
 import EventIcon from '@mui/icons-material/Event';
@@ -10,10 +9,6 @@ export default function SideBar() {
         <div className='sideBar'>
           <div className="sideBarListWrapper">
             <ul className="sideBarList">
-              <li className="sideBarListItem">
-                <RssFeedIcon className="sideBarIcon" />
-                <span className="sideBarListItemText">Feed</span>
-              </li>
               <li className="sideBarListItem">
                 <PeopleIcon className="sideBarIcon" />
                 <span className="sideBarListItemText">Friends</span>
