@@ -7,18 +7,30 @@ export default function Profile() {
           <NavBar />
           <div className='profileContainer'>
             <div className='profileHeader'>
-                <div className='profileHeaderPhoto' />
+                <img className='profileHeaderPhoto'
+                     src='../../assets/users/u1comp.jpg'
+                     alt='' />
                 <div className='profileInfo'>
-                  <span className='profileHeaderName'>Profile Name</span>
+                  <span className='profileHeaderName'>Benjamin Lawrence</span>
                   <div className='profileCounts'>
-                      <span className='profileMetric'>x followers</span>
-                      <span className='profileMetric'>x posts</span>
-                      <span className='profileMetric'>x following</span>
+                      <span className='profileMetric'><b>247</b> followers</span>
+                      <span className='profileMetric'><b>9</b> posts</span>
+                      <span className='profileMetric'><b>112</b> following</span>
                   </div>
-                  <span>A very brief little about moi</span>
+                  <span>I'm Ben, a completely fictional person.</span>
                 </div>
             </div>
-            <div className='profileBody' />
+            <div className='profileBody'>
+              <div className='test'></div>
+              <div className='test'></div>
+              <div className='test'></div>
+              <div className='test'></div>
+              <div className='test'></div>
+              <div className='test'></div>
+              <div className='test'></div>
+              <div className='test'></div>
+              <div className='test'></div>
+            </div>
           </div>
         </>
     )
