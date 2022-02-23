@@ -25,8 +25,14 @@
 
 .rightbarFriend {
     display: flex;
+    width: fit-content;
+    cursor: pointer;
     align-items: center;
     margin-bottom: 15px;
+}
+
+.rightbarFriend:hover {
+    text-decoration: underline;
 }
   
 .rightbarProfileImg {
