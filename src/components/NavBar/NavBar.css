@@ -32,6 +32,7 @@
     font-weight: bold;
     color: white;
     cursor: pointer;
+    text-decoration: none;
   }
 
   .searchbar {
@@ -64,6 +65,7 @@
   }
   
   .topbarIconItem {
+    color: white;
     cursor: pointer;
     position: relative;
     margin-left: 0.5rem;
