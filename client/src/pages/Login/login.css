@@ -1,0 +1,91 @@
+.loginContainer {
+    width: 100%;
+    height: 100vh;
+    background: rgb(34, 114, 180);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+
+.loginLogo {
+    color: white;
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.inputField {
+    margin: auto;
+    width: 250px;
+    height: 40px;
+    background-color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.input {
+    width: 75%;
+    margin-left: 5%;
+    border: none;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.loginButton {
+    width: 200px;
+    height: 40px;
+    border-radius: 0.5rem;
+    background: rgb(21, 71, 112);
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.loginButton:hover {
+    background: rgb(15, 51, 80);
+}
+
+.registerButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 0.5rem;
+    background: rgb(42, 187, 37);
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.registerButton:hover {
+    background: rgb(34, 156, 30);
+}
+
+.forgotLogin {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.forgotLogin:hover {
+    text-decoration: underline;
+}
+
