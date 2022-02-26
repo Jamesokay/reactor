@@ -2,7 +2,6 @@
 
 .sideBar {
     width: 100%;
-    height: calc(100vh - 50px);
     position: sticky;
     left: 0;
     top: 50px;

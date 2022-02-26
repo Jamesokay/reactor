@@ -6,16 +6,26 @@ import { useParams } from 'react-router-dom'
 
 export default function Profile() {
   const [user, setUser] = useState({})
+  const [posts, setPosts] = useState([])
   const username = useParams().username
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axios.get(`/users?username=${username}`)
       console.log(res.data)
-      setUser(res.data);
-    };
-    fetchUser();
-  }, [username]);
+      setUser(res.data)
+    }
+    fetchUser()
+  }, [username])
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await axios.get("/posts/profile/" + username)
+      setPosts(res.data)   
+    }
+    fetchPosts()
+  }, [username])
   
     return (
         <>
@@ -23,7 +33,7 @@ export default function Profile() {
           <div className='profileContainer'>
             <div className='profileHeader'>
                 <img className='profileHeaderPhoto'
-                     src={`http://localhost:3000/${user.profilePicture}`}
+                     src={PF + user.profilePicture}
                      alt='' />
                 <div className='profileInfo'>
                   <span className='profileHeaderName'>{user.username}</span>
@@ -32,19 +42,14 @@ export default function Profile() {
                       <span className='profileMetric'><b>9</b> posts</span>
                       <span className='profileMetric'><b>112</b> following</span>
                   </div>
-                  <span>I'm Ben, a completely fictional person.</span>
                 </div>
             </div>
             <div className='profileBody'>
-              <div className='test'></div>
-              <div className='test'></div>
-              <div className='test'></div>
-              <div className='test'></div>
-              <div className='test'></div>
-              <div className='test'></div>
-              <div className='test'></div>
-              <div className='test'></div>
-              <div className='test'></div>
+              {posts.map((p) => (
+                <div key={p._id}><img src={PF + p.img} alt=''/></div>
+              ))
+
+              }
             </div>
           </div>
         </>
