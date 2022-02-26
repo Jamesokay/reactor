@@ -4,14 +4,14 @@ export const Posts = [
       id: 3,
       userId: 6,
       caption: "Seek no approval",
-      image: "assets/posts/3.jpg"
+      image: "posts/3.jpg"
     },
 
     {
         id: 4,
         userId: 1,
         caption: "Tokyo by night",
-        image: "assets/posts/4.jpg"
+        image: "posts/4.jpg"
     }
 
 ]

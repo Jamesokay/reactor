@@ -15,7 +15,7 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const getUser = async () => { 
-      const res = await axios.get(`users/${post.userId}`)
+      const res = await axios.get(`users?userId=${post.userId}`)
       setUser(res.data)
     }
 
@@ -33,7 +33,7 @@ export default function Post({ post }) {
                      src={user.profilePicture}
                      alt=''
                 />
-                <Link to='/profile' className='profileName'>{user.username}</Link>
+                <Link to={`/profile/${user.username}`} className='profileName'>{user.username}</Link>
               </div>
               <div className='postIconRight'>
                 <MoreVertIcon />
