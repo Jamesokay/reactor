@@ -6,28 +6,42 @@ import ShareIcon from '@mui/icons-material/Share';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 // import BookmarkIcon from '@mui/icons-material/Bookmark';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Users } from '../../sampleData'
 import { Link } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export default function Post({ post }) {
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    const getUser = async () => { 
+      const res = await axios.get(`users/${post.userId}`)
+      setUser(res.data)
+    }
+
+    getUser()
+  }, [post.userId])
+
+
+
     return (
         <div className='post'>
           <div className='postWrapper'>
             <div className='postTop'>
               <div className='postTopLeft'>
                 <img className='profileImg' 
-                     src={Users.filter((u) => u.id === post?.userId)[0].profileImg}
+                     src={user.profilePicture}
                      alt=''
                 />
-                <Link to='/profile' className='profileName'>{Users.filter((u) => u.id === post?.userId)[0].name}</Link>
+                <Link to='/profile' className='profileName'>{user.username}</Link>
               </div>
               <div className='postIconRight'>
                 <MoreVertIcon />
               </div>
             </div>
-            <img className='postImg' src={post.image} alt='' />
+            <img className='postImg' src={post.img} alt='' />
             <div className='postCaption'>
-              <span>{post.caption}</span>
+              <span>{post.desc}</span>
             </div>
             <div className='postBottom'>
               <div className='postBottomLeft'>

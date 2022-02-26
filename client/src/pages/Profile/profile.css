@@ -52,10 +52,10 @@
     aspect-ratio: 1;
 }
 
-.test {
-    background: rgb(39, 39, 102);
-    font-size: 30px;
-    text-align: center;
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @media (max-width: 980px)  {
