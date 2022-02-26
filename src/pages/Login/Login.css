@@ -30,4 +30,23 @@
     align-items: center;
     margin-bottom: 2rem;
 }
+.emailInput {
+    width: 75%;
+    margin-left: 5%;
+    border: none;
+}
+
+.emailInput:focus {
+    outline: none;
+}
+
+.passwordInput {
+    width: 75%;
+    margin-left: 5%;
+    border: none;
+}
+
+.passwordInput:focus {
+    outline: none;
+}
 
