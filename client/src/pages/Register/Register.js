@@ -5,18 +5,20 @@ import axios from 'axios'
 
 
 export default function Register() {
+  const username = useRef()
   const email = useRef()
   const password = useRef()
   const passwordRepeat = useRef()
-  // const {isFetching, dispatch} = useContext(AuthContext)
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (passwordRepeat.current.value !== password.current.value) {
-      passwordRepeat.current.setCustomValidity('Password did not match')
-    } else {
+      console.log('Password did not match')
+    } 
+    else {
       const user = {
+        username: username.current.value,
         email: email.current.value,
         password: password.current.value,
       }
@@ -34,6 +36,9 @@ export default function Register() {
           <div className='registerOptions'>
             <span className='registerLogo'>Reactor</span>
             <form className='registerForm' onSubmit={handleSubmit}>
+            <div className='inputField'>
+              <input placeholder='Username' ref={username} className='input' required />
+            </div>
             <div className='inputField'>
               <input placeholder='Email' type='email' ref={email} className='input' required />
             </div>

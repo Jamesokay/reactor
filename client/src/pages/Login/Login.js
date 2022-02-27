@@ -1,7 +1,7 @@
 import './login.css'
 import { Link } from 'react-router-dom'
 import { useRef, useContext } from 'react'
-import { loginCall } from '../../apiCalls'
+import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext'
 
 export default function Login() {
@@ -9,18 +9,22 @@ export default function Login() {
     const password = useRef()
     const {isFetching, dispatch} = useContext(AuthContext)
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        loginCall(
-            {email: email.current.value, password: password.current.value}, 
-            dispatch)
+    const loginCall = async (e) => {
+      e.preventDefault()
+      dispatch({type: 'LOGIN_START'})
+      try {
+          const res = await axios.post('auth/login', {email: email.current.value, password: password.current.value})
+          dispatch({type: 'LOGIN_SUCCESS', payload: res.data})
+      } catch(err) {
+          dispatch({type: 'LOGIN_FAILURE', payload: err})
+      }
     }
 
     return (
         <div className='loginContainer'>
           <div className='loginWrapper'>
               <span className='loginLogo'>Reactor</span>
-              <form className='loginForm' onSubmit={handleSubmit}>
+              <form className='loginForm' onSubmit={loginCall}>
                 <div className='inputField'>
                   <input 
                     placeholder='e-mail' 

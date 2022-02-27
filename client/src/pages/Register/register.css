@@ -60,6 +60,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-.loginButton:hover {
+.signupButton:hover {
     background: rgb(15, 51, 80);
 }
