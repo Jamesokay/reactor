@@ -1,7 +1,5 @@
 .rightBar {
     width: 100%;
-    height: calc(100vh - 50px);
-    overflow-y: scroll;
     position: sticky;
     right: 0;
     top: 50px;

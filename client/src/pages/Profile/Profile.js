@@ -11,6 +11,7 @@ export default function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {
+    if (!username) return
     const fetchUser = async () => {
       const res = await axios.get(`/users?username=${username}`)
       console.log(res.data)
@@ -20,6 +21,7 @@ export default function Profile() {
   }, [username])
 
   useEffect(() => {
+    if (!username) return
     const fetchPosts = async () => {
       const res = await axios.get("/posts/profile/" + username)
       setPosts(res.data)   
@@ -33,14 +35,14 @@ export default function Profile() {
           <div className='profileContainer'>
             <div className='profileHeader'>
                 <img className='profileHeaderPhoto'
-                     src={PF + user.profilePicture}
+                     src={user.profilePicture? PF + user.profilePicture : ''}
                      alt='' />
                 <div className='profileInfo'>
                   <span className='profileHeaderName'>{user.username}</span>
                   <div className='profileCounts'>
-                      <span className='profileMetric'><b>247</b> followers</span>
-                      <span className='profileMetric'><b>9</b> posts</span>
-                      <span className='profileMetric'><b>112</b> following</span>
+                      <span className='profileMetric'><b>{user.followers? user.followers.length : ''}</b> followers</span>
+                      <span className='profileMetric'><b>{posts? posts.length : ''}</b> posts</span>
+                      <span className='profileMetric'><b>{user.following? user.following.length : ''}</b> following</span>
                   </div>
                 </div>
             </div>
