@@ -4,9 +4,19 @@ import PersonIcon from '@mui/icons-material/Person';
 import RssFeedIcon from '@mui/icons-material/RssFeed';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
 
 export default function NavBar() {
+    const { setUserObject } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const logOut = () => {
+      setUserObject({user: null, isFetching: false, error: false})
+      navigate('/')
+    }
+
     return (
         <div className='navBarContainer'>
           <div className='navBarLeft'>
@@ -32,9 +42,9 @@ export default function NavBar() {
               <div className="topbarIconItem">
                  <PersonIcon />
               </div>
-              <Link to='/login' className="topbarIconItem">
-                <LogoutIcon />
-              </Link>
+              <div className="topbarIconItem">
+                <LogoutIcon onClick={() => logOut()}/>
+              </div>
             </div>
           </div>
         </div>

@@ -7,16 +7,16 @@ import { AuthContext } from '../../context/AuthContext'
 export default function Login() {
     const email = useRef()
     const password = useRef()
-    const {isFetching, dispatch} = useContext(AuthContext)
+    const { userObject, setUserObject } = useContext(AuthContext)
 
     const loginCall = async (e) => {
       e.preventDefault()
-      dispatch({type: 'LOGIN_START'})
+      setUserObject({...userObject, isFetching: true})
       try {
           const res = await axios.post('auth/login', {email: email.current.value, password: password.current.value})
-          dispatch({type: 'LOGIN_SUCCESS', payload: res.data})
+          setUserObject({user: res.data, isFetching: false, error: false})
       } catch(err) {
-          dispatch({type: 'LOGIN_FAILURE', payload: err})
+          setUserObject({...userObject, error: err})
       }
     }
 
@@ -44,7 +44,7 @@ export default function Login() {
                     ref={password}
                     />
                 </div>
-                <button className='loginButton'>{isFetching? 'Loading' : 'Log In'}</button>
+                <button className='loginButton'>{userObject.isFetching? 'Loading' : 'Log In'}</button>
                 <span className='forgotLogin'>Forgot Password?</span>
                 <Link to='/register' className='registerButton'>Create Account</Link>
               </form>

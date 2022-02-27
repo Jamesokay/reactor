@@ -4,18 +4,21 @@ import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import { Routes, Route } from 'react-router-dom'
 import { AuthContext } from './context/AuthContext'
-import { useContext } from 'react'
+import { useState } from 'react'
 
 function App() {
-  const { user } = useContext(AuthContext)
+  const [userObject, setUserObject] = useState({ user: null, isFetching: false, error: false})
+  const value = {userObject, setUserObject}
   
   return (
+    <AuthContext.Provider value={value}>
       <Routes>
-        <Route path='/' element={user? <Home /> : <Login />} />
+        <Route path='/' element={userObject.user? <Home /> : <Login />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/profile/:username' element={<Profile />} />
       </Routes>
+    </AuthContext.Provider>
   )
 }
 
