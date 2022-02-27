@@ -3,19 +3,20 @@ import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import { Routes, Route } from 'react-router-dom'
-import { AuthContextProvider } from './context/AuthContext'
+import { AuthContext } from './context/AuthContext'
+import { useContext } from 'react'
 
 function App() {
+  const { user } = useContext(AuthContext)
+  
   return (
-    <AuthContextProvider>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={user? <Home /> : <Login />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/profile/:username' element={<Profile />} />
       </Routes>
-    </AuthContextProvider>
-  );
+  )
 }
 
 export default App;

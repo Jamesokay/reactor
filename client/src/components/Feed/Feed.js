@@ -1,19 +1,21 @@
 import './feed.css'
 import Post from '../Post/Post'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import { AuthContext } from '../../context/AuthContext'
 
 export default function Feed() {
   const [posts, setPosts] = useState([])
+  const { user } = useContext(AuthContext)
 
   useEffect(() => {
     const getPosts = async () => { 
-      const res = await axios.get("posts/feed/62179e025a8aa3cbe2b9090e")
+      const res = await axios.get(`posts/feed/${user._id}`)
       setPosts(res.data)
     }
 
     getPosts()
-  }, [])
+  }, [user._id])
 
 
     return (
