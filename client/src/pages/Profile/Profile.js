@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './profile.css'
 import { useParams } from 'react-router-dom'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble'
 
 export default function Profile() {
   const [user, setUser] = useState({})
@@ -38,7 +40,10 @@ export default function Profile() {
                      src={user.profilePicture? PF + user.profilePicture : ''}
                      alt='' />
                 <div className='profileInfo'>
-                  <span className='profileHeaderName'>{user.username}</span>
+                  <div className='profileInfoTop'>
+                    <span className='profileHeaderName'>{user.username}</span>
+                    <div className='followButton'>Follow</div>
+                  </div>
                   <div className='profileCounts'>
                       <span className='profileMetric'><b>{user.followers? user.followers.length : ''}</b> followers</span>
                       <span className='profileMetric'><b>{posts? posts.length : ''}</b> posts</span>
@@ -48,7 +53,23 @@ export default function Profile() {
             </div>
             <div className='profileBody'>
               {posts.map((p) => (
-                <div key={p._id}><img src={PF + p.img} alt=''/></div>
+                <div key={p._id} className='imgContainer'>
+                  <div className='imgInfo'>
+
+                  <div className='imgMetrics'>
+                    <span className='imgLikes'>
+                      <FavoriteIcon className='imgIcon'/>
+                      <span>200</span>
+                    </span>
+                    <span className='imgComments'>
+                      <ChatBubbleIcon className='imgIcon'/>
+                      <span>125</span>
+                    </span>
+                  </div>
+
+                  </div>
+                  <img src={PF + p.img} alt=''/>
+                </div>
               ))
 
               }

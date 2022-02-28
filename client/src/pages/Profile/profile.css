@@ -1,5 +1,6 @@
 .profileContainer {
-    width: 75%;
+    width: 70%;
+    min-width: 1008px;
     margin: auto;
     margin-top: 100px;
     display: flex;
@@ -9,16 +10,16 @@
 }
 
 .profileHeader {
-    width: 100%;
-    margin-bottom: 50px;
+    width: 97.5%;
+    margin-bottom: 5rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
 .profileHeaderPhoto {
-    height: 200px;
-    width: 200px;
+    height: 160px;
+    width: 160px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -28,9 +29,32 @@
     flex-direction: column;
 }
 
+.profileInfoTop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
 .profileHeaderName {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.followButton {
+    width: 90px;
+    height: 30px;
+    background: rgb(116, 51, 168);
+    border-radius: 0.25rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    transition: all 0.2s ease-in-out;
+}
+
+.followButton:hover {
+    background: rgb(160, 70, 233)
 }
 
 .profileCounts {
@@ -45,11 +69,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1%;
-    width: 100%;
+    width: 97.5%;
 }
 
 .profileBody div {
     aspect-ratio: 1;
+}
+
+.imgContainer {
+    position: relative;
 }
 
 img {
@@ -58,15 +86,59 @@ img {
     object-fit: cover;
 }
 
+.imgInfo {
+    width: 100%;
+    height: 99%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: rgba(32, 32, 32, 0);
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.imgInfo:hover {
+    background: rgba(32, 32, 32, 0.5)
+}
+
+/* .imgIcon {
+    ;
+} */
+
+.imgLikes {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    font-weight: bold;
+}
+
+.imgComments {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    font-weight: bold;
+}
+
+.imgMetrics {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 65%;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.imgInfo:hover .imgMetrics {
+    opacity: 1;
+}
+
 @media (max-width: 980px)  {
     .profileContainer {
         width: 100%;
-        min-width: 650px;
-    }
-    .profileHeader {
-        width: 95%;
-    }
-    .profileBody {
-        width: 95%;
+        min-width: 650px !important;
     }
 }
