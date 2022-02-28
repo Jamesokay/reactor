@@ -1,0 +1,14 @@
+.upload {
+    width: 40vw;
+    height: 100px;
+    margin: auto;
+    background: rgb(41, 41, 41);
+    border-radius: 0.5rem;
+    min-width: 495px;
+}
+
+@media (max-width: 1095px)  {
+    .upload {
+      width: 595px;
+    }
+}

@@ -1,14 +1,17 @@
 import NavBar from '../../components/NavBar/NavBar'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import './profile.css'
 import { useParams } from 'react-router-dom'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble'
+import { AuthContext } from '../../context/AuthContext'
 
 export default function Profile() {
   const [user, setUser] = useState({})
   const [posts, setPosts] = useState([])
+  const { userObject, setUserObject } = useContext(AuthContext)
+  const [isFollowed, setIsFollowed] = useState(false)
   const username = useParams().username
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
@@ -16,11 +19,11 @@ export default function Profile() {
     if (!username) return
     const fetchUser = async () => {
       const res = await axios.get(`/users?username=${username}`)
-      console.log(res.data)
+      setIsFollowed(userObject.user.following.includes(res.data._id))
       setUser(res.data)
     }
     fetchUser()
-  }, [username])
+  }, [username, userObject])
 
   useEffect(() => {
     if (!username) return
@@ -30,6 +33,31 @@ export default function Profile() {
     }
     fetchPosts()
   }, [username])
+
+  const follow = async () => {
+    try {
+      if (isFollowed) {
+        const res = await axios.put(`/users/${user._id}/unfollow`, { userId: userObject.user._id })
+        console.log(res)
+        console.log('Unfollowed')
+        setUserObject({
+          ...userObject, 
+            user: {...userObject.user, 
+              following: userObject.user.following.filter((f) => f !== user._id)}})
+      } else {
+        const res = await axios.put(`/users/${user._id}/follow`, { userId: userObject.user._id })
+        console.log(res)
+        console.log('followed')
+        setUserObject({
+          ...userObject, 
+            user: {...userObject.user, 
+              following: [...userObject.user.following, user._id]}})
+      }
+      setIsFollowed(!isFollowed)
+    } catch (err) {
+      console.error(err)
+    }
+  }
   
     return (
         <>
@@ -42,7 +70,9 @@ export default function Profile() {
                 <div className='profileInfo'>
                   <div className='profileInfoTop'>
                     <span className='profileHeaderName'>{user.username}</span>
-                    <div className='followButton'>Follow</div>
+                    {user.username !== userObject.user.username && (
+                      <div className='followButton' onClick={() => follow()}>{isFollowed? 'Unfollow ': 'Follow'}</div>
+                    )}
                   </div>
                   <div className='profileCounts'>
                       <span className='profileMetric'><b>{user.followers? user.followers.length : ''}</b> followers</span>
