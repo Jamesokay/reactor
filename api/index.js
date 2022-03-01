@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const cors = require('cors')
 const dotenv = require('dotenv')
 const helmet = require('helmet')
 const morgan = require('morgan')
@@ -23,6 +24,7 @@ db.once("open", function () {
 app.use(express.json())
 app.use(helmet())
 app.use(morgan('common'))
+app.use(cors())
 
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
