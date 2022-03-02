@@ -26,7 +26,6 @@ export default function Upload() {
 
         
         try {
-          console.log(formData)
           const res = await axios.post('/posts/upload', formData)
           console.log(res.data)
         } catch(err) {

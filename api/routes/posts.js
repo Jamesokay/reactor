@@ -41,6 +41,7 @@ const parser = multer({ storage: storage})
 
 
 router.post('/upload', parser.single('img'), async (req, res) => {
+  console.log('request received')
   console.log(req.body)
   const postUpload = new Post({
     userId: req.body.userId,

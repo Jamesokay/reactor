@@ -98,7 +98,7 @@ export default function Profile() {
                   </div>
 
                   </div>
-                  <img src={PF + p.img} alt=''/>
+                  <img src={p.img} alt=''/>
                 </div>
               ))
 
