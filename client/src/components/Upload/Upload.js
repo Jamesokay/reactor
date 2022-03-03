@@ -28,8 +28,8 @@ export default function Upload() {
         try {
           const res = await axios.post('/posts/upload', formData)
           console.log(res.data)
-        } catch(err) {
-            console.error(err)
+        } catch(error) {
+            console.log(error)
         }
 
     }

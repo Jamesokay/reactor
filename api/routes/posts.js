@@ -1,60 +1,12 @@
 const router = require("express").Router();
 const Post = require("../models/Post");
 const User = require("../models/User");
-const dotenv = require('dotenv')
-const multer = require('multer')
-const cloudinary = require('cloudinary').v2
-const { CloudinaryStorage } = require('multer-storage-cloudinary')
+const upload = require("../services/upload")
+const { uploadPost } = require("../controller/appController")
 
-dotenv.config()
-
-//create a post
-
-router.post("/", async (req, res) => {
-  const newPost = new Post(req.body)
-  try {
-    const savedPost = await newPost.save();
-    res.status(200).json(savedPost)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
 
 // upload
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_HOST,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-})
-
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: 'user-images',
-    format: async () => 'png',
-    public_id: (req, file) => file.filename
-  }
-})
-
-const parser = multer({ storage: storage})
-
-
-router.post('/upload', parser.single('img'), async (req, res) => {
-  console.log('request received')
-  console.log(req.body)
-  const postUpload = new Post({
-    userId: req.body.userId,
-    img: req.file.path
-  })
-
-  try {
-    const savedPost = await postUpload.save()
-    res.status(200).json(savedPost)
-  } catch(err) {
-    res.status(400).json(err)
-  }
-})
+router.post('/upload', upload.single('img'), uploadPost)
 
 
 //update a post
