@@ -12,15 +12,10 @@ cloudinary.config({
   })
   
   const storage = new CloudinaryStorage({
-
     cloudinary: cloudinary,
-    folder: 'user-images',
-    allowedFormats: ['jpg', 'png', 'jpeg']
-    // params: {
-    //   folder: 'user-images',
-    //   format: async () => 'png',
-    //   public_id: (req, file) => file.filename
-    // }
+    params: {
+        folder: 'user-images'
+    }
   })
   
   const upload = multer({ storage: storage })

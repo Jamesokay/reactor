@@ -22,6 +22,24 @@ export default function Post({ post }) {
     getUser()
   }, [post.userId])
 
+  // const deletePost = async (e) => {
+  //   e.preventDefault()
+  //   const res = await axios.delete()
+
+  // }
+
+  const testParse = (img) => {
+    const myURLObj = new URL(img)
+    const parts = myURLObj.pathname.split('/')
+    const parts2 = parts[6].split('.')
+    const finalObject = {
+      userId: post.userId,
+      postId: 'a trimmed version of the _id field',
+      imgUrl: parts2[0]
+    }
+    console.log(finalObject)
+  }
+
 
 
     return (
@@ -36,7 +54,7 @@ export default function Post({ post }) {
                 <Link to={`/profile/${user.username}`} className='profileName'>{user.username}</Link>
               </div>
               <div className='postIconRight'>
-                <MoreVertIcon />
+                <MoreVertIcon onClick={() => testParse(post.img)}/>
               </div>
             </div>
             <img className='postImg' src={post.img} alt='' />
