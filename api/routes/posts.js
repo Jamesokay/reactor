@@ -3,6 +3,16 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 const upload = require("../services/upload")
 const { uploadPost } = require("../controller/appController")
+const cloudinary = require('cloudinary').v2
+const dotenv = require('dotenv')
+
+dotenv.config()
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_HOST,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+  })
 
 
 // upload
@@ -27,11 +37,15 @@ router.put("/:id", async (req, res) => {
 
 //delete a post
 
-router.delete("/:id", async (req, res) => {
+router.delete("/delete", async (req, res) => {
+  console.log('received')
+  console.log(req.body)
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.body.postId);
     if (post.userId === req.body.userId) {
       await post.deleteOne();
+      await cloudinary.uploader.destroy(`user-images/${req.body.cloudinaryId}`, function(error,result) {
+        console.log(result, error) })
       res.status(200).json("the post has been deleted");
     } else {
       res.status(403).json("you can only delete your own posts");

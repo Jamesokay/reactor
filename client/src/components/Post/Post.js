@@ -22,23 +22,30 @@ export default function Post({ post }) {
     getUser()
   }, [post.userId])
 
-  // const deletePost = async (e) => {
-  //   e.preventDefault()
-  //   const res = await axios.delete()
-
-  // }
-
-  const testParse = (img) => {
-    const myURLObj = new URL(img)
+  const deletePost = async (e) => {
+    e.preventDefault()
+    console.log('deleting post')
+    const myURLObj = new URL(post.img)
     const parts = myURLObj.pathname.split('/')
-    const parts2 = parts[6].split('.')
+    const parts2 = parts[parts.length - 1].split('.')
+
     const finalObject = {
       userId: post.userId,
-      postId: 'a trimmed version of the _id field',
-      imgUrl: parts2[0]
+      postId: post._id.split('"')[0],
+      cloudinaryId: parts2[0]
     }
-    console.log(finalObject)
+    
+    try {
+      const res = await axios.delete('/posts/delete', { data: finalObject })
+      console.log('post deleted')
+      console.log(res.data)
+    } catch(err) {
+      console.error(err)
+    } 
+
   }
+
+
 
 
 
@@ -54,7 +61,7 @@ export default function Post({ post }) {
                 <Link to={`/profile/${user.username}`} className='profileName'>{user.username}</Link>
               </div>
               <div className='postIconRight'>
-                <MoreVertIcon onClick={() => testParse(post.img)}/>
+                <MoreVertIcon onClick={(e) => deletePost(e)}/>
               </div>
             </div>
             <img className='postImg' src={post.img} alt='' />
