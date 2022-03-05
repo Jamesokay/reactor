@@ -1,21 +1,21 @@
 import './NavBar.css'
-import SearchIcon from '@mui/icons-material/Search'
-import PersonIcon from '@mui/icons-material/Person';
-import RssFeedIcon from '@mui/icons-material/RssFeed';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { Link, useNavigate } from "react-router-dom"
+// import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from "react-router-dom"
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search'
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function NavBar() {
-    const { setUserObject } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const { userObject } = useContext(AuthContext)
+//    const navigate = useNavigate()
 
-    const logOut = () => {
-      setUserObject({user: null, isFetching: false, error: false})
-      navigate('/')
-    }
+    // const logOut = () => {
+    //   setUserObject({user: null, isFetching: false, error: false})
+    //   navigate('/')
+    // }
 
     return (
         <div className='navBarContainer'>
@@ -23,29 +23,24 @@ export default function NavBar() {
               <Link to='/' className='logo'>Reactor</Link>
           </div>
           <div className='navBarCenter'>
-            <div className="searchbar">
-              <SearchIcon className='searchIcon'/>
-              <input
-                placeholder="Search Reactor"
-                className="searchInput"
-              />
+            <div className='navBarIcons'>
+              <Link to='/' className='navBarIconItem'>
+                <HomeIcon />
+              </Link>
+              <div className='navBarIconItem'>
+                <SearchIcon />
+              </div>
+              <Link to='/upload' className='navBarIconItem'>
+                <AddBoxOutlinedIcon />
+              </Link>
+              <div className='navBarIconItem'>
+                <FavoriteBorderIcon />
+              </div>
             </div>
           </div>
+
           <div className='navBarRight'>
-            <div className="topbarIcons">
-              <Link to='/' className="topbarIconItem">
-                <RssFeedIcon />
-              </Link>
-              <div className="topbarIconItem">
-                <NotificationsIcon />
-              </div>
-              <div className="topbarIconItem">
-                 <PersonIcon />
-              </div>
-              <div className="topbarIconItem">
-                <LogoutIcon onClick={() => logOut()}/>
-              </div>
-            </div>
+              <img className='navBarImg' src={userObject.user.profilePicture} alt='' />
           </div>
         </div>
     )

@@ -1,7 +1,7 @@
 .navBarContainer {
+    background: white;
     height: 50px;
     width: 100%;
-    background-color: rgb(116, 51, 168);
     display: flex;
     align-items: center;
     position: fixed;
@@ -16,21 +16,23 @@
 
   .navBarCenter {
     flex: 5;
+    display: flex;
+    justify-content: center;
   }
 
   .navBarRight {
-    flex: 2.5;
+    flex: 2;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     color: white;
   }
 
   .logo {
+    color: black;
     font-size: 24px;
     margin-left: 20px;
     font-weight: bold;
-    color: white;
     cursor: pointer;
     text-decoration: none;
   }
@@ -45,10 +47,6 @@
     align-items: center;
   }
 
-  .searchIcon {
-      margin-left: 5%;
-      color: grey;
-  }
   
   .searchInput {
     border: none;
@@ -60,20 +58,29 @@
     outline: none;
   }
 
-  .topbarIcons {
+  .navBarIcons {
     display: flex;
+    justify-content: space-around;
+    width: 40%;
+    min-width: 285px;
   }
   
-  .topbarIconItem {
-    color: white;
+  .navBarIconItem {
+    color: black;
     cursor: pointer;
-    position: relative;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
     opacity: 0.7;
     transition: opacity 0.2s ease-in-out
   }
 
-  .topbarIconItem:hover {
+  .navBarImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    margin-right: 2rem;
+  }
+
+  .navBarIconItem:hover {
     opacity: 1;
   }

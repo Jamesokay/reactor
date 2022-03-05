@@ -36,6 +36,7 @@ export default function Upload() {
     
 
     return (
+      <div className='uploadContainer'>
         <div className='upload'>
           <form onSubmit={handleSubmit}>
               <input 
@@ -50,5 +51,6 @@ export default function Upload() {
               <button type='submit'>Upload</button>
           </form>
         </div>
+      </div>
     )
 }

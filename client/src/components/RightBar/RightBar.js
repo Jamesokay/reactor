@@ -1,10 +1,10 @@
 import './rightBar.css'
-import { Users } from '../../sampleData'
+// import { Users } from '../../sampleData'
 
 export default function RightBar() {
     return (
         <div className='rightBar'>
-          <div className='rightBarWrapper'>
+          {/* <div className='rightBarWrapper'>
             <h4 className="rightBarTitle">Online</h4>
             <ul className="rightBarFriendsList">
               {Users.map((u) => (
@@ -14,7 +14,7 @@ export default function RightBar() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
     )
 }
