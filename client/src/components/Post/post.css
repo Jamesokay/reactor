@@ -1,24 +1,16 @@
 .post {
     margin: auto;
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     width: fit-content;
   }
 
 .postImg{
-    /* width: 40vw;
-    height: 40vw;
-    min-width: 495px;
-    min-height: 495px; */
     object-fit: cover;
 }
 
-/* @media (max-width: 1095px)  {
-  .postImg {
-    width: 595px;
-    height: 595px;
-  }
+/* .post:hover .postImg{
+  opacity: 1;
 } */
 
 .profileImg {
@@ -33,6 +25,7 @@
   cursor: pointer;
   text-decoration: none;
   color: black;
+  font-size: 0.9rem;
 }
 
 .profileName:hover {

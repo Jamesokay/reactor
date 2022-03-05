@@ -1,16 +1,36 @@
 .feed {
     width: 100%;
     padding-top: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 .feedGrid {
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1%;
-    width: 90%;
+    gap: 0.75rem;
+    width: 85%;
+    min-width: 1225px;
 }
 
 .feedGrid div {
     aspect-ratio: 1;
 }
+
+@media (max-width: 1250px)  {
+  .feedGrid {
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-width: 800px !important;
+  }
+}
+
+@media (max-width: 825px)  {
+    .feedGrid {
+      width: 95%;
+      grid-template-columns: 1fr 1fr;
+      min-width: 600px !important;
+    }
+  }
