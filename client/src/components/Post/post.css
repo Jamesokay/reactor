@@ -1,56 +1,29 @@
 .post {
     margin: auto;
     margin-top: 30px;
-    background: rgb(41, 41, 41);
     display: flex;
+    flex-direction: column;
     width: fit-content;
-    border-radius: 0.5rem;
   }
 
 .postImg{
-    width: 40vw;
+    /* width: 40vw;
     height: 40vw;
     min-width: 495px;
-    min-height: 495px;
+    min-height: 495px; */
     object-fit: cover;
 }
 
-@media (max-width: 1095px)  {
+/* @media (max-width: 1095px)  {
   .postImg {
     width: 595px;
     height: 595px;
   }
-}
-
-.postCaption {
-  padding: 1rem 0 0 1rem
-}
-
-.postTop {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  align-items: center;
-}
-
-.postTopLeft {
-  display: flex;
-  align-items: center;
-}
-
-.postIconRight {
-  color: rgb(134, 133, 133);
-  transform: scale(1.1);
-  transition: color 0.2s ease-in-out;
-}
-
-.postIconRight:hover {
-  color: white;
-}
+} */
 
 .profileImg {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   margin-right: 0.75rem;
   object-fit: cover;
@@ -59,7 +32,7 @@
 .profileName {
   cursor: pointer;
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 .profileName:hover {
@@ -69,21 +42,32 @@
 .postBottom {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 1.25rem
 }
 
 .postBottomLeft {
   display: flex;
+  align-items: center;
+}
+
+.postBottomRight {
+  display: flex;
+  align-items: center;
 }
 
 .postIcon {
+  color: black;
   width: fit-content;
-  margin-right: 0.75rem;
-  color: rgb(134, 133, 133);
-  transform: scale(1.1);
-  transition: color 0.2s ease-in-out;
+  margin-left: 0.75rem;
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .postIcon:hover {
-  color: white;
+  opacity: 1;
 }

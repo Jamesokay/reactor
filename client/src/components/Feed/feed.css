@@ -1,10 +1,16 @@
 .feed {
     width: 100%;
-    position: sticky;
-
+    padding-top: 5rem;
 }
 
-.feedWrapper{
-    padding: 1rem;
-    padding-top: 5rem;
+.feedGrid {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1%;
+    width: 90%;
+}
+
+.feedGrid div {
+    aspect-ratio: 1;
 }

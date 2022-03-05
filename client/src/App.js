@@ -14,7 +14,8 @@ function App() {
   
   return (
     <AuthContext.Provider value={value}>
-      <NavBar />
+      {userObject.user && <NavBar />
+      }
       <Routes>
         <Route path='/' element={userObject.user? <Home /> : <Login />} />
         <Route path='/login' element={<Login />} />
