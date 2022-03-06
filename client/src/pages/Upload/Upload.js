@@ -1,19 +1,16 @@
 import axios from 'axios'
 import { useState, useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
-// import axios from 'axios'
 import './upload.css'
+import AddToPhotosOutlinedIcon from '@mui/icons-material/AddToPhotosOutlined'
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined'
 
 export default function Upload() {
     const { userObject } = useContext(AuthContext)
     const [fileData, setFileData] = useState()
-    const [imageFile, setImageFile] = useState('')
 
     const handleFileChange = ({ target }) => {
-        console.log(target.files[0])
         setFileData(target.files[0])
-        console.log(target.value)
-        setImageFile(target.value)
     }
 
     const handleSubmit = async (e) => {
@@ -36,19 +33,29 @@ export default function Upload() {
     
 
     return (
-      <div className='uploadContainer'>
+      <div className='uploadContainer'> 
+        {fileData && (
+          <div className='uploadImageContainer'>
+            <img className='uploadImage' src={URL.createObjectURL(fileData)} alt='' />
+          </div>
+        )}
         <div className='upload'>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='uploadForm'>
+            <label htmlFor='file' className='shareOption'>
+              <AddToPhotosOutlinedIcon />
               <input 
+                style={{ display: "none" }}
+                id='file'
                 type='file'
-                value={imageFile}
                 name='file'
                 accept='image/*'
                 onChange={handleFileChange}
-                placeholder='upload image'
                 required>
               </input>
-              <button type='submit'>Upload</button>
+            </label>
+            <button type='submit' className='shareOption'>
+              <FileUploadOutlinedIcon />
+            </button>
           </form>
         </div>
       </div>
