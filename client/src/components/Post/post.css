@@ -7,11 +7,13 @@
 
 .postImg{
     object-fit: cover;
+    opacity: 0.9;
+    transition: opacity 0.2s ease-in-out;
 }
 
-/* .post:hover .postImg{
+.postImg:hover {
   opacity: 1;
-} */
+}
 
 .profileImg {
   height: 30px;
