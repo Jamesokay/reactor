@@ -7,6 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function NavBar() {
     const { userObject } = useContext(AuthContext)
@@ -41,6 +42,9 @@ export default function NavBar() {
 
           <div className='navBarRight'>
               <img className='navBarImg' src={userObject.user.profilePicture} alt='' />
+              <div className='navBarIconItem'>
+                <KeyboardArrowDownIcon />
+              </div>
           </div>
         </div>
     )

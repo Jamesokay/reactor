@@ -7,6 +7,7 @@ import axios from 'axios'
 import CloseIcon from '@mui/icons-material/Close';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 
 export default function PostLarge() {
     const [post, setPost] = useState({})
@@ -66,12 +67,13 @@ export default function PostLarge() {
                 <CloseIcon className='closeIcon' onClick={() => clearPost()}/>
               </div>
 
-              <div>
+              <div className='postSideBarMiddle'>
                 {(isLiked)?
-                <FavoriteIcon onClick={() => handleLike()} style={{color: 'red'}} />
+                <FavoriteIcon className='postSideBarIcon' onClick={() => handleLike()} style={{color: 'red'}} />
                 :
-                <FavoriteBorderIcon onClick={() => handleLike()} />
+                <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
                 }
+                <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' />
               </div>
             </div>
         </div>

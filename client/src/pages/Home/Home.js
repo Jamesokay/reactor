@@ -7,7 +7,7 @@ export default function Home() {
   const { postObject } = useContext(PostContext)
     return (
         <>
-          <div className='homeContainer' style={postObject.img? {opacity: '0.5'} : {opacity: '1'}}>
+          <div className='homeContainer' style={postObject.postId? {opacity: '0.5'} : {opacity: '1'}}>
               <Feed />
           </div>
         </>
