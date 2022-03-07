@@ -1,21 +1,14 @@
-import SideBar from '../../components/SideBar/SideBar'
-import RightBar from '../../components/RightBar/RightBar'
 import Feed from '../..//components/Feed/Feed'
 import './Home.css'
+import { useContext } from 'react'
+import { PostContext } from '../../context/PostContext'
 
 export default function Home() {
+  const { postObject } = useContext(PostContext)
     return (
         <>
-          <div className='homeContainer'>
-            {/* <div className='sideBarContainer'>
-              <SideBar />
-            </div>
-            <div className='feedContainer'> */}
+          <div className='homeContainer' style={postObject.img? {opacity: '0.5'} : {opacity: '1'}}>
               <Feed />
-            {/* </div>
-            <div className='rightBarContainer'>
-              <RightBar />
-            </div> */}
           </div>
         </>
     )

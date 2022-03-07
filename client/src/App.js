@@ -4,18 +4,24 @@ import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import Upload from './pages/Upload/Upload'
+import PostLarge from './components/PostLarge/PostLarge'
 import { Routes, Route } from 'react-router-dom'
 import { AuthContext } from './context/AuthContext'
+import { PostContext } from './context/PostContext'
 import { useState } from 'react'
 
 function App() {
   const [userObject, setUserObject] = useState({ user: null, isFetching: false, error: false})
-  const value = {userObject, setUserObject}
+  const userValue = {userObject, setUserObject}
+  const [postObject, setPostObject] = useState({userId: '', desc: '', img: '', likes: []})
+  const postValue = {postObject, setPostObject}
   
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={userValue}>
+    <PostContext.Provider value={postValue}>
       {userObject.user && <NavBar />
       }
+      <PostLarge />
       <Routes>
         <Route path='/' element={userObject.user? <Home /> : <Login />} />
         <Route path='/login' element={<Login />} />
@@ -23,6 +29,7 @@ function App() {
         <Route path='/profile/:username' element={<Profile />} />
         <Route path='/upload' element={<Upload />} />
       </Routes>
+    </PostContext.Provider>
     </AuthContext.Provider>
   )
 }

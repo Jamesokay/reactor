@@ -2,13 +2,16 @@ import './post.css'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Link } from "react-router-dom"
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
+import { PostContext } from '../../context/PostContext';
 
 export default function Post({ post }) {
   const [user, setUser] = useState({})
+  const { setPostObject } = useContext(PostContext)
 
   useEffect(() => {
+    
     const getUser = async () => { 
       const res = await axios.get(`users?userId=${post.userId}`)
       setUser(res.data)
@@ -40,13 +43,18 @@ export default function Post({ post }) {
 
   }
 
+  const enlargePost = () => {
+    console.log('enlarging')
+    setPostObject(post)
+  }
+
 
 
 
 
     return (
         <div className='post'>
-            <img className='postImg' src={post.img} alt='' />
+            <img className='postImg' src={post.img} alt='' onClick={() => enlargePost()}/>
             <div className='postBottom'>
               <div className='postBottomLeft'>
                 <img className='profileImg' 
