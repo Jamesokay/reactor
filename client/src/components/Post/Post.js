@@ -45,7 +45,7 @@ export default function Post({ post }) {
 
   const enlargePost = () => {
     console.log('enlarging')
-    setPostObject(post)
+    setPostObject({...post, postAuthor: user})
   }
 
 
