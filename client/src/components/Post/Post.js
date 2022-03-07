@@ -49,7 +49,7 @@ export default function Post({ post }) {
 
   const enlargePost = () => {
     console.log('enlarging')
-    setPostObject({...post, postAuthor: user})
+    setPostObject({userId: post.userId, postId: post._id})
   }
 
   const handleLike = async () => {
@@ -61,10 +61,6 @@ export default function Post({ post }) {
     }
     setIsLiked(!isLiked)
   }
-
-
-
-
 
     return (
         <div className='post'>
