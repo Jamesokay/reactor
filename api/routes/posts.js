@@ -87,9 +87,6 @@ router.get("/:id", async (req, res) => {
 
 router.get("/feed/:userId", async (req, res) => {
   try {
-    // Fetches all of current user's posts + friend's posts and
-    // concats into a single array
-    // Probably want to sort by timestamp?
     const currentUser = await User.findById(req.params.userId);
     const userPosts = await Post.find({ userId: currentUser._id });
     const friendPosts = await Promise.all(

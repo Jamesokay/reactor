@@ -99,4 +99,34 @@ router.put("/:id/unfollow", async (req, res) => {
     }
 });
 
+// Add or remove a post Id to or from the array of all posts liked by user 
+
+// attach userId to req, so that only the user can only like posts as themselves
+
+router.put("/:id/save", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user.likedPosts.includes(req.body.postId)) {
+      await user.updateOne({ $push: { likedPosts: req.body.postId } });
+      res.status(200).json("post added to liked array");
+    } else {
+      await user.updateOne({ $pull: { likedPosts: req.body.postId } });
+      res.status(200).json("post removed from liked array");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+//get posts liked by user... but then front end will have to get them 1 by 1? Could do some bulk route on posts (get multiple posts)
+
+// router.get("/:id", async (req, res) => {
+//   try {
+//     const post = await Post.findById(req.params.id);
+//     res.status(200).json(post);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 module.exports = router

@@ -55,7 +55,9 @@ export default function Post({ post }) {
   const handleLike = async () => {
     try {
       const res = await axios.put('/posts/' + post._id + '/like', { userId: userObject.user._id })
+      const res2 = await axios.put('/users/' + userObject.user._id + '/save', { postId: post._id })
       console.log(res)
+      console.log(res2)
     } catch (err) {
       console.error(err)
     }
