@@ -112,4 +112,21 @@ router.get("/profile/:username", async (req, res) => {
   }
 });
 
+//get posts liked by user... but then front end will have to get them 1 by 1? Could do some bulk route on posts (get multiple posts)
+// forEach postId, get the relevant post, add to array, send array as response
+
+router.get("/saved/:username", async (req, res) => {
+  try {
+    const currentUser = await User.findOne({ username: req.params.username })
+    const savedPosts = await Promise.all(
+      currentUser.likedPosts.map((postId) => {
+        return Post.find({ _id: postId})
+      })
+    )
+    res.json([].concat(...savedPosts))
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

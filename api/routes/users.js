@@ -118,15 +118,4 @@ router.put("/:id/save", async (req, res) => {
   }
 })
 
-//get posts liked by user... but then front end will have to get them 1 by 1? Could do some bulk route on posts (get multiple posts)
-
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const post = await Post.findById(req.params.id);
-//     res.status(200).json(post);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 module.exports = router

@@ -4,6 +4,7 @@ import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import Upload from './pages/Upload/Upload'
+import Saved from './pages/Saved/Saved'
 import PostLarge from './components/PostLarge/PostLarge'
 import { Routes, Route } from 'react-router-dom'
 import { AuthContext } from './context/AuthContext'
@@ -28,6 +29,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/profile/:username' element={<Profile />} />
         <Route path='/upload' element={<Upload />} />
+        <Route path='/saved' element={<Saved />} />
       </Routes>
     </PostContext.Provider>
     </AuthContext.Provider>

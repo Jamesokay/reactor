@@ -9,8 +9,6 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-// import axios from 'axios'
-
 export default function NavBar() {
     const { userObject } = useContext(AuthContext)
 //    const navigate = useNavigate()
@@ -19,14 +17,7 @@ export default function NavBar() {
     //   setUserObject({user: null, isFetching: false, error: false})
     //   navigate('/')
     // }
-    // const getLikedPosts = async () => {
-    //   try {
-    //     const res = await axios.get(`/posts/saved/${userObject.user._id}`)
-    //     console.log(res.data)
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // }
+
 
 
     return (
@@ -45,9 +36,9 @@ export default function NavBar() {
               <Link to='/upload' className='navBarIconItem'>
                 <AddBoxOutlinedIcon />
               </Link>
-              <div className='navBarIconItem'>
+              <Link to='/saved' className='navBarIconItem'>
                 <FavoriteBorderIcon />
-              </div>
+              </Link>
             </div>
           </div>
 
