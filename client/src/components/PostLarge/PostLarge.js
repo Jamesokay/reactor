@@ -28,7 +28,7 @@ export default function PostLarge() {
         if (!userObject.user) return
         if (!postObject.postId) return
         const getPost = async () => { 
-          const res = await axios.get(`posts/${postObject.postId}`)
+          const res = await axios.get(`posts/post/${postObject.postId}`)
           setPost(res.data)
           setIsLiked(res.data.likes.includes(userObject.user._id))
         }

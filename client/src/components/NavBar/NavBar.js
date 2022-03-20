@@ -8,6 +8,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import axios from 'axios'
 
 export default function NavBar() {
     const { userObject } = useContext(AuthContext)
@@ -17,6 +18,15 @@ export default function NavBar() {
     //   setUserObject({user: null, isFetching: false, error: false})
     //   navigate('/')
     // }
+
+    const testSearch = async () => {
+      try {
+        const res = await axios.get(`/posts/search?q=wave`)
+        console.log(res.data)
+      } catch(err) {
+        console.error(err)
+      }
+    }
 
 
 
@@ -31,7 +41,7 @@ export default function NavBar() {
                 <HomeIcon />
               </Link>
               <div className='navBarIconItem'>
-                <SearchIcon />
+                <SearchIcon onClick={() => testSearch()}/>
               </div>
               <Link to='/upload' className='navBarIconItem'>
                 <AddBoxOutlinedIcon />

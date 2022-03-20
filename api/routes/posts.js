@@ -74,7 +74,7 @@ router.put("/:id/like", async (req, res) => {
 
 //get a post
 
-router.get("/:id", async (req, res) => {
+router.get("/post/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     res.status(200).json(post);
@@ -82,6 +82,16 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/search", async (req, res) => {
+  try {
+     console.log('req received')
+     const results = await Post.find({ tags: req.query.q })
+     res.status(200).json(results)    
+  } catch (err) {
+    res.status(400).json(err)
+  }
+})
 
 //get feed posts
 
@@ -128,5 +138,6 @@ router.get("/saved/:username", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
