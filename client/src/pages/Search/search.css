@@ -1,0 +1,29 @@
+.searchContainer {
+    display: flex;
+    width: 100%;
+    color: white;
+    padding-top: 100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.searchBar {
+    width: 400px;
+    height: 30px;
+    color: grey;
+    background: rgb(192, 191, 191);
+    display: inline-flex;
+    align-items: center;
+}
+
+.search {
+    width: 80%;
+    border: none;
+    font-size: 1rem;
+    background: none;
+}
+
+.search:focus {
+    outline: none;
+}
