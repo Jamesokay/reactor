@@ -33,9 +33,11 @@ export default function Home() {
     return (
         <>
         {loading?
+          <div className='loadContainer'>
           <Box sx={{ display: 'flex' }}>
             <CircularProgress />
           </Box>
+          </div>
           :
           <div className='homeContainer' style={postObject.postId? {opacity: '0.5'} : {opacity: '1'}}>
               <Feed content={posts} />

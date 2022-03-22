@@ -12,9 +12,9 @@
     width: 400px;
     height: 30px;
     color: grey;
-    background: rgb(192, 191, 191);
     display: inline-flex;
     align-items: center;
+    border-bottom: 1px solid grey;
 }
 
 .search {
