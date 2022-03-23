@@ -1,21 +1,13 @@
 import axios from 'axios'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import './upload.css'
-import AddToPhotosOutlinedIcon from '@mui/icons-material/AddToPhotosOutlined'
-import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined'
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto'
 
 export default function Upload() {
     const { userObject } = useContext(AuthContext)
     const [fileData, setFileData] = useState()
     const [tags, setTags] = useState('')
-
-    // useEffect(() => {
-    //   if (!tags) return
-
-    //   console.log(tags.split(' '))
-
-    // }, [tags])
 
     const handleFileChange = ({ target }) => {
         setFileData(target.files[0])
@@ -41,22 +33,14 @@ export default function Upload() {
 
     return (
       <div className='uploadContainer'> 
-        {fileData && (
-          <div className='uploadImageContainer'>
+      
+      <div className='uploadImageContainer'>
+        {fileData?
             <img className='uploadImage' src={URL.createObjectURL(fileData)} alt='' />
-          </div>
-        )}
-        <input
-            type='text'
-            placeholder='Tags'
-            onChange={e => {
-              setTags(e.target.value)
-            }}
-          />
-        <div className='upload'>
-          <form onSubmit={handleSubmit} className='uploadForm'>
-            <label htmlFor='file' className='shareOption'>
-              <AddToPhotosOutlinedIcon />
+            :
+            <div className='uploadOptions'>
+              <label htmlFor='file'>
+              <AddAPhotoIcon className='imageIcon' />
               <input 
                 style={{ display: "none" }}
                 id='file'
@@ -66,11 +50,24 @@ export default function Upload() {
                 onChange={handleFileChange}
                 required>
               </input>
-            </label>
-            <button type='submit' className='shareOption'>
-              <FileUploadOutlinedIcon />
-            </button>
-          </form>
+              </label>
+              <span>Choose an image</span>
+            </div>     
+        }
+        </div>
+
+        <textarea
+            className='caption'
+            type='text'
+            placeholder='#Add #Some #Tags'
+            onChange={e => {
+              setTags(e.target.value)
+            }}
+          ></textarea>
+        <div className='upload'>
+            <div onClick={handleSubmit} className='sendIt'>
+              <span>Send It</span>
+            </div>
         </div>
       </div>
     )
