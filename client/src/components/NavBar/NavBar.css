@@ -2,6 +2,7 @@
     background: white;
     height: 50px;
     width: 100%;
+    min-width: 635px;
     display: flex;
     align-items: center;
     position: fixed;
@@ -11,51 +12,66 @@
   }
 
   .navBarLeft {
-    flex: 2;
+    flex: 3;
   }
 
   .navBarCenter {
-    flex: 6;
+    flex: 4;
     display: flex;
     justify-content: center;
   }
 
   .navBarRight {
-    flex: 2;
+    flex: 3;
     display: flex;
     align-items: center;
     justify-content: right;
     color: white;
+    padding-right: 1.25rem;
+  }
+
+  .navMenuContainer {
+    width: 200px;
+    background: rgb(224, 223, 223);
+    position: absolute;
+    top: 50px;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navMenu {
+    list-style: none;
+    width: 95%;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0;
+    color: black;
+    cursor: pointer;
+  }
+
+  .navMenuOption {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .navMenuOption:hover {
+    background: white;
+  }
+
+  .navMenuIcon {
+    margin-right: 0.5rem;
   }
 
   .logo {
     color: black;
     font-size: 24px;
-    margin-left: 20px;
+    margin-left: 1.25rem;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
-  }
-
-  .searchbar {
-    margin: auto;
-    width: 75%;
-    height: 30px;
-    background-color: white;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-  }
-
-  
-  .searchInput {
-    border: none;
-    width: 70%;
-    margin-left: 5%;
-  }
-
-  .searchInput:focus {
-    outline: none;
   }
 
   .navBarIcons {
