@@ -19,7 +19,7 @@ cloudinary.config({
 router.post('/upload', upload.single('img'), uploadPost)
 
 
-//update a post
+// update a post
 
 router.put("/:id", async (req, res) => {
   try {
@@ -34,6 +34,23 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// add comment to a post 
+
+router.put("/:id/comment", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    const comment = {
+      username: req.body.username,
+      profileImg: req.body.profileImg,
+      commentText: req.body.commentText
+    }
+    await post.updateOne({ $push: { comments: comment } });
+    res.status(200).json("Comment added");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 //delete a post
 

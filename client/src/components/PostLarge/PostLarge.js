@@ -16,6 +16,7 @@ export default function PostLarge() {
     const { userObject } = useContext(AuthContext)
     const { postObject, setPostObject } = useContext(PostContext)
     const [isLiked, setIsLiked] = useState(false)
+    const [newComment, setNewComment] = useState('')
 
     useEffect(() => {
         const getUser = async () => { 
@@ -52,9 +53,19 @@ export default function PostLarge() {
         setPostObject({userId: '', postId: ''})
     }
 
+    const testCommentRoute = async () => {
+      try {
+        const res = await axios.put('/posts/' + postObject.postId + '/comment', 
+        { username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: newComment})
+        console.log(res)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+
     return (
         <div className='postLargeContainer' style={post.img? {display: 'flex'} : {}}>
-            <img className='postLargeImage' src={post.img} alt='' />
+            <img className='postLargeImage' src={post.img} alt='' onClick={() => testCommentRoute()}/>
             <div className='postLargeSideBar'>
               <div className='postSideBarTop'>
                 <div className='postSideBarTopLeft'>
@@ -76,6 +87,13 @@ export default function PostLarge() {
                 }
                 <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' />
               </div>
+                <input 
+                  type='text' 
+                  placeholder='Write a comment'
+                  onChange={e => {
+                    setNewComment(e.target.value)
+                  }}              
+                ></input>
               <div className='commentsContainer'>
                 <div className='comments'>
                   <Comment />
