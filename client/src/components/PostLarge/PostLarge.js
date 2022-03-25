@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from 'react'
 import { PostContext } from '../../context/PostContext'
 import { AuthContext } from '../../context/AuthContext'
 import { Link } from 'react-router-dom'
+import Comment from '../Comment/Comment'
 import axios from 'axios'
 import CloseIcon from '@mui/icons-material/Close';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -59,7 +60,7 @@ export default function PostLarge() {
                 <div className='postSideBarTopLeft'>
                   <img className='postSideBarProfileImage' src={user.profilePicture} alt='' />
                   <Link 
-                    to={`/profile/${user.username}`} 
+                    to={`/profile/${user.username}`}  
                     className='postSideBarProfileName'
                     onClick={() => clearPost()}   
                     >{user.username}</Link>
@@ -74,6 +75,11 @@ export default function PostLarge() {
                 <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
                 }
                 <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' />
+              </div>
+              <div className='commentsContainer'>
+                <div className='comments'>
+                  <Comment />
+                </div>
               </div>
             </div>
         </div>

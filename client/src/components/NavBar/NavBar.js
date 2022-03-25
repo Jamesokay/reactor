@@ -44,7 +44,9 @@ export default function NavBar() {
           </div>
 
           <div className='navBarRight'>
-              <img className='navBarImg' src={userObject.user.profilePicture} alt='' />
+              <Link to={`/profile/${userObject.user.username}`}>
+                <img className='navBarImg' src={userObject.user.profilePicture} alt='' />
+              </Link>
               <div className='navBarIconItem'>
                 <KeyboardArrowDownIcon onClick={() => setMenuVisible(!menuVisible)}/>
               </div>
