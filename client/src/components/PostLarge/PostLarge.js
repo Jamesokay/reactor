@@ -16,7 +16,9 @@ export default function PostLarge() {
     const { userObject } = useContext(AuthContext)
     const { postObject, setPostObject } = useContext(PostContext)
     const [isLiked, setIsLiked] = useState(false)
+    const [commenting, setCommenting] = useState(false)
     const [newComment, setNewComment] = useState('')
+    const [comments, setComments] = useState([])
 
     useEffect(() => {
         const getUser = async () => { 
@@ -32,6 +34,7 @@ export default function PostLarge() {
         const getPost = async () => { 
           const res = await axios.get(`posts/post/${postObject.postId}`)
           setPost(res.data)
+          setComments(res.data.comments)
           setIsLiked(res.data.likes.includes(userObject.user._id))
         }
         getPost()
@@ -54,10 +57,10 @@ export default function PostLarge() {
     }
 
     const testCommentRoute = async () => {
+      setComments(comments => [{ username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: newComment}, ...comments])
       try {
-        const res = await axios.put('/posts/' + postObject.postId + '/comment', 
+        await axios.put('/posts/' + postObject.postId + '/comment', 
         { username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: newComment})
-        console.log(res)
       } catch (err) {
         console.error(err)
       }
@@ -65,7 +68,7 @@ export default function PostLarge() {
 
     return (
         <div className='postLargeContainer' style={post.img? {display: 'flex'} : {}}>
-            <img className='postLargeImage' src={post.img} alt='' onClick={() => testCommentRoute()}/>
+            <img className='postLargeImage' src={post.img} alt='' />
             <div className='postLargeSideBar'>
               <div className='postSideBarTop'>
                 <div className='postSideBarTopLeft'>
@@ -85,19 +88,33 @@ export default function PostLarge() {
                 :
                 <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
                 }
-                <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' />
+                <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' onClick={() => setCommenting(!commenting)}/>
               </div>
-                <input 
+              <div className='commentsContainer'>
+              {commenting && (
+              <div className='newCommentContainer'>
+                <textarea 
+                  className='newComment'
                   type='text' 
                   placeholder='Write a comment'
                   onChange={e => {
                     setNewComment(e.target.value)
                   }}              
-                ></input>
-              <div className='commentsContainer'>
-                <div className='comments'>
-                  <Comment />
+                ></textarea>
+                <div className='newCommentButton' onClick={() => testCommentRoute()}>Post</div>
                 </div>
+              )}
+
+              {comments?
+                <div className='comments'>
+                  {comments.map((c) => (
+                    <Comment key={c.username} comment={c} />
+                  ))}
+                </div>
+              :
+                <div className='comments' />
+              }
+
               </div>
             </div>
         </div>

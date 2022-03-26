@@ -1,13 +1,13 @@
 import './comment.css'
 
-export default function Comment() {
+export default function Comment({ comment }) {
     return (
         <div className='comment'>
-          <div className='commentProfileImage'/>
+          <img className='commentProfileImage' src={comment.profileImg} alt='' />
           <div className='commentBody'>
           <span>
-            <span className='commentName'>Some Fella</span>
-            I am leaving this comment on your photo and now it is getting pretty long so let's see what that does to the layout</span>
+            <span className='commentName'>{comment.username}</span>
+            {comment.commentText}</span>
           </div>
       </div>
     )
