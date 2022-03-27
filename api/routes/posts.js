@@ -5,6 +5,7 @@ const upload = require("../services/upload")
 const { uploadPost } = require("../controller/appController")
 const cloudinary = require('cloudinary').v2
 const dotenv = require('dotenv')
+const { v4: uuidv4 } = require('uuid')
 
 dotenv.config()
 
@@ -41,12 +42,13 @@ router.put("/:id/comment", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     const comment = {
+      id: uuidv4(),
       username: req.body.username,
       profileImg: req.body.profileImg,
       commentText: req.body.commentText
     }
     await post.updateOne({ $push: { comments: comment } });
-    res.status(200).json("Comment added");
+    res.status(200).json(comment);
   } catch (err) {
     res.status(500).json(err);
   }

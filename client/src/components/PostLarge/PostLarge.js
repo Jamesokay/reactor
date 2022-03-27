@@ -40,6 +40,9 @@ export default function PostLarge() {
         getPost()
     }, [postObject.postId, userObject.user])
 
+    useEffect(() => {
+      setNewComment('')
+    }, [commenting])
 
     const handleLike = async () => {
         try {
@@ -56,11 +59,11 @@ export default function PostLarge() {
         setPostObject({userId: '', postId: ''})
     }
 
-    const testCommentRoute = async () => {
-      setComments(comments => [{ username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: newComment}, ...comments])
+    const testCommentRoute = async ( comment ) => {
+      setComments(comments => [{ username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment}, ...comments])
       try {
         await axios.put('/posts/' + postObject.postId + '/comment', 
-        { username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: newComment})
+        { username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment})
       } catch (err) {
         console.error(err)
       }
@@ -91,24 +94,24 @@ export default function PostLarge() {
                 <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' onClick={() => setCommenting(!commenting)}/>
               </div>
               <div className='commentsContainer'>
-              {commenting && (
-              <div className='newCommentContainer'>
+              <div className='newCommentContainer' style={commenting? {display: 'flex'} : {display: 'none'}}>
                 <textarea 
-                  className='newComment'
-                  type='text' 
+                  id='newComment' 
                   placeholder='Write a comment'
+                  value={newComment}
                   onChange={e => {
                     setNewComment(e.target.value)
                   }}              
                 ></textarea>
-                <div className='newCommentButton' onClick={() => testCommentRoute()}>Post</div>
+                <div className='newCommentButton' onClick={() => {
+                  testCommentRoute(newComment)
+                  setCommenting(false)   
+                }}>Post</div>
                 </div>
-              )}
-
               {comments?
                 <div className='comments'>
                   {comments.map((c) => (
-                    <Comment key={c.username} comment={c} />
+                    <Comment key={c.id} comment={c} />
                   ))}
                 </div>
               :

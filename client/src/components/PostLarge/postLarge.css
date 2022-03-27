@@ -74,13 +74,13 @@
     margin-bottom: 0.75rem;
 }
 
-.newComment {
+#newComment {
     width: 90%;
     margin-bottom: 0.75rem;
     resize: none;
 }
 
-.newComment:focus {
+#newComment:focus {
     outline: none;
 }
 
