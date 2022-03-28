@@ -15,7 +15,7 @@ import { useState } from 'react'
 function App() {
   const [userObject, setUserObject] = useState({ user: null, isFetching: false, error: false})
   const userValue = {userObject, setUserObject}
-  const [postObject, setPostObject] = useState({userId: '', postId: ''})
+  const [postObject, setPostObject] = useState({userId: '', postId: '', isLiked: false})
   const postValue = {postObject, setPostObject}
   
   return (

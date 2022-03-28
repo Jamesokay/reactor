@@ -47,16 +47,19 @@ export default function PostLarge() {
     const handleLike = async () => {
         try {
           const res = await axios.put('/posts/' + postObject.postId + '/like', { userId: userObject.user._id })
+          const res2 = await axios.put('/users/' + userObject.user._id + '/save', { postId: post._id })
           console.log(res)
+          console.log(res2)
         } catch (err) {
           console.error(err)
         }
         setIsLiked(!isLiked)
+        setPostObject({...postObject, isLiked: !postObject.isLiked})
     }
     
     const clearPost = () => {
         setPost({})
-        setPostObject({userId: '', postId: ''})
+        setPostObject({userId: '', postId: '', isLiked: isLiked})
     }
 
     const testCommentRoute = async ( comment ) => {

@@ -11,7 +11,7 @@ import { AuthContext } from '../../context/AuthContext';
 export default function Post({ post }) {
   const [user, setUser] = useState({})
   const { userObject } = useContext(AuthContext)
-  const { setPostObject } = useContext(PostContext)
+  const { postObject, setPostObject } = useContext(PostContext)
   const [isLiked, setIsLiked] = useState(post.likes.includes(userObject.user._id))
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function Post({ post }) {
   }
 
   const enlargePost = () => {
-    setPostObject({userId: post.userId, postId: post._id})
+    setPostObject({userId: post.userId, postId: post._id, isLiked: isLiked})
   }
 
   const handleLike = async () => {
@@ -62,6 +62,14 @@ export default function Post({ post }) {
     }
     setIsLiked(!isLiked)
   }
+
+  useEffect(() => {
+    if (postObject.postId === post._id) {
+      console.log('postObj = ' + postObject.postId + ' post id = ' + post._id)
+      console.log('post object like state = ' + postObject.isLiked)
+      setIsLiked(postObject.isLiked)
+    }
+  }, [postObject.postId, postObject.isLiked, post._id])
 
     return (
         <div className='post'>
