@@ -13,7 +13,6 @@ export default function Profile() {
   const { userObject, setUserObject } = useContext(AuthContext)
   const [isFollowed, setIsFollowed] = useState(false)
   const username = useParams().username
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {
     if (!username) return
@@ -68,7 +67,7 @@ export default function Profile() {
           <div className='profileContainer'>
             <div className='profileHeader'>
                 <img className='profileHeaderPhoto'
-                     src={user.profilePicture? PF + user.profilePicture : ''}
+                     src={user.profilePicture? user.profilePicture : ''}
                      alt='' />
                 <div className='profileInfo'>
                   <div className='profileInfoTop'>
@@ -92,11 +91,11 @@ export default function Profile() {
                   <div className='imgMetrics'>
                     <span className='imgLikes'>
                       <FavoriteIcon className='imgIcon'/>
-                      <span>200</span>
+                      <span>{p.likes.length}</span>
                     </span>
                     <span className='imgComments'>
                       <ChatBubbleIcon className='imgIcon'/>
-                      <span>125</span>
+                      <span>{p.comments.length}</span>
                     </span>
                   </div>
 

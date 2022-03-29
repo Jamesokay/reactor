@@ -1,6 +1,22 @@
 const User = require('../models/User')
 const router = require('express').Router()
 const bcrypt = require('bcrypt')
+const upload = require("../services/upload")
+const { uploadProfilePhoto } = require("../controller/appController")
+const cloudinary = require('cloudinary').v2
+const dotenv = require('dotenv')
+
+dotenv.config()
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_HOST,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+  })
+
+
+// Upload profile picture
+router.post('/profilephoto', upload.single('profilePicture'), uploadProfilePhoto)
 
 // Update user
 router.put('/:id', async (req, res) => {

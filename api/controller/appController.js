@@ -1,7 +1,7 @@
 const Post = require("../models/Post");
+const User = require("../models/User")
 
 const uploadPost = async (req, res) => {
-  console.log('Request received on back end')
   try {
     if (req.file && req.file.path) {
       const newPost = new Post({
@@ -16,9 +16,27 @@ const uploadPost = async (req, res) => {
       return res.status(422).json({ error: "invalid" });
     }
 
-  } catch (error) {
-    console.error(error);
-   return res.status(500).json({ error: "some error occured" });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "some error occured" });
   }
 };
-module.exports = { uploadPost }
+
+const uploadProfilePhoto = async (req, res) => {
+  try {
+    if (req.file && req.file.path) {
+      const user = await User.findByIdAndUpdate(req.body.userId, {
+        $set: {profilePicture: req.file.path},
+      })
+      res.status(200).json("Profile picture successfully updated")   
+    } else {
+      console.log(req.file);
+      return res.status(422).json({ error: "invalid" });
+    }
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ error: "some error occured" });
+  }
+
+}
+module.exports = { uploadPost, uploadProfilePhoto }
