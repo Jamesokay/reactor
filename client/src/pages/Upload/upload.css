@@ -47,13 +47,29 @@
     margin-bottom: 1rem;
 }
 
+.captionHead {
+    width: 30.75vw;
+    height: 1.5rem;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 0.5rem;
+}
+
 .caption {
     width: 30.75vw;
     height: 3rem;
     padding: 0.5rem;
     resize: none;
     outline: none;
-    border: 1px solid grey
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-top: none;
 }
 
 .caption:focus {
@@ -107,19 +123,6 @@
 
 .uploadButton:hover {
     background: rgb(102, 196, 8);
-}
-
-.emojiContainer {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 25.1%;
-    display: grid;
-    gap: 0.5rem;
-    background: rgb(243, 243, 243);
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 @media (max-width: 1095px)  {

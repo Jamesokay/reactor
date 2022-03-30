@@ -2,8 +2,10 @@ import axios from 'axios'
 import { useState, useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import './upload.css'
+import Emojis from '../../components/Emojis/Emojis'
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto'
 import CircularProgress from '@mui/material/CircularProgress';
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import Box from '@mui/material/Box'
 
 
@@ -12,12 +14,8 @@ export default function Upload() {
     const [fileData, setFileData] = useState(null)
     const [tags, setTags] = useState('')
     const [uploading, setUploading] = useState(0)   
-    const emojis = []
-      for (var i = 128513; i < 128591; i++) {
-        emojis.push(i)
-      }   
+    const [showEmojis, setShowEmojis] = useState(false)
    
-
     const handleFileChange = ({ target }) => {
         setFileData(target.files[0])
     } 
@@ -78,17 +76,17 @@ export default function Upload() {
             </div>     
         }
         </div>
-        <div className='emojiContainer'>
-          {emojis.map((e) => (
-            <span key={e}>{String.fromCodePoint(e)}</span>
-          ))}
+        {showEmojis && (
+        <Emojis />
+        )}
+        <div className='captionHead'>
+          <InsertEmoticonIcon onClick={() => setShowEmojis(!showEmojis)}/>
         </div>
-
         <textarea
             style={uploading === 1 || uploading === 2? {visibility: 'hidden'} : {visibility: 'visible'}}
             className='caption'
             type='text'
-            placeholder='#Add #Some #Tags'
+            placeholder='Add a caption...'
             onChange={e => {
               setTags(e.target.value)
             }}
