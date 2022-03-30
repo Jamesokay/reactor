@@ -11,7 +11,12 @@ export default function Upload() {
     const { userObject } = useContext(AuthContext)
     const [fileData, setFileData] = useState(null)
     const [tags, setTags] = useState('')
-    const [uploading, setUploading] = useState(0)
+    const [uploading, setUploading] = useState(0)   
+    const emojis = []
+      for (var i = 128513; i < 128591; i++) {
+        emojis.push(i)
+      }   
+   
 
     const handleFileChange = ({ target }) => {
         setFileData(target.files[0])
@@ -72,6 +77,11 @@ export default function Upload() {
               }
             </div>     
         }
+        </div>
+        <div className='emojiContainer'>
+          {emojis.map((e) => (
+            <span key={e}>{String.fromCodePoint(e)}</span>
+          ))}
         </div>
 
         <textarea
