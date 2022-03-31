@@ -36,6 +36,7 @@ export default function PostLarge() {
           setPost(res.data)
           setComments(res.data.comments)
           setIsLiked(res.data.likes.includes(userObject.user._id))
+          console.log(res.data.tags)
         }
         getPost()
     }, [postObject.postId, userObject.user])

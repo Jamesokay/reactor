@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import './upload.css'
 import Picker from 'emoji-picker-react'
@@ -12,7 +12,7 @@ import Box from '@mui/material/Box'
 export default function Upload() {
     const { userObject } = useContext(AuthContext)
     const [fileData, setFileData] = useState(null)
-    const [tags, setTags] = useState('')
+    const [caption, setCaption] = useState('')
     const [uploading, setUploading] = useState(0)   
     const [showEmojis, setShowEmojis] = useState(false)
    
@@ -27,7 +27,10 @@ export default function Upload() {
         const formData = new FormData()
         formData.append('userId', userObject.user._id)
         formData.append('img', fileData)
-        formData.append('tags', tags.split(' '))
+        // what about tags embedded in the body of caption?
+        formData.append('caption', caption.split('#')[0])
+        // how to make this ['tag', 'tag', 'tag'] rather than ['tag, tag, tag']?
+        formData.append('tags', caption.match(/#[a-z0-9_]+/g))
      
         try {
           const res = await axios.post('/posts/upload', formData)
@@ -41,9 +44,14 @@ export default function Upload() {
     }
 
     const onEmojiClick = (event, emojiObject) => {
-      setTags(prevInput => prevInput + emojiObject.emoji);
+      setCaption(prevInput => prevInput + emojiObject.emoji);
       setShowEmojis(false);
     }
+
+    useEffect(() => {
+      if (!caption) return
+      console.log(caption.match(/#[a-z0-9_]+/g))
+    }, [caption])
     
 
     return (
@@ -90,11 +98,11 @@ export default function Upload() {
         <textarea
             style={uploading === 1 || uploading === 2? {visibility: 'hidden'} : {visibility: 'visible'}}
             className='caption'
-            value={tags}
+            value={caption}
             type='text'
             placeholder='Add a caption...'
             onChange={e => {
-              setTags(e.target.value)
+              setCaption(e.target.value)
             }}
           ></textarea>
           <InsertEmoticonIcon onClick={() => setShowEmojis(!showEmojis)}/>

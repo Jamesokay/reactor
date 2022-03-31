@@ -7,7 +7,8 @@ const uploadPost = async (req, res) => {
       const newPost = new Post({
         userId: req.body.userId,
         img: req.file.path,
-        tags: req.body.tags 
+        tags: req.body.tags,
+        desc: req.body.caption
       })
       await newPost.save();
       return res.status(200).json({ msg: "post successfully uploaded" });
