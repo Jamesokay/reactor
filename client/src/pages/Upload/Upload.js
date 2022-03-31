@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import './upload.css'
-import Emojis from '../../components/Emojis/Emojis'
+import Picker from 'emoji-picker-react'
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto'
 import CircularProgress from '@mui/material/CircularProgress';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
@@ -38,6 +38,11 @@ export default function Upload() {
             console.log(error)
         }
 
+    }
+
+    const onEmojiClick = (event, emojiObject) => {
+      setTags(prevInput => prevInput + emojiObject.emoji);
+      setShowEmojis(false);
     }
     
 
@@ -77,20 +82,23 @@ export default function Upload() {
         }
         </div>
         {showEmojis && (
-        <Emojis />
-        )}
-        <div className='captionHead'>
-          <InsertEmoticonIcon onClick={() => setShowEmojis(!showEmojis)}/>
+          <div className='emojiPicker'>
+        <Picker onEmojiClick={onEmojiClick}/>
         </div>
+        )}
+        <div className='captionContainer'>
         <textarea
             style={uploading === 1 || uploading === 2? {visibility: 'hidden'} : {visibility: 'visible'}}
             className='caption'
+            value={tags}
             type='text'
             placeholder='Add a caption...'
             onChange={e => {
               setTags(e.target.value)
             }}
           ></textarea>
+          <InsertEmoticonIcon onClick={() => setShowEmojis(!showEmojis)}/>
+        </div>
         <div className='upload' style={uploading === 1 || uploading === 2? {visibility: 'hidden'} : {visibility: 'visible'}}>
             <div onClick={handleSubmit} className='sendIt'>
               <span>Send It</span>

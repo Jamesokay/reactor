@@ -47,33 +47,28 @@
     margin-bottom: 1rem;
 }
 
-.captionHead {
-    width: 30.75vw;
-    height: 1.5rem;
-    border-top: 1px solid grey;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    color: grey;
+.captionContainer {
     display: flex;
-    align-items: center;
-    justify-content: right;
+    color: grey;
+    border: 1px solid grey;
     padding: 0.5rem;
+    border-radius: 0.25rem;
 }
 
 .caption {
     width: 30.75vw;
     height: 3rem;
-    padding: 0.5rem;
     resize: none;
     outline: none;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
-    border-top: none;
+    border: none;
 }
 
 .caption:focus {
     outline: none;
+}
+
+.emojiPicker {
+    position: absolute;
 }
 
 .upload {
