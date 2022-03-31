@@ -3,10 +3,11 @@
     display: flex;
     flex-direction: column;
     width: fit-content;
-  }
+}
 
 .postImg{
     object-fit: cover;
+    border-radius: 0.25rem;
 }
 
 .profileImg {
@@ -20,7 +21,7 @@
 .profileName {
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 0.9rem;
 }
 
@@ -49,7 +50,7 @@
 }
 
 .postIcon {
-  color: black;
+  color: white;
   width: fit-content;
   margin-left: 0.75rem;
   opacity: 0.5;

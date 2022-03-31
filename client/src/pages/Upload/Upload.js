@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import './upload.css'
 import Picker from 'emoji-picker-react'
@@ -28,9 +28,9 @@ export default function Upload() {
         formData.append('userId', userObject.user._id)
         formData.append('img', fileData)
         // what about tags embedded in the body of caption?
-        formData.append('caption', caption.split('#')[0])
+        formData.append('caption', caption)
         // how to make this ['tag', 'tag', 'tag'] rather than ['tag, tag, tag']?
-        formData.append('tags', caption.match(/#[a-z0-9_]+/g))
+        formData.append('tags', JSON.stringify(caption.match(/#[a-z0-9_]+/g)))
      
         try {
           const res = await axios.post('/posts/upload', formData)
@@ -47,12 +47,7 @@ export default function Upload() {
       setCaption(prevInput => prevInput + emojiObject.emoji);
       setShowEmojis(false);
     }
-
-    useEffect(() => {
-      if (!caption) return
-      console.log(caption.match(/#[a-z0-9_]+/g))
-    }, [caption])
-    
+   
 
     return (
       <div className='uploadContainer'> 

@@ -36,7 +36,6 @@ export default function PostLarge() {
           setPost(res.data)
           setComments(res.data.comments)
           setIsLiked(res.data.likes.includes(userObject.user._id))
-          console.log(res.data.tags)
         }
         getPost()
     }, [postObject.postId, userObject.user])
@@ -90,12 +89,17 @@ export default function PostLarge() {
               </div>
 
               <div className='postSideBarMiddle'>
+                <div className='postCaption'> 
+                  <span>{post.desc}</span>
+                </div>
+                <div className='postIconContainer'>
                 {(isLiked)?
                 <FavoriteIcon className='postSideBarIcon' onClick={() => handleLike()} style={{color: 'red'}} />
                 :
                 <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
                 }
                 <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' onClick={() => setCommenting(!commenting)}/>
+                </div>
               </div>
               <div className='commentsContainer'>
               <div className='newCommentContainer' style={commenting? {display: 'flex'} : {display: 'none'}}>

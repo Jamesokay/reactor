@@ -1,7 +1,7 @@
 .registerContainer {
     width: 100%;
     height: 100vh;
-    background: rgb(116, 51, 168);
+    background-image: linear-gradient(rgb(199, 153, 238), rgb(116, 51, 168));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +52,7 @@
     width: 200px;
     height: 40px;
     border-radius: 0.5rem;
-    background: rgb(21, 71, 112);
+    background: rgb(85, 38, 124);
     color: white;
     border: none;
     font-size: 1.1rem;

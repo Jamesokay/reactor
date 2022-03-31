@@ -5,4 +5,5 @@
 
 body {
     overscroll-behavior: none;
+    background: rgb(41, 41, 41);
 }
