@@ -4,19 +4,22 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    z-index: 2;   
+    z-index: 2;
 }
 
 .postLargeImage {
     width: 40vw;
     height: 40vw;
+    border-radius: 0.5rem 0rem 0rem 0.5rem; /* top left, top right, bottom right, bottom left */
 }
 
 .postLargeSideBar {
     width: 20vw;
     display: flex;
     flex-direction: column;
-    background: whitesmoke;
+    background: rgb(41, 41, 41);
+    color: white;
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
 }
 
 .postSideBarTop {
@@ -43,7 +46,7 @@
 .postSideBarProfileName {
     font-weight: bold;
     text-decoration: none;
-    color: black;
+    color: white;
     cursor: pointer;
 }
 
@@ -111,13 +114,10 @@
     flex-direction: column;
     height: 76.5%;
     padding: 0.75rem;
-    justify-content: center;
     align-items: center;
     cursor: default;
 }
 
 .comments {
     width: 100%;
-    height: 100%;
-    border-radius: 0.25rem;
 }

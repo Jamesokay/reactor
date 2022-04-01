@@ -1,6 +1,9 @@
 .comment {
     display: flex;
     padding: 0.5rem;
+    background: rgb(29, 29, 29);
+    margin-bottom: 0.25rem;
+    border-radius: 0.25rem;
 }
 
 .commentProfileImage {
@@ -17,10 +20,11 @@
     display: flex;
     width: 88%;
     font-size: 0.9rem;
+    color: rgb(194, 193, 193);
 }
 
 .commentName {
-    color: black;
+    color: white;
     font-weight: bold;   
     margin-right: 0.5rem;
     cursor: pointer;
