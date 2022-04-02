@@ -6,7 +6,7 @@ import { useNavigate, Link } from "react-router-dom"
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search'
+import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -32,7 +32,7 @@ export default function NavBar() {
                 <HomeIcon />
               </Link>
               <Link to='/search' className='navBarIconItem'>
-                <SearchIcon />
+                <ExploreOutlinedIcon />
               </Link>
               <Link to='/upload' className='navBarIconItem'>
                 <AddBoxOutlinedIcon />

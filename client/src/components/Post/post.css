@@ -5,9 +5,9 @@
     width: fit-content;
 }
 
-.postImg{
+.postImg {
     object-fit: cover;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
 }
 
 .profileImg {
@@ -36,7 +36,9 @@
   padding-bottom: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  height: 1.25rem
+  height: 1.25rem;
+  background: rgb(54,69,79);
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
 }
 
 .postBottomLeft {

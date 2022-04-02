@@ -67,16 +67,17 @@
     color: white !important
 }
 
-::placeholder {
+/* ::placeholder {
     color: white;
-}
+} */
 
 .caption:focus {
     outline: none;
 }
 
-.emojiPicker {
+.emojiPickerContainer {
     position: absolute;
+    bottom: 25%;
 }
 
 .upload {

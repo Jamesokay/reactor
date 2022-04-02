@@ -84,7 +84,7 @@ export default function Post({ post }) {
               </div>
               <div className='postBottomRight'>
               {(isLiked)?
-                  <FavoriteIcon onClick={() => handleLike()} style={{color: 'rgb(199, 153, 238)'}}/>
+                  <FavoriteIcon onClick={() => handleLike()} style={{color: '#e30b5d'}}/>
                 :
                 <div className='postIcon'>
                   <FavoriteBorderIcon onClick={() => handleLike()}/>

@@ -1,7 +1,6 @@
 .comment {
     display: flex;
     padding: 0.5rem;
-    background: rgb(29, 29, 29);
     margin-bottom: 0.25rem;
     border-radius: 0.25rem;
 }

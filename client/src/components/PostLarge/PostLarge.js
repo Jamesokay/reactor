@@ -94,7 +94,7 @@ export default function PostLarge() {
                 </div>
                 <div className='postIconContainer'>
                 {(isLiked)?
-                <FavoriteIcon className='postSideBarIcon' onClick={() => handleLike()} style={{color: 'red'}} />
+                <FavoriteIcon className='postSideBarIcon' onClick={() => handleLike()} style={{color:'#e30b5d'}} />
                 :
                 <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
                 }

@@ -10,14 +10,14 @@
 .postLargeImage {
     width: 40vw;
     height: 40vw;
-    border-radius: 0.5rem 0rem 0rem 0.5rem; /* top left, top right, bottom right, bottom left */
+    border-radius: 0.5rem 0rem 0rem 0.5rem;
 }
 
 .postLargeSideBar {
     width: 20vw;
     display: flex;
     flex-direction: column;
-    background: rgb(41, 41, 41);
+    background: rgb(54,69,79);
     color: white;
     border-radius: 0rem 0.5rem 0.5rem 0rem;
 }

@@ -85,8 +85,12 @@ export default function Upload() {
         }
         </div>
         {showEmojis && (
-          <div className='emojiPicker'>
-        <Picker onEmojiClick={onEmojiClick}/>
+          <div className='emojiPickerContainer'>
+        <Picker 
+          pickerStyle={{background: 'white', boxShadow: 'none'}}
+          onEmojiClick={onEmojiClick}
+          native='true'
+          />
         </div>
         )}
         <div className='captionContainer'>
