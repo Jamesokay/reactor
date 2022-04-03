@@ -11,7 +11,7 @@ import Box from '@mui/material/Box'
 
 export default function Upload() {
     const { userObject } = useContext(AuthContext)
-    const [fileData, setFileData] = useState(null)
+    const [fileData, setFileData] = useState(null) 
     const [caption, setCaption] = useState('')
     const [uploading, setUploading] = useState(0)   
     const [showEmojis, setShowEmojis] = useState(false)

@@ -3,7 +3,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate, Link } from "react-router-dom"
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
@@ -13,8 +13,16 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function NavBar() {
     const { userObject, setUserObject } = useContext(AuthContext)
+    const [photo, setPhoto] = useState('')
     const [menuVisible, setMenuVisible] = useState(false)
     const navigate = useNavigate()
+
+    useEffect(() => {
+      console.log(userObject.user.profilePicture)
+      setPhoto(userObject.user.profilePicture)
+    }, [userObject, userObject.user.profilePicture])
+
+
 
     const logOut = () => {
       setUserObject({user: null, isFetching: false, error: false})
@@ -45,7 +53,7 @@ export default function NavBar() {
 
           <div className='navBarRight'>
               <Link to={`/profile/${userObject.user.username}`}>
-                <img className='navBarImg' src={userObject.user.profilePicture} alt='' />
+                <img className='navBarImg' src={photo} alt='' />
               </Link>
               <div className='navBarIconItem'>
                 <KeyboardArrowDownIcon onClick={() => setMenuVisible(!menuVisible)}/>

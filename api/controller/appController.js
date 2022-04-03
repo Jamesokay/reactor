@@ -29,7 +29,7 @@ const uploadProfilePhoto = async (req, res) => {
       const user = await User.findByIdAndUpdate(req.body.userId, {
         $set: {profilePicture: req.file.path},
       })
-      res.status(200).json("Profile picture successfully updated")   
+      res.status(200).json(req.file.path)   
     } else {
       console.log(req.file);
       return res.status(422).json({ error: "invalid" });

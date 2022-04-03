@@ -5,6 +5,7 @@ import './profile.css'
 import { useParams } from 'react-router-dom'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import { AuthContext } from '../../context/AuthContext'
 
 export default function Profile() {
@@ -13,6 +14,7 @@ export default function Profile() {
   const { userObject, setUserObject } = useContext(AuthContext)
   const [isFollowed, setIsFollowed] = useState(false)
   const username = useParams().username
+  const [fileData, setFileData] = useState(null)
 
   useEffect(() => {
     if (!username) return
@@ -60,15 +62,61 @@ export default function Profile() {
       console.error(err)
     }
   }
+
+  const handleFileChange = ({ target }) => {
+    setFileData(target.files[0])
+  } 
+
+  useEffect(() => {
+    if (!fileData) return
+    if (userObject.user._id !== user._id) return
+
+    const changePhoto = async () => {
+      const formData = new FormData()
+      formData.append('userId', userObject.user._id)
+      formData.append('profilePicture', fileData)
+      try {
+        const res = await axios.post('/users/profilephoto', formData)
+        setUserObject(userObject => ({
+          ...userObject,
+          user: {...userObject.user,
+            profilePicture: res.data
+          }
+        }))
+      } catch(error) {
+          console.log(error)
+      }
+    }
+    changePhoto()
+  }, [fileData, userObject.user._id, user._id, setUserObject])
   
     return (
         <>
           <NavBar />
           <div className='profileContainer'>
             <div className='profileHeader'>
-                <img className='profileHeaderPhoto'
-                     src={user.profilePicture? user.profilePicture : ''}
-                     alt='' />
+              {fileData?
+                <div className='profileHeaderPhotoContainer'>
+                  <img className='profileHeaderPhoto' src={URL.createObjectURL(fileData)} alt='' />
+                </div>
+                :
+                <div className='profileHeaderPhotoContainer'>
+                <img className='profileHeaderPhoto' src={user.profilePicture? user.profilePicture : ''} alt='' />
+                <label htmlFor='file' className='editOption'>
+                  <EditOutlinedIcon/>
+                  <span>Edit</span>
+                  <input 
+                    style={{ display: "none" }}
+                    id='file'
+                    type='file'
+                    name='file'
+                    accept='image/*'
+                    onChange={handleFileChange}
+                    required>
+                  </input>
+                </label>
+                </div>
+              }
                 <div className='profileInfo'>
                   <div className='profileInfoTop'>
                     <span className='profileHeaderName'>{user.username}</span>
