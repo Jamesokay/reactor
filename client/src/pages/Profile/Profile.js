@@ -15,6 +15,8 @@ export default function Profile() {
   const [isFollowed, setIsFollowed] = useState(false)
   const username = useParams().username
   const [fileData, setFileData] = useState(null)
+  const [isUpdating, setIsUpdating] = useState(false)
+  const [newAbout, setNewAbout] = useState('')
 
   useEffect(() => {
     if (!username) return
@@ -66,6 +68,16 @@ export default function Profile() {
   const handleFileChange = ({ target }) => {
     setFileData(target.files[0])
   } 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await axios.put(`/users/${user._id}`, {userId: userObject.user._id, about: newAbout})
+      console.log(res)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   useEffect(() => {
     if (!fileData) return
@@ -123,6 +135,23 @@ export default function Profile() {
                     {user.username !== userObject.user.username && (
                       <div className='followButton' onClick={() => follow()}>{isFollowed? 'Unfollow ': 'Follow'}</div>
                     )}
+                  </div>
+                  <div className='profileAbout'>
+                  {(isUpdating)?
+                  <div>
+                    <textarea
+                       value={newAbout}
+                       type='text'
+                       onChange={e => {
+                       setNewAbout(e.target.value)
+                       }}
+                     ></textarea>
+                     <div className='updateButton' onClick={handleSubmit}>Update</div>
+                   </div>
+                     :
+                     <span>{user.about}</span>
+                  }
+                  <EditOutlinedIcon onClick={() => setIsUpdating(!isUpdating)}/>
                   </div>
                   <div className='profileCounts'>
                       <span className='profileMetric'><b>{user.followers? user.followers.length : ''}</b> followers</span>
