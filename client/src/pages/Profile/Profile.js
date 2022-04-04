@@ -149,9 +149,18 @@ export default function Profile() {
                      <div className='updateButton' onClick={handleSubmit}>Update</div>
                    </div>
                      :
-                     <span>{user.about}</span>
+                     <span className='aboutText'>{user.about}</span>
                   }
-                  <EditOutlinedIcon onClick={() => setIsUpdating(!isUpdating)}/>
+                  <div onClick={() => setIsUpdating(!isUpdating)}>
+                    {(isUpdating)?
+                    <span>Cancel</span>
+                    :
+                    <div className='editAboutOption'>
+                      <EditOutlinedIcon />
+                      <span>Edit</span>
+                    </div>       
+                    }
+                  </div>
                   </div>
                   <div className='profileCounts'>
                       <span className='profileMetric'><b>{user.followers? user.followers.length : ''}</b> followers</span>
