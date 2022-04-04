@@ -8,6 +8,7 @@
 .postImg {
     object-fit: cover;
     border-radius: 0.5rem 0.5rem 0rem 0rem;
+    cursor: pointer;
 }
 
 .profileImg {

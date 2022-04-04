@@ -58,7 +58,7 @@
 }
 
 .caption {
-    background: rgb(41,41,41);
+    background: none;
     width: 30.75vw;
     height: 3rem;
     resize: none;
@@ -67,9 +67,9 @@
     color: white !important
 }
 
-/* ::placeholder {
+.caption::placeholder {
     color: white;
-} */
+}
 
 .caption:focus {
     outline: none;
@@ -97,7 +97,7 @@
 }
 
 .sendIt {
-    background: rgb(116, 51, 168);
+    background: rgb(54,69,79);
     width: 90px;
     height: 30px;
     border-radius: 0.25rem;

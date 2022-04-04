@@ -32,7 +32,7 @@
 
   .navMenuContainer {
     width: 200px;
-    background: rgb(29, 29, 29);
+    background: rgb(54,69,79);
     position: absolute;
     top: 50px;
     border-radius: 0.25rem;
@@ -42,23 +42,22 @@
 
   .navMenu {
     list-style: none;
-    width: 95%;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    padding-left: 0;
+    width: 100%;
+    padding: 0;
     color: white;
     cursor: pointer;
   }
 
   .navMenuOption {
     padding: 0.5rem;
-    border-radius: 0.25rem;
     display: flex;
     align-items: center;
+    border-radius: 0.25rem;
   }
 
   .navMenuOption:hover {
-    background: rgb(41, 41, 41);
+    background: rgb(104, 129, 146);
+    outline: 1px solid white;
   }
 
   .navMenuIcon {

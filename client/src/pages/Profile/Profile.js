@@ -74,6 +74,9 @@ export default function Profile() {
     try {
       const res = await axios.put(`/users/${user._id}`, {userId: userObject.user._id, about: newAbout})
       console.log(res)
+      setUser({...user, about: newAbout})
+      setNewAbout('')
+      setIsUpdating(false)
     } catch (err) {
       console.error(err)
     }
@@ -111,22 +114,28 @@ export default function Profile() {
                 <div className='profileHeaderPhotoContainer'>
                   <img className='profileHeaderPhoto' src={URL.createObjectURL(fileData)} alt='' />
                 </div>
-                :
+              :
                 <div className='profileHeaderPhotoContainer'>
-                <img className='profileHeaderPhoto' src={user.profilePicture? user.profilePicture : ''} alt='' />
-                <label htmlFor='file' className='editOption'>
-                  <EditOutlinedIcon/>
-                  <span>Edit</span>
-                  <input 
-                    style={{ display: "none" }}
-                    id='file'
-                    type='file'
-                    name='file'
-                    accept='image/*'
-                    onChange={handleFileChange}
-                    required>
-                  </input>
-                </label>
+                  {(user.profilePicture)?
+                    <img className={(user.username === userObject.user.username)? 'userProfileHeaderPhoto' : 'profileHeaderPhoto'} src={user.profilePicture} alt='' />
+                    :
+                    <></>
+                  }
+                  {(user.username === userObject.user.username) && (
+                  <label htmlFor='file' className='editOption'>
+                    <EditOutlinedIcon/>
+                    <span>Edit</span>
+                    <input 
+                      style={{ display: "none" }}
+                      id='file'
+                      type='file'
+                      name='file'
+                      accept='image/*'
+                      onChange={handleFileChange}
+                      required>
+                    </input>
+                  </label>
+                  )}
                 </div>
               }
                 <div className='profileInfo'>
@@ -137,23 +146,29 @@ export default function Profile() {
                     )}
                   </div>
                   <div className='profileAbout'>
-                  {(isUpdating)?
+                  {(user.username === userObject.user.username && isUpdating)?
                   <div>
                     <textarea
+                       className='updateAbout'
                        value={newAbout}
                        type='text'
                        onChange={e => {
                        setNewAbout(e.target.value)
                        }}
                      ></textarea>
-                     <div className='updateButton' onClick={handleSubmit}>Update</div>
+                     
                    </div>
                      :
                      <span className='aboutText'>{user.about}</span>
                   }
+
+                  {(user.username === userObject.user.username) && (
                   <div onClick={() => setIsUpdating(!isUpdating)}>
                     {(isUpdating)?
-                    <span>Cancel</span>
+                    <div className='updateOptions'>
+                      <div className='updateButton' onClick={handleSubmit}>Update</div>
+                      <div className='updateButton'>Cancel</div>
+                    </div>
                     :
                     <div className='editAboutOption'>
                       <EditOutlinedIcon />
@@ -161,6 +176,7 @@ export default function Profile() {
                     </div>       
                     }
                   </div>
+                  )}
                   </div>
                   <div className='profileCounts'>
                       <span className='profileMetric'><b>{user.followers? user.followers.length : ''}</b> followers</span>
