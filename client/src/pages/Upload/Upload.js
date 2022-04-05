@@ -24,13 +24,21 @@ export default function Upload() {
         e.preventDefault()
         console.log('request sent')
         setUploading(1)
+        let tags = []
+        let hashTagMatch = caption.match(/#[a-z0-9_]+/g)
+        if (hashTagMatch) {
+          tags = hashTagMatch.map((t) => {
+            return t.slice(1)
+          })
+        }
+
         const formData = new FormData()
         formData.append('userId', userObject.user._id)
         formData.append('img', fileData)
         // what about tags embedded in the body of caption?
         formData.append('caption', caption)
         // how to make this ['tag', 'tag', 'tag'] rather than ['tag, tag, tag']?
-        formData.append('tags', JSON.stringify(caption.match(/#[a-z0-9_]+/g)))
+        formData.append('tags', JSON.stringify(tags))
      
         try {
           const res = await axios.post('/posts/upload', formData)

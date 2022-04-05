@@ -1,7 +1,6 @@
 import './NavBar.css'
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
-import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate, Link } from "react-router-dom"
 import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
@@ -61,10 +60,6 @@ export default function NavBar() {
             {menuVisible && (
               <div className='navMenuContainer'>
                 <ul className='navMenu'>
-                  <li className='navMenuOption'>
-                    <PersonIcon className='navMenuIcon' />
-                    <span>Edit Profile</span>
-                  </li>
                   <li className='navMenuOption'>
                     <SettingsIcon className='navMenuIcon' />
                     <span>Account Settings</span>
