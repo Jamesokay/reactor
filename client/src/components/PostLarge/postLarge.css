@@ -17,7 +17,7 @@
     width: 20vw;
     display: flex;
     flex-direction: column;
-    background: rgb(54,69,79);
+    background: #6D6A95;
     color: white;
     border-radius: 0rem 0.5rem 0.5rem 0rem;
 }
