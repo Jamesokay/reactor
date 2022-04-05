@@ -1,5 +1,5 @@
 .navBarContainer {
-    background: rgb(54,69,79);
+    background: #6D6A95;
     height: 50px;
     width: 100%;
     min-width: 635px;
@@ -65,7 +65,7 @@
   }
 
   .logo {
-    color: #e30b5d;
+    color: white;
     font-size: 24px;
     margin-left: 1.25rem;
     font-weight: bold;
