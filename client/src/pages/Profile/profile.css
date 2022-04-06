@@ -6,6 +6,7 @@
 .profileHeader {
     width: 20%;
     height: calc(100vh - 50px);
+    top: 50px;
     margin-bottom: 5rem;
     position: fixed;
     display: flex;
@@ -161,7 +162,7 @@
 }
 
 .profileBody {
-    overflow-y: scroll;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1%;
