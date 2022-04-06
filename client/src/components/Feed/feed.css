@@ -42,4 +42,12 @@
       grid-template-columns: 1fr 1fr;
       min-width: 600px !important;
     }
+}
+
+@media (max-width: 450px)  {
+  .feedGrid {
+    width: 95%;
+    grid-template-columns: 1fr;
+    min-width: 200px !important;
   }
+}
