@@ -202,7 +202,7 @@ export default function Profile() {
                   </div>
 
                   </div>
-                  <img src={p.img} alt=''/>
+                  <img className='profilePostImg' src={p.img} alt=''/>
                 </div>
               ))
 
