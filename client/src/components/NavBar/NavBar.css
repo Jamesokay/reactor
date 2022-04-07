@@ -32,7 +32,7 @@
 
   .navMenuContainer {
     width: 200px;
-    background: rgb(54,69,79);
+    background: rgb(41, 41, 41);
     position: absolute;
     top: 50px;
     border-radius: 0.25rem;
@@ -56,7 +56,7 @@
   }
 
   .navMenuOption:hover {
-    background: rgb(104, 129, 146);
+    background: rgb(61, 61, 61);
     outline: 1px solid white;
   }
 

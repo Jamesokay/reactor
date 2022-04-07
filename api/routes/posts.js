@@ -19,6 +19,16 @@ cloudinary.config({
 // upload
 router.post('/upload', upload.single('img'), uploadPost)
 
+//get a post
+
+router.get("/post/:id", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // update a post
 
@@ -91,16 +101,6 @@ router.put("/:id/like", async (req, res) => {
   }
 });
 
-//get a post
-
-router.get("/post/:id", async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-    res.status(200).json(post);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 router.get("/search", async (req, res) => {
   try {
@@ -140,6 +140,8 @@ router.get("/profile/:username", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 
 //get posts liked by user... but then front end will have to get them 1 by 1? Could do some bulk route on posts (get multiple posts)
 // forEach postId, get the relevant post, add to array, send array as response

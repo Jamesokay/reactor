@@ -81,7 +81,7 @@ export default function Post({ post }) {
                      src={user.profilePicture}
                      alt=''
                 />
-                <Link to={`/profile/${user.username}`} className='profileName'>{user.username}</Link>
+                <Link to={`/${user.username}`} className='profileName'>{user.username}</Link>
               </div>
               <div className='postBottomRight'>
               {(isLiked)?

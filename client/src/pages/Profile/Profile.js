@@ -108,9 +108,9 @@ export default function Profile() {
   }, [fileData, userObject.user._id, user._id, setUserObject])
 
   function enlargePost(profilePostId) {
-    //setPostObject({userId: user._id, postId: profilePostId, isLiked: false})
-    let test = {userId: user._id, postId: profilePostId, isLiked: false}
-    console.log(test)
+    setPostObject({userId: user._id, postId: profilePostId, isLiked: false})
+    // let test = {userId: user._id, postId: profilePostId, isLiked: false}
+    // console.log(test)
   }
   
     return (

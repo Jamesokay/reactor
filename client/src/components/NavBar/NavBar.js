@@ -51,7 +51,7 @@ export default function NavBar() {
           </div>
 
           <div className='navBarRight'>
-              <Link to={`/profile/${userObject.user.username}`}>
+              <Link to={`/${userObject.user.username}`}>
                 <img className='navBarImg' src={photo} alt='' />
               </Link>
               <div className='navBarIconItem'>
