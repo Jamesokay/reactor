@@ -12,7 +12,6 @@
     flex-direction: column;
     align-items: center;
     cursor: default;
-    background: rgb(41, 41, 41);
 }
 
 .profileHeaderPhotoContainer {
@@ -26,7 +25,6 @@
 .editOption {
     display: flex;
     align-items: center;
-    color: white;
     justify-content: space-around;
     width: 65px;
     position: absolute;
@@ -55,6 +53,7 @@
     border: 3px solid white;
     object-fit: cover;
     transition: opacity 0.2s ease-in-out;
+    box-shadow: 0px 0px 5px 3px rgb(177, 176, 176);
 }
 
 .userProfileHeaderPhoto {
@@ -64,6 +63,7 @@
     border: 3px solid white;
     object-fit: cover;
     transition: opacity 0.2s ease-in-out;
+    box-shadow: 0px 0px 5px 3px rgb(177, 176, 176);
 }
 
 .profileHeaderPhotoContainer:hover .editOption {
@@ -110,7 +110,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    color: rgb(41, 41, 41);
     width: 100%;
 }
 
@@ -128,7 +128,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgb(189, 188, 188);
 }
 
 .profileAbout:hover .editAboutOption {
@@ -139,18 +138,13 @@
     margin-left: 1rem;
     width: 90px;
     height: 30px;
-    background: rgb(116, 51, 168);
+    background: #c82664;
     border-radius: 0.25rem;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-}
-
-.followButton:hover {
-    background: rgb(160, 70, 233)
 }
 
 .profileCounts {
@@ -167,7 +161,7 @@
 .profileBody {
     overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1%;
     margin-left: 275px;
     padding: 1%;

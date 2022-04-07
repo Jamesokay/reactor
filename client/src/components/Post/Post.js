@@ -48,6 +48,7 @@ export default function Post({ post }) {
   }
 
   const enlargePost = () => {
+    console.log({userId: post.userId, postId: post._id, isLiked: isLiked})
     setPostObject({userId: post.userId, postId: post._id, isLiked: isLiked})
   }
 
@@ -71,7 +72,7 @@ export default function Post({ post }) {
     }
   }, [postObject.postId, postObject.isLiked, post._id])
 
-    return (
+    return post.img? (
         <div className='post'>
             <img className='postImg' src={post.img} alt='' onClick={() => enlargePost()}/>
             <div className='postBottom'>
@@ -97,5 +98,9 @@ export default function Post({ post }) {
               </div>
             </div>    
         </div>
+    )
+    :
+    (
+      <></>
     )
 }
