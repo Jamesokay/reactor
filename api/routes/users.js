@@ -71,6 +71,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Search users
+router.get("/search", async (req, res) => {
+  try {
+     const query = req.query.q
+     const results = await User.find({username : new RegExp('^'+query+'.*', "i")})
+     res.status(200).json(results)    
+  } catch (err) {
+    res.status(400).json(err)
+  }
+})
+
 // Follow a user
 router.put("/:id/follow", async (req, res) => {
     if (req.body.userId !== req.params.id) {

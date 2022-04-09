@@ -104,8 +104,7 @@ router.put("/:id/like", async (req, res) => {
 
 router.get("/search", async (req, res) => {
   try {
-     console.log('req received')
-     const results = await Post.find({ tags: req.query.q })
+     const results = await Post.find({ tags: {$regex : req.query.q, $options : 'i'} })
      res.status(200).json(results)    
   } catch (err) {
     res.status(400).json(err)

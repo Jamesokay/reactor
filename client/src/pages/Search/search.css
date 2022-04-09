@@ -32,3 +32,49 @@
 .search:focus {
     outline: none;
 }
+
+.userResults {
+    padding-top: 1rem;
+    display: flex;
+}
+
+.userResult {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    align-items: center;
+    color: rgb(41, 41, 41);
+    cursor: pointer;
+}
+
+.userResultImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid rgb(41, 41, 41);
+    box-shadow: 0px 0px 5px 3px rgb(177, 176, 176);
+}
+
+.userResultImgDefault {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: linear-gradient(rgb(180, 180, 180), grey);
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgb(41, 41, 41);
+    box-shadow: 0px 0px 5px 3px rgb(177, 176, 176);
+}
+
+.defaultIcon {
+    transform: scale(2);
+}
+
+.userResultName:hover {
+    text-decoration: underline;
+}
