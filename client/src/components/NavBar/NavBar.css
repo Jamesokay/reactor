@@ -2,7 +2,6 @@
     background: #c82664;
     height: 50px;
     width: 100%;
-    min-width: 635px;
     display: flex;
     align-items: center;
     position: fixed;
@@ -44,7 +43,7 @@
     list-style: none;
     width: 100%;
     padding: 0;
-    color: white;
+    color: rgb(221, 221, 221);
     cursor: pointer;
   }
 
@@ -56,8 +55,7 @@
   }
 
   .navMenuOption:hover {
-    background: rgb(61, 61, 61);
-    outline: 1px solid white;
+    color: white;
   }
 
   .navMenuIcon {
@@ -98,4 +96,13 @@
 
   .navBarIconItem:hover {
     opacity: 1;
+  }
+
+  @media (max-width: 450px)  {
+    .navBarLeft {
+      display: none;
+    }
+    .navBarRight {
+      display: none;
+    }
   }
