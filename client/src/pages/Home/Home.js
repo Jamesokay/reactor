@@ -13,6 +13,7 @@ export default function Home() {
   const [posts, setPosts] = useState([])
   const { userObject } = useContext(AuthContext)
   const [loading, setLoading] = useState(true)
+//  const [following, setFollowing] = useState([])
 
   useEffect(() => {  
     const getPosts = async () => { 
@@ -30,6 +31,8 @@ export default function Home() {
     getPosts()
   }, [userObject.user]) 
 
+    // get userObject.user.following by ID... possibly update API endpoint to go off of ID rather than name
+
     return (
         <>
         {loading?
@@ -40,6 +43,13 @@ export default function Home() {
           </div>
           :
           <div className='homeContainer' style={postObject.postId? {opacity: '0.5'} : {opacity: '1'}}>
+              <div className='followingContainer'>
+                <div className='followingImg' />
+                <div className='followingImg' />
+                <div className='followingImg' />
+                <div className='followingImg' />
+                <div className='followingImg' />
+              </div>
               <Feed content={posts} />
           </div>
         }

@@ -1,7 +1,7 @@
 import './post.css'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-//import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Link } from "react-router-dom"
 import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
@@ -24,28 +24,28 @@ export default function Post({ post }) {
     getUser()
   }, [post.userId])
 
-  // const deletePost = async (e) => {
-  //   e.preventDefault()
-  //   console.log('deleting post')
-  //   const myURLObj = new URL(post.img)
-  //   const parts = myURLObj.pathname.split('/')
-  //   const parts2 = parts[parts.length - 1].split('.')
+  const deletePost = async (e) => {
+    e.preventDefault()
+    console.log('deleting post')
+    const myURLObj = new URL(post.img)
+    const parts = myURLObj.pathname.split('/')
+    const parts2 = parts[parts.length - 1].split('.')
 
-  //   const finalObject = {
-  //     userId: post.userId,
-  //     postId: post._id.split('"')[0],
-  //     cloudinaryId: parts2[0]
-  //   }
+    const finalObject = {
+      userId: post.userId,
+      postId: post._id.split('"')[0],
+      cloudinaryId: parts2[0]
+    }
     
-  //   try {
-  //     const res = await axios.delete('/posts/delete', { data: finalObject })
-  //     console.log('post deleted')
-  //     console.log(res.data)
-  //   } catch(err) {
-  //     console.error(err)
-  //   } 
+    try {
+      const res = await axios.delete('/posts/delete', { data: finalObject })
+      console.log('post deleted')
+      console.log(res.data)
+    } catch(err) {
+      console.error(err)
+    } 
 
-  // }
+  }
 
   const enlargePost = () => {
     console.log({userId: post.userId, postId: post._id, isLiked: isLiked})
@@ -74,11 +74,7 @@ export default function Post({ post }) {
 
     return post.img? (
         <div className='post'>
-          {post.img?
             <img className='postImg' src={post.img} alt='' onClick={() => enlargePost()}/>
-            :
-            <div className='postImgLoad' />
-          }
             <div className='postBottom'>
               <div className='postBottomLeft'>
                 <img className='profileImg' 
@@ -95,6 +91,10 @@ export default function Post({ post }) {
                   <FavoriteBorderIcon onClick={() => handleLike()}/>
                 </div>
               }
+                <div className='postIcon'>
+                  <MoreVertIcon onClick={(e) => deletePost(e)}/>
+                </div>
+
               </div>
             </div>    
         </div>

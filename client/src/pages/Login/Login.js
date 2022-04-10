@@ -23,10 +23,8 @@ export default function Login() {
     }
 
     return (
-        <div className='loginContainer'>
-        <div className='loginLogoWrapper'>
+        <div className='loginContainer'>     
           <span className='loginLogo'>Reactor</span>
-        </div>
           <div className='loginWrapper'>
               <form className='loginForm' onSubmit={loginCall}>
                 <div className='inputField'>

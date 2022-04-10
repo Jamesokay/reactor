@@ -30,7 +30,7 @@
 .profileName {
   cursor: pointer;
   text-decoration: none;
-  color: #262626;
+  color: white;
   font-size: 0.9rem;
 }
 
@@ -46,7 +46,7 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   height: 1.25rem;
-  background: white;
+  background: #262626;
 }
 
 .postBottomLeft {
@@ -57,11 +57,11 @@
 .postBottomRight {
   display: flex;
   align-items: center;
-  color: #262626;
+  color: white;
 }
 
 .postIcon {
-  color: #262626;
+  color: white;
   width: fit-content;
   margin-left: 0.75rem;
   opacity: 0.5;
