@@ -24,8 +24,10 @@ export default function Login() {
 
     return (
         <div className='loginContainer'>
+        <div className='loginLogoWrapper'>
+          <span className='loginLogo'>Reactor</span>
+        </div>
           <div className='loginWrapper'>
-              <span className='loginLogo'>Reactor</span>
               <form className='loginForm' onSubmit={loginCall}>
                 <div className='inputField'>
                   <input 

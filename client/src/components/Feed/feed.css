@@ -9,10 +9,9 @@
 .feedGrid {
     margin: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 0.75rem;
-    width: 85%;
-    min-width: 1225px;
+    width: 80%;
 }
 
 .feedGrid div {
@@ -31,7 +30,6 @@
 @media (max-width: 1250px)  {
   .feedGrid {
     width: 90%;
-    grid-template-columns: 1fr 1fr 1fr;
     min-width: 800px !important;
   }
 }

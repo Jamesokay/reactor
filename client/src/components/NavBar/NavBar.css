@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .navBarContainer {
-    background: #c82664;
     height: 50px;
     width: 100%;
     display: flex;
@@ -8,6 +9,7 @@
     top: 0;
     left: 0;
     z-index: 999;
+    background: #FAFAFA;
   }
 
   .navBarLeft {
@@ -63,7 +65,8 @@
   }
 
   .logo {
-    color: white;
+    color: #262626;
+    font-family: 'Permanent Marker', cursive;
     font-size: 24px;
     margin-left: 1.25rem;
     font-weight: bold;
@@ -79,7 +82,7 @@
   }
   
   .navBarIconItem {
-    color: white;
+    color: #262626;
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.2s ease-in-out
@@ -92,6 +95,7 @@
     object-fit: cover;
     cursor: pointer;
     margin-right: 1rem;
+    border: 2px solid #262626;
   }
 
   .navBarIconItem:hover {

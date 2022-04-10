@@ -48,7 +48,7 @@ export default function Register() {
             <div className='inputField'>
               <input placeholder='Confirm password' type='password' ref={passwordRepeat} className='input' required />
             </div>
-              <button className='signupButton' type='submit'>Sign Up</button>    
+              <button className='loginButton' type='submit'>Sign Up</button>    
             </form> 
           </div>     
         </div>
