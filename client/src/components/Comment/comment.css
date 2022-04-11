@@ -11,7 +11,6 @@
     object-fit: cover;
     border-radius: 50%;
     margin-right: 0.5rem;
-    background: cornflowerblue;
     cursor: pointer;
 }
 
@@ -19,11 +18,11 @@
     display: flex;
     width: 88%;
     font-size: 0.9rem;
-    color: #262626;
+    color: white;
 }
 
 .commentName {
-    color: #262626;
+    color: white;
     font-weight: bold;   
     margin-right: 0.5rem;
     cursor: pointer;

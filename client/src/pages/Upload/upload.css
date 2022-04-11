@@ -52,10 +52,10 @@
 .captionContainer {
     display: flex;
     color: rgb(41, 41, 41);
-    background: white;
-    border: 1px solid white;
+    border: 1px solid #b9b8b8;
     padding: 0.5rem;
-    border-radius: 0.25rem;
+    background-color: #FAFAFA;
+    border-radius: 0.5rem;
 }
 
 .caption {
@@ -98,10 +98,10 @@
 }
 
 .sendIt {
-    background: rgb(41, 41, 41);
-    width: 90px;
-    height: 30px;
-    border-radius: 0.25rem;
+    background: #007B69;
+    width: 80px;
+    height: 40px;
+    border-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,7 +111,7 @@
 }
 
 .sendIt:hover {
-    background: rgb(160, 70, 233)
+    background: #00AE95;
 }
 
 .uploadButton {

@@ -32,9 +32,9 @@ export default function Register() {
   }
 
     return (
-         <div className='registerContainer'>
-          <div className='registerOptions'>
-            <span className='registerLogo'>Reactor</span>
+         <div className='loginContainer'>
+            <span className='loginLogo'>Reactor</span>
+            <div className='loginWrapper'>
             <form className='registerForm' onSubmit={handleSubmit}>
             <div className='inputField'>
               <input placeholder='Username' ref={username} className='input' required />
