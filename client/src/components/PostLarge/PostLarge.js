@@ -21,6 +21,7 @@ export default function PostLarge() {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
+      if (!postObject.userId) return
         const getUser = async () => { 
         const res = await axios.get(`users?userId=${postObject.userId}`)
           setUser(res.data)

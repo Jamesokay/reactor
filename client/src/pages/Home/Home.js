@@ -13,7 +13,7 @@ export default function Home() {
   const [posts, setPosts] = useState([])
   const { userObject } = useContext(AuthContext)
   const [loading, setLoading] = useState(true)
-//  const [following, setFollowing] = useState([])
+  const [following, setFollowing] = useState([])
 
   useEffect(() => {  
     const getPosts = async () => { 
@@ -33,6 +33,19 @@ export default function Home() {
 
     // get userObject.user.following by ID... possibly update API endpoint to go off of ID rather than name
 
+    useEffect(() => {
+      if (!userObject.user.following) return
+      const getFollowing = async (userId) => { 
+        const res = await axios.get(`users?userId=${userId}`)
+        setFollowing(following => [...following, res.data])
+      }
+      userObject.user.following.forEach((f) => getFollowing(f))
+
+      return () => {
+        setFollowing([])
+      }
+    }, [userObject])
+
     return (
         <>
         {loading?
@@ -43,13 +56,17 @@ export default function Home() {
           </div>
           :
           <div className='homeContainer' style={postObject.postId? {opacity: '0.5'} : {opacity: '1'}}>
+            {following && (
               <div className='followingContainer'>
-                <div className='followingImg' />
-                <div className='followingImg' />
-                <div className='followingImg' />
-                <div className='followingImg' />
-                <div className='followingImg' />
+                {following.map((f) => (
+                  <div key={f._id} className='followingUser'>
+                    <img className='followingImg' src={f.profilePicture} alt='' />
+                    <span>{f.username}</span>
+                  </div>
+                ))
+                }
               </div>
+            )}
               <Feed content={posts} />
           </div>
         }
