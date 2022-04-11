@@ -15,6 +15,7 @@ export default function PostLarge() {
     const [user, setUser] = useState({})
     const { userObject } = useContext(AuthContext)
     const { postObject, setPostObject } = useContext(PostContext)
+    const [caption, setCaption] = useState([])
     const [isLiked, setIsLiked] = useState(false)
     const [commenting, setCommenting] = useState(false)
     const [newComment, setNewComment] = useState('')
@@ -36,6 +37,9 @@ export default function PostLarge() {
           const res = await axios.get(`posts/post/${postObject.postId}`)
           console.log(res.data)
           setPost(res.data)
+          if (res.data.desc) {
+            setCaption(res.data.desc.split(' '))
+          }
           setComments(res.data.comments)
           setIsLiked(res.data.likes.includes(userObject.user._id))
         }
@@ -62,6 +66,7 @@ export default function PostLarge() {
     
     const clearPost = () => {
         setPost({})
+        setCaption([])
         setPostObject({userId: '', postId: '', isLiked: isLiked})
     }
 
@@ -93,7 +98,14 @@ export default function PostLarge() {
 
               <div className='postSideBarMiddle'>
                 <div className='postCaption'> 
-                  <span>{post.desc}</span>
+                  {/* <span>{post.desc}</span>      */}
+                  {caption &&
+                    caption.map((word) => (
+                      word.startsWith('#')?
+                        <span className='tagLink'>{word}</span>
+                      :
+                        <span className='captionText'>{word}</span>
+                    ))}
                 </div>
                 <div className='postIconContainer'>
                 {(isLiked)?

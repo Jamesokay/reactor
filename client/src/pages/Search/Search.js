@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import { Link } from "react-router-dom"
 
-export default function Home() {
+export default function Search() {
   const { postObject } = useContext(PostContext)
   const [query, setQuery] = useState('')
   const [users, setUsers] = useState([])

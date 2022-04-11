@@ -67,6 +67,20 @@
     margin-bottom: 0.75rem;
 }
 
+.tagLink {
+    color: rgb(236, 30, 219);
+    cursor: pointer;
+    margin-right: 0.25rem;
+}
+
+.captionText {
+    margin-right: 0.25rem;
+}
+
+.tagLink:hover {
+    text-decoration: underline;
+}
+
 .postIconContainer {
     width: 100%;
     display: flex;
