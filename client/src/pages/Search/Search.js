@@ -5,6 +5,7 @@ import { PostContext } from '../../context/PostContext'
 import axios from 'axios'
 import SearchIcon from '@mui/icons-material/Search'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
+import { Link } from "react-router-dom"
 
 export default function Home() {
   const { postObject } = useContext(PostContext)
@@ -65,7 +66,7 @@ export default function Home() {
             {users && (
               <div className='userResults'>
               {users.map((u) => (
-                <div key= {u._id} className='userResult'>
+                <Link key= {u._id} to={`/${u.username}`} className='userResult'>
                   {u.profilePicture?
                   <img className='userResultImg' src={u.profilePicture} alt='' />
                   :
@@ -74,7 +75,7 @@ export default function Home() {
                   </div>
                   }
                   <span className='userResultName'>{u.username}</span>
-                </div>
+                </Link>
               ))}
               </div>
             )}

@@ -10,19 +10,16 @@ import PostLarge from './components/PostLarge/PostLarge'
 import { Routes, Route } from 'react-router-dom'
 import { AuthContext } from './context/AuthContext'
 import { PostContext } from './context/PostContext'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
 function App() {
-  const [userObject, setUserObject] = useState({ user: null, isFetching: false, error: false})
-  const userValue = {userObject, setUserObject}
+  const { userObject } = useContext(AuthContext)
   const [postObject, setPostObject] = useState({userId: '', postId: '', isLiked: false})
   const postValue = {postObject, setPostObject}
-  
+
   return (
-    <AuthContext.Provider value={userValue}>
     <PostContext.Provider value={postValue}>
-      {userObject.user && <NavBar />
-      }
+      <NavBar />
       <PostLarge />
       <Routes>
         <Route path='/' element={userObject.user? <Home /> : <Login />} />
@@ -34,7 +31,6 @@ function App() {
         <Route path='/search' element={<Search />} />
       </Routes>
     </PostContext.Provider>
-    </AuthContext.Provider>
   )
 }
 

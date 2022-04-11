@@ -15,7 +15,7 @@ export default function Login() {
       setUserObject({...userObject, isFetching: true})
       try {
           const res = await axios.post('auth/login', {email: email.current.value, password: password.current.value})
-          setUserObject({user: res.data, isFetching: false, error: false})     
+          setUserObject({user: res.data, isFetching: false, error: false})
       } catch(err) {
           setErrorMessage(true)
           setUserObject({...userObject, error: err})
