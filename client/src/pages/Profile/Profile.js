@@ -26,6 +26,7 @@ export default function Profile() {
       const res = await axios.get(`/users?username=${username}`)
       setIsFollowed(userObject.user.following.includes(res.data._id))
       setUser(res.data)
+      setNewAbout(res.data.about)
     }
     fetchUser()
   }, [username, userObject])
@@ -153,7 +154,8 @@ export default function Profile() {
                       <div className='followButton' onClick={() => follow()}>{isFollowed? 'Unfollow ': 'Follow'}</div>
                     )}
                   </div>
-                  <div className='profileAbout'>
+
+                  <div className={isUpdating? 'updateProfileAbout' : 'profileAbout'}>
                   {(user.username === userObject.user.username && isUpdating)?
                   <div>
                     <textarea
@@ -162,9 +164,7 @@ export default function Profile() {
                        type='text'
                        onChange={e => {
                        setNewAbout(e.target.value)
-                       }}
-                     ></textarea>
-                     
+                       }} ></textarea>              
                    </div>
                      :
                      <span className='aboutText'>{user.about}</span>
@@ -186,6 +186,8 @@ export default function Profile() {
                   </div>
                   )}
                   </div>
+
+
                   <div className='profileCounts'>
                       <span className='profileMetric'><b>{user.followers? user.followers.length : ''}</b> followers</span>
                       <span className='profileMetric'><b>{posts? posts.length : ''}</b> posts</span>

@@ -93,7 +93,7 @@
     width: 60px;
     height: 30px;
     color: white;
-    background: rgb(54,69,79);
+    background: #007B69;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,6 +101,7 @@
     margin-left: 0.25rem;
     opacity: 0.8;
     transition: opacity 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .updateButton:hover {
@@ -108,14 +109,15 @@
 }
 
 .updateAbout {
+    width: 225px;
     resize: none;
     border: none;
-    background: cornflowerblue;
+    background: #FAFAFA;
+    border: 1px solid #e2e0e0;
 }
 
 .updateAbout:focus {
     outline: none;
-    border: none;
 }
 
 .profileInfo {
@@ -143,7 +145,14 @@
     justify-content: center;
     align-items: flex-end;
     position: relative;
-    height: 3rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.updateProfileAbout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 1rem;
 }
 
@@ -281,6 +290,14 @@
     .profileHeaderName {
         margin-right: 1rem;
         margin-bottom: 0;
+    }
+    .profileAbout {
+        height: 2rem;  
+        align-items: center; 
+    }
+    .editAboutOption {
+        height: 2rem;
+        right: -4.5rem;
     }
     .profileBody {
       width: 98%;
