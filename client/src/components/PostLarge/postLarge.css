@@ -5,16 +5,17 @@
     top: 50%;
     transform: translate(-50%,-50%);
     z-index: 2;
+    display: flex;
 }
 
 .postLargeImage {
-    width: 40vw;
-    height: 40vw;
+    width: 575px;
+    height: 575px;
     object-fit: cover;
 }
 
 .postLargeSideBar {
-    width: 20vw;
+    width: 290px;
     display: flex;
     flex-direction: column;
     background: #262626;
@@ -124,7 +125,6 @@
 .commentsContainer {
     display: flex;
     flex-direction: column;
-    height: 76.5%;
     padding: 0.75rem;
     align-items: center;
     cursor: default;
@@ -132,4 +132,14 @@
 
 .comments {
     width: 100%;
+}
+
+@media (max-width: 880px)  {
+    .postLargeImage {
+        width: 65vw;
+        height: 65vw;
+    }
+    .postLargeSideBar {
+        width: 32.5vw;
+    }
 }

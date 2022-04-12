@@ -35,9 +35,7 @@ export default function Upload() {
         const formData = new FormData()
         formData.append('userId', userObject.user._id)
         formData.append('img', fileData)
-        // what about tags embedded in the body of caption?
         formData.append('caption', caption)
-        // how to make this ['tag', 'tag', 'tag'] rather than ['tag, tag, tag']?
         formData.append('tags', JSON.stringify(tags))
      
         try {
@@ -114,11 +112,9 @@ export default function Upload() {
           ></textarea>
           <InsertEmoticonIcon onClick={() => setShowEmojis(!showEmojis)}/>
         </div>
-        <div className='upload' style={uploading === 1 || uploading === 2? {visibility: 'hidden'} : {visibility: 'visible'}}>
-            <div onClick={handleSubmit} className='sendIt'>
+            <div onClick={handleSubmit} className='sendIt' style={uploading === 1 || uploading === 2? {visibility: 'hidden'} : {visibility: 'visible'}}>
               <span>Send It</span>
             </div>
-        </div>
       </div>
     )
 }

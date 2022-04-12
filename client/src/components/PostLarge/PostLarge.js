@@ -80,7 +80,7 @@ export default function PostLarge() {
       }
     }
 
-    return (
+    return postObject.postId? (
         <div className='postLargeContainer' style={post.img? {display: 'flex'} : {}}>
             <img className='postLargeImage' src={post.img} alt='' />
             <div className='postLargeSideBar'>
@@ -144,5 +144,9 @@ export default function PostLarge() {
               </div>
             </div>
         </div>
+    )
+    :
+    (
+    <></>
     )
 }
