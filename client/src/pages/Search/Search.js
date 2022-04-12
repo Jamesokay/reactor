@@ -48,7 +48,7 @@ export default function Search() {
 
     return (
         <>
-          <div className='searchContainer' style={postObject.postId? {opacity: '0.5'} : {opacity: '1'}}>
+          <div className='searchContainer' style={postObject.postId? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
            <div className='searchBar'>
               <SearchIcon />
               <input

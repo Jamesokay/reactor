@@ -55,7 +55,7 @@ export default function Home() {
           </Box>
           </div>
           :
-          <div className='homeContainer' style={postObject.postId? {opacity: '0.5'} : {opacity: '1'}}>
+          <div className='homeContainer' style={postObject.postId? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
             {/* {following && (
               <div className='followingContainer'>
                 {following.map((f) => (

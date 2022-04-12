@@ -38,7 +38,7 @@ export default function Home() {
             </Box>
           </div>
           :
-          <div className='savedContainer' style={postObject.postId? {opacity: '0.5'} : {opacity: '1'}}>
+          <div className='savedContainer' style={postObject.postId? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
               <Feed content={posts} />
           </div>
         }

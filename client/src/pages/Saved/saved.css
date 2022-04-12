@@ -2,4 +2,6 @@
     display: flex;
     width: 100%;
     color: white;
+    height: 100vh;
+    overflow-x: hidden;
 }

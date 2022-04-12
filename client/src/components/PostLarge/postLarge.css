@@ -134,7 +134,7 @@
     width: 100%;
 }
 
-@media (max-width: 880px)  {
+/* @media (max-width: 880px)  {
     .postLargeImage {
         width: 65vw;
         height: 65vw;
@@ -142,4 +142,27 @@
     .postLargeSideBar {
         width: 32.5vw;
     }
-}
+} */
+
+/* @media (max-width: 900px) {
+    .postLargeContainer {
+        height: 100vh;
+        width: 100vw;
+        transform: none;
+        left: 0;
+        top: 50px;
+        flex-direction: column;
+        overflow-y: auto;
+        background: #FAFAFA;
+        justify-content: center;
+        align-items: center;
+    }
+    .postLargeImage {
+        margin-top: 50px;
+        width: 90vw;
+        height: 90vw;
+    }
+    .postLargeSideBar {
+         width: 90vw;
+    }
+} */

@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     background: #007B69;
+    overflow: hidden;
 }
 
 .loginWrapper {
@@ -115,5 +116,21 @@
 
 .forgotLogin:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 375px)  {
+    .loginLogo {
+        font-size: 4rem;
+    }
+    .inputField {
+        width: 175px;
+    }
+    .loginButton {
+        width: 175px;
+    }
+    .registerButton {
+        width: 175px;
+    }
+
 }
 
