@@ -24,6 +24,9 @@ export default function PostLarge() {
     const [newComment, setNewComment] = useState('')
     const [showOptions, setShowOptions] = useState(false)
     const [comments, setComments] = useState([])
+    const [isEditing, setIsEditing] = useState(false)
+    const [isDeleting, setIsDeleting] = useState(false)
+    const [updatedCaption, setUpdatedCaption] = useState('')
 
     useEffect(() => {
       if (!postObject.userId) return
@@ -55,6 +58,12 @@ export default function PostLarge() {
       setNewComment('')
     }, [commenting])
 
+    useEffect(() => {
+      if (isEditing || isDeleting) {
+        setShowOptions(false)
+      }
+    }, [isEditing, isDeleting])
+
     const handleLike = async () => {
         try {
           const res = await axios.put('/posts/' + postObject.postId + '/like', { userId: userObject.user._id })
@@ -68,9 +77,22 @@ export default function PostLarge() {
         setPostObject({...postObject, isLiked: !postObject.isLiked})
     }
 
+    const handleEdit = async (e) => {
+      e.preventDefault()
+      try {
+        await axios.put(`/posts/${post._id}`, {userId: userObject.user._id, desc: updatedCaption})
+        setCaption(updatedCaption.split(' '))
+        setUpdatedCaption('')
+        setIsEditing(false)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+
     const deletePost = async (e) => {
       e.preventDefault()
       console.log('deleting post')
+      setIsDeleting(false)
       const myURLObj = new URL(post.img)
       const parts = myURLObj.pathname.split('/')
       const parts2 = parts[parts.length - 1].split('.')
@@ -94,6 +116,9 @@ export default function PostLarge() {
     const clearPost = () => {
         setPost({})
         setCaption([])
+        setIsEditing(false)
+        setUpdatedCaption('')
+        setShowOptions(false)
         setPostObject({userId: '', postId: '', isLiked: isLiked})
     }
 
@@ -109,13 +134,22 @@ export default function PostLarge() {
 
     return postObject.postId? (
         <div className='postLargeContainer' style={post.img? {display: 'flex'} : {}}>
+          {isDeleting && (
+            <div className='confirmDelete'>
+              <span className='confirmDeleteMessage'>Are you sure you wish to delete this post?</span>
+              <div className='editPostOptions'>  
+                <div className='submitEdit' onClick={deletePost}>Confirm</div>
+                <div className='submitEdit' onClick={() => setIsDeleting(false)}>Cancel</div>
+              </div>
+            </div>
+          )}         
             <img className='postLargeImage' src={post.img} alt='' />
             <div className='postLargeSideBar'>
               <div className='postSideBarTop'>
                 <div className='postSideBarTopLeft'>
                   <img className='postSideBarProfileImage' src={user.profilePicture} alt='' />
                   <Link 
-                    to={`/profile/${user.username}`}  
+                    to={`/${user.username}`}  
                     className='postSideBarProfileName'
                     onClick={() => clearPost()}   
                     >{user.username}</Link>
@@ -126,6 +160,7 @@ export default function PostLarge() {
               </div>
 
               <div className='postSideBarMiddle'>
+              {!isEditing?
                 <div className='postCaption'>
                   {caption &&
                     caption.map((word) => (
@@ -135,6 +170,21 @@ export default function PostLarge() {
                         <span className='captionText'>{word}</span>
                     ))}
                 </div>
+                :
+                <div className='editPostContainer'>
+                  <textarea
+                       className='editPost'
+                       value={updatedCaption}
+                       type='text'
+                       onChange={e => {
+                       setUpdatedCaption(e.target.value)
+                  }} ></textarea>  
+                  <div className='editPostOptions'>  
+                    <div className='submitEdit' onClick={handleEdit}>Update</div>
+                    <div className='submitEdit' onClick={() => setIsEditing(false)}>Cancel</div>
+                  </div>
+                </div>
+              }
                 <div className='postIconContainer'>
                 {(isLiked)?
                   <FavoriteIcon onClick={() => handleLike()} style={{color:'#e30b5d'}} />
@@ -154,11 +204,11 @@ export default function PostLarge() {
                 {showOptions && (
                   <div className='postOptionsContainer'>
                     <ul className='postOptionsMenu'>
-                      <li className='postOption'>
+                      <li className='postOption' onClick={() => setIsEditing(true)}>
                         <EditOutlinedIcon className='postOptionIcon' />
                         <span>Edit post</span>
                       </li>
-                      <li className='postOption'>
+                      <li className='postOption' onClick={() => setIsDeleting(true)}>
                         <DeleteForeverIcon className='postOptionIcon' />
                         <span>Delete post</span>
                       </li>

@@ -8,6 +8,27 @@
     display: flex;
 }
 
+.confirmDelete {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #262626;
+    border-radius: 0.25rem;
+    box-shadow: 0px 0px 5px 3px #0c0c0c;
+}
+
+.confirmDeleteMessage {
+    margin-bottom: 1rem;
+}
+
 .postLargeImage {
     width: 575px;
     height: 575px;
@@ -62,6 +83,7 @@
     display: flex;
     flex-direction: column;
     padding: 0.75rem;
+    align-items: center;
 }
 .postCaption {
     margin-bottom: 0.75rem;
@@ -131,7 +153,51 @@
 
 .postOption:hover {
     color: white;
-  }
+}
+
+.editPostContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editPost {
+    width: 225px;
+    resize: none;
+    border: none;
+    background: #FAFAFA;
+    border: 1px solid #e2e0e0;
+    margin-bottom: 1rem;
+}
+
+.editPost:focus {
+    outline: none;
+}
+
+.editPostOptions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.submitEdit {
+    width: 60px;
+    height: 30px;
+    color: white;
+    background: #007B69;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    margin-left: 0.25rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.submitEdit:hover {
+    opacity: 1
+}
 
 .newCommentContainer {
     width: 100%;
