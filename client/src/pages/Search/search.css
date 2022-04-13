@@ -2,11 +2,11 @@
     display: flex;
     width: 100%;
     color: white;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
     overflow-x: hidden;
+    padding-top: 5rem;
 }
 
 .searchBar {

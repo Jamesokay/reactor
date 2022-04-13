@@ -9,6 +9,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function PostLarge() {
     const [post, setPost] = useState({})
@@ -19,6 +22,7 @@ export default function PostLarge() {
     const [isLiked, setIsLiked] = useState(false)
     const [commenting, setCommenting] = useState(false)
     const [newComment, setNewComment] = useState('')
+    const [showOptions, setShowOptions] = useState(false)
     const [comments, setComments] = useState([])
 
     useEffect(() => {
@@ -63,6 +67,29 @@ export default function PostLarge() {
         setIsLiked(!isLiked)
         setPostObject({...postObject, isLiked: !postObject.isLiked})
     }
+
+    const deletePost = async (e) => {
+      e.preventDefault()
+      console.log('deleting post')
+      const myURLObj = new URL(post.img)
+      const parts = myURLObj.pathname.split('/')
+      const parts2 = parts[parts.length - 1].split('.')
+  
+      const finalObject = {
+        userId: post.userId,
+        postId: post._id.split('"')[0],
+        cloudinaryId: parts2[0]
+      }
+      
+      try {
+        const res = await axios.delete('/posts/delete', { data: finalObject })
+        console.log('post deleted')
+        console.log(res.data)
+      } catch(err) {
+        console.error(err)
+      } 
+  
+    }
     
     const clearPost = () => {
         setPost({})
@@ -93,12 +120,13 @@ export default function PostLarge() {
                     onClick={() => clearPost()}   
                     >{user.username}</Link>
                 </div>
-                <CloseIcon className='closeIcon' onClick={() => clearPost()}/>
+                <div className='postSideBarIcon'>
+                  <CloseIcon className='closeIcon' onClick={() => clearPost()}/>
+                </div>
               </div>
 
               <div className='postSideBarMiddle'>
-                <div className='postCaption'> 
-                  {/* <span>{post.desc}</span>      */}
+                <div className='postCaption'>
                   {caption &&
                     caption.map((word) => (
                       word.startsWith('#')?
@@ -109,11 +137,34 @@ export default function PostLarge() {
                 </div>
                 <div className='postIconContainer'>
                 {(isLiked)?
-                <FavoriteIcon className='postSideBarIcon' onClick={() => handleLike()} style={{color:'#e30b5d'}} />
+                  <FavoriteIcon onClick={() => handleLike()} style={{color:'#e30b5d'}} />
                 :
-                <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
+                <div className='postSideBarIcon'>
+                  <FavoriteBorderIcon onClick={() => handleLike()} />
+                </div>
                 }
-                <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' onClick={() => setCommenting(!commenting)}/>
+                <div className='postSideBarIcon'>
+                  <ChatBubbleOutlineOutlinedIcon onClick={() => setCommenting(!commenting)}/>
+                </div>
+                {(userObject.user._id === postObject.userId) && (
+                  <div className='postSideBarIcon'>
+                    <MoreVertIcon onClick={() => setShowOptions(!showOptions)}/>
+                  </div>
+                )}
+                {showOptions && (
+                  <div className='postOptionsContainer'>
+                    <ul className='postOptionsMenu'>
+                      <li className='postOption'>
+                        <EditOutlinedIcon className='postOptionIcon' />
+                        <span>Edit post</span>
+                      </li>
+                      <li className='postOption'>
+                        <DeleteForeverIcon className='postOptionIcon' />
+                        <span>Delete post</span>
+                      </li>
+                    </ul>
+                  </div>
+                )}      
                 </div>
               </div>
               <div className='commentsContainer'>
