@@ -1,0 +1,10 @@
+.postPageContainer {
+    display: flex;
+    width: 100%;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 5rem;
+    background: cornflowerblue;
+}

@@ -1,6 +1,21 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 
-export const PostContext = createContext({
-    postObject: {userId: '', postId: '', isLiked: false},
-    setPostObject: () => { }
-})
+const initialState = {
+    userId: '', 
+    postId: '', 
+    isLiked: false}
+
+export const PostContext = createContext(initialState) 
+
+export const PostContextProvider = ({ children }) => {
+    const [postObject, setPostObject] = useState(initialState)
+    const postValue = {postObject, setPostObject}
+
+    return (
+        <PostContext.Provider
+          value={postValue}
+        >
+            {children}
+        </PostContext.Provider>
+    )
+}
