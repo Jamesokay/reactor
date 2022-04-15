@@ -1,15 +1,12 @@
 import Feed from '../..//components/Feed/Feed'
 import './search.css'
-import { useContext, useState, useEffect} from 'react'
-import { PostContext } from '../../context/PostContext'
+import { useState, useEffect} from 'react'
 import axios from 'axios'
 import SearchIcon from '@mui/icons-material/Search'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import { Link } from "react-router-dom"
-import PostLarge from '../../components/PostLarge/PostLarge'
 
 export default function Search() {
-  const { postObject } = useContext(PostContext)
   const [query, setQuery] = useState('')
   const [users, setUsers] = useState([])
   const [posts, setPosts] = useState([])
@@ -49,8 +46,7 @@ export default function Search() {
 
     return (
         <>
-          <PostLarge />
-          <div className='searchContainer' style={postObject.post? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
+          <div className='searchContainer'>
            <div className='searchBar'>
               <SearchIcon />
               <input

@@ -1,9 +1,6 @@
 import { createContext, useState } from 'react'
 
-const initialState = {
-    post: null,
-    isLiked: false
-}
+const initialState = { post: null }
 
 export const PostContext = createContext(initialState) 
 

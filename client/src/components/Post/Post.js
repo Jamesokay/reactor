@@ -1,7 +1,7 @@
 import './post.css'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { PostContext } from '../../context/PostContext';
@@ -12,6 +12,7 @@ export default function Post({ post }) {
   const { userObject } = useContext(AuthContext)
   const { postObject, setPostObject } = useContext(PostContext)
   const [isLiked, setIsLiked] = useState(post.likes.includes(userObject.user._id))
+  const navigate = useNavigate()
 
   useEffect(() => {
     
@@ -24,7 +25,8 @@ export default function Post({ post }) {
   }, [post.userId])
 
   const enlargePost = () => {
-    setPostObject({post: post, isLiked: isLiked})
+    setPostObject({post: post})
+    navigate('/post')
   }
 
   const handleLike = async () => {

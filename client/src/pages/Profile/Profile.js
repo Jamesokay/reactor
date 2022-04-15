@@ -6,14 +6,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import { AuthContext } from '../../context/AuthContext'
-import { PostContext } from '../../context/PostContext'
-import PostLarge from '../../components/PostLarge/PostLarge'
 
 export default function Profile() {
   const [user, setUser] = useState({})
   const [posts, setPosts] = useState([])
   const { userObject, setUserObject } = useContext(AuthContext)
-  const { postObject, setPostObject } = useContext(PostContext)
   const [isFollowed, setIsFollowed] = useState(false)
   const username = useParams().username
   const [fileData, setFileData] = useState(null)
@@ -107,17 +104,10 @@ export default function Profile() {
     }
     changePhoto()
   }, [fileData, userObject.user._id, user._id, setUserObject])
-
-  function enlargePost(profilePostId) {
-    setPostObject({userId: user._id, postId: profilePostId, isLiked: false})
-    // let test = {userId: user._id, postId: profilePostId, isLiked: false}
-    // console.log(test)
-  }
   
     return (
         <>
-          <PostLarge />
-          <div className='profileContainer' style={postObject.post? {opacity: '0.5'} : {opacity: '1'}}>
+          <div className='profileContainer'>
             <div className='profileHeader'>
               {fileData?
                 <div className='profileHeaderPhotoContainer'>
@@ -197,7 +187,7 @@ export default function Profile() {
             </div>
             <div className='profileBody'>
               {posts.map((p) => (
-                <div key={p._id} className='imgContainer' onClick={() => enlargePost(p._id)}>
+                <div key={p._id} className='imgContainer'>
                   <div className='imgInfo'>
 
                   <div className='imgMetrics'>

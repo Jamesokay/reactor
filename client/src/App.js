@@ -6,6 +6,7 @@ import Register from './pages/Register/Register'
 import Upload from './pages/Upload/Upload'
 import Saved from './pages/Saved/Saved'
 import Search from './pages/Search/Search'
+import PostPage from './pages/PostPage/PostPage'
 import { Routes, Route } from 'react-router-dom'
 import { AuthContext } from './context/AuthContext'
 import { useContext } from 'react'
@@ -24,6 +25,7 @@ function App() {
         <Route path='/upload' element={<Upload />} />
         <Route path='/saved' element={<Saved />} />
         <Route path='/search' element={<Search />} />
+        <Route path='/post' element={<PostPage />} />
       </Routes>
     </>
   )

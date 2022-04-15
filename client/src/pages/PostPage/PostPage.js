@@ -1,9 +1,9 @@
-import './postLarge.css'
+import './postPage.css'
 import { useContext, useState, useEffect } from 'react'
 import { PostContext } from '../../context/PostContext'
 import { AuthContext } from '../../context/AuthContext'
 import { Link } from 'react-router-dom'
-import Comment from '../Comment/Comment'
+import Comment from '../../components/Comment/Comment'
 import axios from 'axios'
 import CloseIcon from '@mui/icons-material/Close';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -11,13 +11,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-//import useViewPort from '../../hooks/useViewPort'
 
-export default function PostLarge() {
+export default function PostPage() {
     const [user, setUser] = useState({})
     const { userObject } = useContext(AuthContext)
-    const { postObject, setPostObject } = useContext(PostContext)
+    const { postObject } = useContext(PostContext)
     const [caption, setCaption] = useState([])
     const [isLiked, setIsLiked] = useState(false)
     const [commenting, setCommenting] = useState(false)
@@ -27,7 +25,6 @@ export default function PostLarge() {
     const [isEditing, setIsEditing] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
     const [updatedCaption, setUpdatedCaption] = useState('')
-//    const { width } = useViewPort()
 
     useEffect(() => {
       if (!postObject.post) return
@@ -65,7 +62,6 @@ export default function PostLarge() {
           console.error(err)
         }
         setIsLiked(!isLiked)
-        setPostObject({...postObject, isLiked: !postObject.isLiked})
     }
 
     const handleEdit = async (e) => {
@@ -103,14 +99,6 @@ export default function PostLarge() {
       } 
   
     }
-    
-    const clearPost = () => {
-        setCaption([])
-        setIsEditing(false)
-        setUpdatedCaption('')
-        setShowOptions(false)
-        setPostObject({post: null, isLiked: isLiked})
-    }
 
     const testCommentRoute = async ( comment ) => {
       setComments(comments => [{ username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment}, ...comments])
@@ -121,8 +109,8 @@ export default function PostLarge() {
         console.error(err)
       }
     }
-
     return postObject.post? (
+      <div className='postPageContainer'>
         <div className='postLargeContainer' style={postObject.post.img? {display: 'flex'} : {}}>
           {isDeleting && (
             <div className='confirmDelete'>
@@ -140,12 +128,8 @@ export default function PostLarge() {
                   <img className='postSideBarProfileImage' src={user.profilePicture} alt='' />
                   <Link 
                     to={`/${user.username}`}  
-                    className='postSideBarProfileName'
-                    onClick={() => clearPost()}   
+                    className='postSideBarProfileName'  
                     >{user.username}</Link>
-                </div>
-                <div className='postSideBarIcon'>
-                  <CloseIcon className='closeIcon' onClick={() => clearPost()}/>
                 </div>
               </div>
 
@@ -199,7 +183,7 @@ export default function PostLarge() {
                         <span>Edit post</span>
                       </li>
                       <li className='postOption' onClick={() => setIsDeleting(true)}>
-                        <DeleteForeverIcon className='postOptionIcon' />
+                        <CloseIcon className='postOptionIcon' />
                         <span>Delete post</span>
                       </li>
                     </ul>
@@ -235,6 +219,7 @@ export default function PostLarge() {
               </div>
             </div>
         </div>
+    </div>
     )
     :
     (
