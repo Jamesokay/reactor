@@ -24,8 +24,7 @@ export default function Post({ post }) {
   }, [post.userId])
 
   const enlargePost = () => {
-    console.log({userId: post.userId, postId: post._id, isLiked: isLiked})
-    setPostObject({userId: post.userId, postId: post._id, isLiked: isLiked})
+    setPostObject({post: post, isLiked: isLiked})
   }
 
   const handleLike = async () => {

@@ -1,9 +1,9 @@
 import { createContext, useState } from 'react'
 
 const initialState = {
-    userId: '', 
-    postId: '', 
-    isLiked: false}
+    post: null,
+    isLiked: false
+}
 
 export const PostContext = createContext(initialState) 
 

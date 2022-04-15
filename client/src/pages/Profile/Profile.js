@@ -1,4 +1,3 @@
-import NavBar from '../../components/NavBar/NavBar'
 import axios from 'axios'
 import { useEffect, useState, useContext } from 'react'
 import './profile.css'
@@ -8,6 +7,7 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import { AuthContext } from '../../context/AuthContext'
 import { PostContext } from '../../context/PostContext'
+import PostLarge from '../../components/PostLarge/PostLarge'
 
 export default function Profile() {
   const [user, setUser] = useState({})
@@ -116,8 +116,8 @@ export default function Profile() {
   
     return (
         <>
-          <NavBar />
-          <div className='profileContainer' style={postObject.postId? {opacity: '0.5'} : {opacity: '1'}}>
+          <PostLarge />
+          <div className='profileContainer' style={postObject.post? {opacity: '0.5'} : {opacity: '1'}}>
             <div className='profileHeader'>
               {fileData?
                 <div className='profileHeaderPhotoContainer'>

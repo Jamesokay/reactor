@@ -1,4 +1,4 @@
-import Feed from '../..//components/Feed/Feed'
+import Feed from '../../components/Feed/Feed'
 import './Home.css'
 import { useContext, useState, useEffect } from 'react'
 import { PostContext } from '../../context/PostContext'
@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box'
+import PostLarge from '../../components/PostLarge/PostLarge'
 
 
 export default function Home() {
@@ -31,23 +32,9 @@ export default function Home() {
     getPosts()
   }, [userObject.user]) 
 
-    // get userObject.user.following by ID... possibly update API endpoint to go off of ID rather than name
-
-    // useEffect(() => {
-    //   if (!userObject.user.following) return
-    //   const getFollowing = async (userId) => { 
-    //     const res = await axios.get(`users?userId=${userId}`)
-    //     setFollowing(following => [...following, res.data])
-    //   }
-    //   userObject.user.following.forEach((f) => getFollowing(f))
-
-    //   return () => {
-    //     setFollowing([])
-    //   }
-    // }, [userObject])
-
     return (
         <>
+        <PostLarge />
         {loading?
           <div className='loadContainer'>
           <Box sx={{ display: 'flex' }}>
@@ -55,19 +42,8 @@ export default function Home() {
           </Box>
           </div>
           :
-          <div className='homeContainer' style={postObject.postId? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
-            {/* {following && (
-              <div className='followingContainer'>
-                {following.map((f) => (
-                  <div key={f._id} className='followingUser'>
-                    <img className='followingImg' src={f.profilePicture} alt='' />
-                    <span>{f.username}</span>
-                  </div>
-                ))
-                }
-              </div>
-            )} */}
-              <Feed content={posts} />
+          <div className='homeContainer' style={postObject.post? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
+            <Feed content={posts} />
           </div>
         }
         </>

@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box'
+import PostLarge from '../../components/PostLarge/PostLarge'
 
 export default function Home() {
   const { postObject } = useContext(PostContext)
@@ -31,6 +32,7 @@ export default function Home() {
   
     return (
         <>
+        <PostLarge />
         {loading?
           <div className='loadContainer'>
             <Box sx={{ display: 'flex' }}>
@@ -38,7 +40,7 @@ export default function Home() {
             </Box>
           </div>
           :
-          <div className='savedContainer' style={postObject.postId? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
+          <div className='savedContainer' style={postObject.post? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
               <Feed content={posts} />
           </div>
         }

@@ -12,9 +12,9 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+//import useViewPort from '../../hooks/useViewPort'
 
 export default function PostLarge() {
-    const [post, setPost] = useState({})
     const [user, setUser] = useState({})
     const { userObject } = useContext(AuthContext)
     const { postObject, setPostObject } = useContext(PostContext)
@@ -27,32 +27,20 @@ export default function PostLarge() {
     const [isEditing, setIsEditing] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
     const [updatedCaption, setUpdatedCaption] = useState('')
+//    const { width } = useViewPort()
 
     useEffect(() => {
-      if (!postObject.userId) return
+      if (!postObject.post) return
         const getUser = async () => { 
-        const res = await axios.get(`users?userId=${postObject.userId}`)
+        const res = await axios.get(`users?userId=${postObject.post.userId}`)
           setUser(res.data)
         }      
-        getUser()
-    }, [postObject.userId])
+        setCaption(postObject.post.desc.split(' '))
+        setIsLiked(postObject.post.likes.includes(userObject.user._id))
+        setComments(postObject.post.comments)
 
-    useEffect(() => {
-        if (!userObject.user) return
-        if (!postObject.postId) return
-        const getPost = async () => { 
-          const res = await axios.get(`posts/post/${postObject.postId}`)
-          console.log(res.data)
-          setPost(res.data)
-          if (res.data.desc) {
-            setCaption(res.data.desc.split(' '))
-          }
-          setComments(res.data.comments)
-          setIsLiked(res.data.likes.includes(userObject.user._id))
-        }
-        
-        getPost()
-    }, [postObject.postId, userObject.user])
+        getUser()
+    }, [postObject.post, userObject.user._id])
 
     useEffect(() => {
       setNewComment('')
@@ -66,8 +54,8 @@ export default function PostLarge() {
 
     const handleLike = async () => {
         try {
-          const res = await axios.put('/posts/' + postObject.postId + '/like', { userId: userObject.user._id })
-          const res2 = await axios.put('/users/' + userObject.user._id + '/save', { postId: post._id })
+          const res = await axios.put('/posts/' + postObject.post._id + '/like', { userId: userObject.user._id })
+          const res2 = await axios.put('/users/' + userObject.user._id + '/save', { postId: postObject.post._id })
           console.log(res)
           console.log(res2)
         } catch (err) {
@@ -80,7 +68,7 @@ export default function PostLarge() {
     const handleEdit = async (e) => {
       e.preventDefault()
       try {
-        await axios.put(`/posts/${post._id}`, {userId: userObject.user._id, desc: updatedCaption})
+        await axios.put(`/posts/${postObject.post._id }`, {userId: userObject.user._id, desc: updatedCaption})
         setCaption(updatedCaption.split(' '))
         setUpdatedCaption('')
         setIsEditing(false)
@@ -93,13 +81,13 @@ export default function PostLarge() {
       e.preventDefault()
       console.log('deleting post')
       setIsDeleting(false)
-      const myURLObj = new URL(post.img)
+      const myURLObj = new URL(postObject.post.img)
       const parts = myURLObj.pathname.split('/')
       const parts2 = parts[parts.length - 1].split('.')
   
       const finalObject = {
-        userId: post.userId,
-        postId: post._id.split('"')[0],
+        userId: postObject.post.userId,
+        postId: postObject.post._id.split('"')[0],
         cloudinaryId: parts2[0]
       }
       
@@ -114,26 +102,25 @@ export default function PostLarge() {
     }
     
     const clearPost = () => {
-        setPost({})
         setCaption([])
         setIsEditing(false)
         setUpdatedCaption('')
         setShowOptions(false)
-        setPostObject({userId: '', postId: '', isLiked: isLiked})
+        setPostObject({post: null, isLiked: isLiked})
     }
 
     const testCommentRoute = async ( comment ) => {
       setComments(comments => [{ username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment}, ...comments])
       try {
-        await axios.put('/posts/' + postObject.postId + '/comment', 
+        await axios.put('/posts/' + postObject.post._id + '/comment', 
         { username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment})
       } catch (err) {
         console.error(err)
       }
     }
 
-    return postObject.postId? (
-        <div className='postLargeContainer' style={post.img? {display: 'flex'} : {}}>
+    return postObject.post? (
+        <div className='postLargeContainer' style={postObject.post.img? {display: 'flex'} : {}}>
           {isDeleting && (
             <div className='confirmDelete'>
               <span className='confirmDeleteMessage'>Are you sure you wish to delete this post?</span>
@@ -143,7 +130,7 @@ export default function PostLarge() {
               </div>
             </div>
           )}         
-            <img className='postLargeImage' src={post.img} alt='' />
+            <img className='postLargeImage' src={postObject.post.img} alt='' />
             <div className='postLargeSideBar'>
               <div className='postSideBarTop'>
                 <div className='postSideBarTopLeft'>
@@ -196,7 +183,7 @@ export default function PostLarge() {
                 <div className='postSideBarIcon'>
                   <ChatBubbleOutlineOutlinedIcon onClick={() => setCommenting(!commenting)}/>
                 </div>
-                {(userObject.user._id === postObject.userId) && (
+                {(userObject.user._id === postObject.post.userId) && (
                   <div className='postSideBarIcon'>
                     <MoreVertIcon onClick={() => setShowOptions(!showOptions)}/>
                   </div>

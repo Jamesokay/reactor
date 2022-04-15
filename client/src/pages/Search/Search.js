@@ -6,6 +6,7 @@ import axios from 'axios'
 import SearchIcon from '@mui/icons-material/Search'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import { Link } from "react-router-dom"
+import PostLarge from '../../components/PostLarge/PostLarge'
 
 export default function Search() {
   const { postObject } = useContext(PostContext)
@@ -48,7 +49,8 @@ export default function Search() {
 
     return (
         <>
-          <div className='searchContainer' style={postObject.postId? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
+          <PostLarge />
+          <div className='searchContainer' style={postObject.post? {opacity: '0.5', overflowY: 'hidden'} : {opacity: '1'}}>
            <div className='searchBar'>
               <SearchIcon />
               <input
