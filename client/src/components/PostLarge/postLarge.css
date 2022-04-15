@@ -233,7 +233,6 @@
 .commentsContainer {
     display: flex;
     flex-direction: column;
-    padding: 0.75rem;
     align-items: center;
     cursor: default;
 }
@@ -242,12 +241,37 @@
     width: 100%;
 }
 
-/* @media (max-width: 880px)  {
+@media (max-width: 880px)  {
+    .postLargeContainer {
+        display: flex;
+        flex-direction: column;
+    }
     .postLargeImage {
-        width: 65vw;
-        height: 65vw;
+        width: 80vw;
+        height: 80vw;
     }
     .postLargeSideBar {
-        width: 32.5vw;
+        width: 80vw;
     }
-} */
+}
+
+@media (max-width: 500px)  {
+    .postLargeContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    .postLargeImage {
+        width: 95vw;
+        height: 95vw;
+    }
+    .postLargeSideBar {
+        width: 95vw;
+    }
+    .postSideBarTop {
+        padding: 0.25rem;
+    }
+    .postCaption {
+        margin-bottom: 0.25rem;
+    }
+
+}
