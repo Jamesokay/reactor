@@ -9,8 +9,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 export default function PostPage() {
     const [user, setUser] = useState({})
@@ -25,13 +26,29 @@ export default function PostPage() {
     const [isEditing, setIsEditing] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
     const [updatedCaption, setUpdatedCaption] = useState('')
+    const [postTime, setPostTime] = useState('')
+
+    function relativeDays(timestamp) {
+        const rtf = new Intl.RelativeTimeFormat('en', {
+          numeric: 'auto',
+        });
+        const oneDayInMs = 1000 * 60 * 60 * 24;
+        const daysDifference = Math.round(
+          (timestamp - new Date().getTime()) / oneDayInMs,
+        );
+      
+        return rtf.format(daysDifference, 'day');
+      }
 
     useEffect(() => {
       if (!postObject.post) return
         const getUser = async () => { 
         const res = await axios.get(`users?userId=${postObject.post.userId}`)
           setUser(res.data)
-        }      
+        }
+
+        let timeStamp = postObject.post.createdAt.slice(0, 10)
+        setPostTime(relativeDays(new Date(timeStamp).getTime()))
 
         if (postObject.post.desc) {
           setCaption(postObject.post.desc.split(' '))
@@ -132,20 +149,8 @@ export default function PostPage() {
                     >{user.username}</Link>
                 </div>
                 <div className='postIconContainer'>
-                {(isLiked)?
-                  <FavoriteIcon onClick={() => handleLike()} style={{color:'#e30b5d'}} />
-                :
-                <div className='postSideBarIcon'>
-                  <FavoriteBorderIcon onClick={() => handleLike()} />
-                </div>
-                }
-                <div className='postSideBarIcon'>
-                  <ChatBubbleOutlineOutlinedIcon onClick={() => setCommenting(!commenting)}/>
-                </div>
                 {(userObject.user._id === postObject.post.userId) && (
-                  <div className='postSideBarIcon'>
-                    <MoreVertIcon onClick={() => setShowOptions(!showOptions)}/>
-                  </div>
+                    <MoreHorizIcon className='postSideBarIcon' onClick={() => setShowOptions(!showOptions)}/>
                 )}
                 {showOptions && (
                   <div className='postOptionsContainer'>
@@ -163,16 +168,26 @@ export default function PostPage() {
                 )}      
                 </div>
               </div>
-
+              <div className='postSideBarActions'>
+                <div className='postSideBarActionsLeft'>
+                  {(isLiked)?
+                    <FavoriteIcon onClick={() => handleLike()} style={{color:'#e30b5d'}} />
+                  :
+                      <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
+                  }
+                    <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' onClick={() => setCommenting(!commenting)}/>
+                </div>
+                <BookmarkBorderIcon className='postSideBarIcon' />
+              </div>
               <div className='postSideBarMiddle'>
               {!isEditing?
                 <div className='postCaption'>
                   {caption &&
-                    caption.map((word) => (
+                    caption.map((word, index) => (
                       word.startsWith('#')?
-                        <span className='tagLink'>{word}</span>
+                        <span key={index} className='tagLink'>{word}</span>
                       :
-                        <span className='captionText'>{word}</span>
+                        <span key={index} className='captionText'>{word}</span>
                     ))}
                 </div>
                 :
@@ -191,6 +206,7 @@ export default function PostPage() {
                 </div>
               }
               </div>
+              <div className='postTime'>{postTime}</div>
               <div className='commentsContainer'>
               <div className='newCommentContainer' style={commenting? {display: 'flex'} : {display: 'none'}}>
                 <textarea 
