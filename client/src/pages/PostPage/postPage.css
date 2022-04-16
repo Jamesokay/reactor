@@ -43,6 +43,7 @@
     width: 600px;
     height: 600px;
     object-fit: cover;
+    margin-right: 1rem;
 }
 
 .postLargeSideBar {
@@ -50,18 +51,18 @@
     display: flex;
     flex-direction: column;
     color: white;
-    background: #262626;
+    align-items: center;
 }
 
 .postSideBarTop {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    background: #441111;
+    padding-bottom: 1rem;
+    color: #262626;
+    width: 95%;
+    border-bottom: 1px solid #e6e6e6;;
 }
 
 .postSideBarTopLeft {
@@ -80,7 +81,7 @@
 .postSideBarProfileName {
     font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: #262626;
     cursor: pointer;
 }
 
@@ -88,18 +89,15 @@
     text-decoration: underline;
 }
 
-.closeIcon {
-    color: white;
-}
-
 .postSideBarMiddle {
     display: flex;
     flex-direction: column;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    align-items:flex-start;
+    width: 95%;
 }
 .postCaption {
-    padding: 0.75rem;
+    margin-top: 1rem;
+    color: #262626;
 }
 
 .tagLink {
@@ -118,19 +116,19 @@
 
 .postIconContainer {
     display: flex;
+    justify-content: flex-end;
     position: relative;
 }
 
 .postSideBarIcon {
-    opacity: 0.5;
-    transition: opacity 0.2s ease-in-out;
+    /* transition: opacity 0.2s ease-in-out; */
     margin-left: 0.75rem;
     cursor: pointer;
 }
 
-.postSideBarIcon:hover {
+/* .postSideBarIcon:hover {
     opacity: 1;
-}
+} */
 
 .postOptionsContainer {
     position: absolute;
@@ -257,11 +255,11 @@
 
 @media (max-width: 1000px)  {
     .postLargeImage {
-        width: 60vw;
-        height: 60vw;
+        width: 550px;
+        height: 550px;
     }
     .postLargeSideBar {
-        width: 35vw;
+        width: 300px;
     }
 }
 
@@ -272,6 +270,7 @@
     .postLargeImage {
         width: 515px;
         height: 515px;
+        margin-right: 0;
     }
     .postLargeSideBar {
         width: 515px;
@@ -279,9 +278,6 @@
 }
 
 @media (max-width: 500px)  {
-    .postPageContainer {
-        background: #262626;
-    }
     .postLargeContainer {
         display: flex;
         flex-direction: column;
