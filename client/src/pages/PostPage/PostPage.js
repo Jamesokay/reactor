@@ -131,34 +131,6 @@ export default function PostPage() {
                     className='postSideBarProfileName'  
                     >{user.username}</Link>
                 </div>
-              </div>
-
-              <div className='postSideBarMiddle'>
-              {!isEditing?
-                <div className='postCaption'>
-                  {caption &&
-                    caption.map((word) => (
-                      word.startsWith('#')?
-                        <span className='tagLink'>{word}</span>
-                      :
-                        <span className='captionText'>{word}</span>
-                    ))}
-                </div>
-                :
-                <div className='editPostContainer'>
-                  <textarea
-                       className='editPost'
-                       value={updatedCaption}
-                       type='text'
-                       onChange={e => {
-                       setUpdatedCaption(e.target.value)
-                  }} ></textarea>  
-                  <div className='editPostOptions'>  
-                    <div className='submitEdit' onClick={handleEdit}>Update</div>
-                    <div className='submitEdit' onClick={() => setIsEditing(false)}>Cancel</div>
-                  </div>
-                </div>
-              }
                 <div className='postIconContainer'>
                 {(isLiked)?
                   <FavoriteIcon onClick={() => handleLike()} style={{color:'#e30b5d'}} />
@@ -190,6 +162,34 @@ export default function PostPage() {
                   </div>
                 )}      
                 </div>
+              </div>
+
+              <div className='postSideBarMiddle'>
+              {!isEditing?
+                <div className='postCaption'>
+                  {caption &&
+                    caption.map((word) => (
+                      word.startsWith('#')?
+                        <span className='tagLink'>{word}</span>
+                      :
+                        <span className='captionText'>{word}</span>
+                    ))}
+                </div>
+                :
+                <div className='editPostContainer'>
+                  <textarea
+                       className='editPost'
+                       value={updatedCaption}
+                       type='text'
+                       onChange={e => {
+                       setUpdatedCaption(e.target.value)
+                  }} ></textarea>  
+                  <div className='editPostOptions'>  
+                    <div className='submitEdit' onClick={handleEdit}>Update</div>
+                    <div className='submitEdit' onClick={() => setIsEditing(false)}>Cancel</div>
+                  </div>
+                </div>
+              }
               </div>
               <div className='commentsContainer'>
               <div className='newCommentContainer' style={commenting? {display: 'flex'} : {display: 'none'}}>
