@@ -108,7 +108,7 @@
 
 .postSideBarActionsLeft {
     display: flex;
-    width: 55px;
+    width: 100px;
     justify-content: space-between;
 }
 

@@ -12,6 +12,7 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 
 export default function PostPage() {
     const [user, setUser] = useState({})
@@ -171,11 +172,12 @@ export default function PostPage() {
               <div className='postSideBarActions'>
                 <div className='postSideBarActionsLeft'>
                   {(isLiked)?
-                    <FavoriteIcon onClick={() => handleLike()} style={{color:'#e30b5d'}} />
+                    <FavoriteIcon className='postSideBarIcon' onClick={() => handleLike()} style={{color:'#e30b5d'}} />
                   :
                       <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
                   }
                     <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' onClick={() => setCommenting(!commenting)}/>
+                    <ShareOutlinedIcon className='postSideBarIcon' />
                 </div>
                 <BookmarkBorderIcon className='postSideBarIcon' />
               </div>
