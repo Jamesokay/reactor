@@ -38,6 +38,9 @@ export default function Home() {
           </div>
           :
           <div className='homeContainer'>
+          {posts.length === 0 && (
+            <span className='emptyFeed'>Feels a little empty, doesn't it?</span>
+          )}
             <Feed content={posts} />
           </div>
         }

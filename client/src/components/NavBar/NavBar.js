@@ -9,6 +9,7 @@ import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 export default function NavBar() {
     const { userObject, setUserObject } = useContext(AuthContext)
@@ -53,8 +54,12 @@ export default function NavBar() {
           </div>
 
           <div className='navBarRight'>
-              <Link to={`/${userObject.user.username}`}>
+              <Link to={`/${userObject.user.username}`} className={!userObject.user.profilePicture? 'navBarIconItem' : ''}>
+              {userObject.user.profilePicture?
                 <img className='navBarImg' src={userObject.user.profilePicture} alt='' />
+                :
+                <AccountCircleOutlinedIcon className='navBarImg' />
+              }
               </Link>
               <div className='navBarIconItem'>
                 <KeyboardArrowDownIcon onClick={() => setMenuVisible(!menuVisible)}/>
