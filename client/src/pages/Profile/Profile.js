@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState, useContext } from 'react'
 import './profile.css'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
@@ -106,7 +106,6 @@ export default function Profile() {
   }, [fileData, userObject.user._id, user._id, setUserObject])
   
     return (
-        <>
           <div className='profileContainer'>
             <div className='profileHeader'>
               {fileData?
@@ -187,28 +186,25 @@ export default function Profile() {
             </div>
             <div className='profileBody'>
               {posts.map((p) => (
-                <div key={p._id} className='imgContainer'>
-                  <div className='imgInfo'>
-
-                  <div className='imgMetrics'>
-                    <span className='imgLikes'>
-                      <FavoriteIcon className='imgIcon'/>
-                      <span>{p.likes.length}</span>
-                    </span>
-                    <span className='imgComments'>
-                      <ChatBubbleIcon className='imgIcon'/>
-                      <span>{p.comments.length}</span>
-                    </span>
+                <Link key={p._id} to={`/post/${p._id}`}>
+                  <div className='imgContainer'>
+                    <div className='imgInfo'>
+                      <div className='imgMetrics'>
+                        <span className='imgLikes'>
+                          <FavoriteIcon className='imgIcon'/>
+                          <span>{p.likes.length}</span>
+                        </span>
+                        <span className='imgComments'>
+                          <ChatBubbleIcon className='imgIcon'/>
+                          <span>{p.comments.length}</span>
+                        </span>
+                      </div>
+                    </div>
+                    <img className='profilePostImg' src={p.img} alt=''/>
                   </div>
-
-                  </div>
-                  <img className='profilePostImg' src={p.img} alt=''/>
-                </div>
-              ))
-
-              }
+                </Link>
+              ))}
             </div>
           </div>
-        </>
     )
 }

@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     z-index: 999;
-    background: #007B69;
+    background: #B4F8C8;
   }
 
   .navBarLeft {
@@ -67,7 +67,7 @@
   }
 
   .logo {
-    color: white;
+    color: #424651;
     font-family: 'Permanent Marker', cursive;
     font-size: 24px;
     margin-left: 1.25rem;
@@ -83,7 +83,7 @@
   }
   
   .navBarIconItem {
-    color: white;
+    color: #424651;
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.2s ease-in-out;
