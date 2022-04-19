@@ -1,8 +1,7 @@
 import './postPage.css'
 import { useContext, useState, useEffect } from 'react'
-import { PostContext } from '../../context/PostContext'
 import { AuthContext } from '../../context/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Comment from '../../components/Comment/Comment'
 import axios from 'axios'
 import CloseIcon from '@mui/icons-material/Close';
@@ -17,7 +16,7 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 export default function PostPage() {
     const [user, setUser] = useState({})
     const { userObject } = useContext(AuthContext)
-    const { postObject } = useContext(PostContext)
+    const [post, setPost] = useState({})
     const [caption, setCaption] = useState([])
     const [isLiked, setIsLiked] = useState(false)
     const [commenting, setCommenting] = useState(false)
@@ -28,6 +27,7 @@ export default function PostPage() {
     const [isDeleting, setIsDeleting] = useState(false)
     const [updatedCaption, setUpdatedCaption] = useState('')
     const [postTime, setPostTime] = useState('')
+    const postId = useParams()
 
     function relativeDays(timestamp) {
         const rtf = new Intl.RelativeTimeFormat('en', {
@@ -42,23 +42,31 @@ export default function PostPage() {
       }
 
     useEffect(() => {
-      if (!postObject.post) return
+      if (!postId.id) return
+        const getPost = async () => {
+          const res = await axios.get(`/posts/post/${postId.id}`)
+          console.log(res.data)
+          setPost(res.data)
+          if (res.data.desc) {
+            setCaption(res.data.desc.split(' '))
+          }
+
+          let timeStamp = res.data.createdAt.slice(0, 10)
+          setPostTime(relativeDays(new Date(timeStamp).getTime()))
+          setIsLiked(res.data.likes.includes(userObject.user._id))
+          setComments(res.data.comments)
+        }
+        getPost()
+    }, [postId.id, userObject.user._id])
+
+    useEffect(() => {
+      if (!post.userId) return
         const getUser = async () => { 
-        const res = await axios.get(`users?userId=${postObject.post.userId}`)
+        const res = await axios.get(`/users?userId=${post.userId}`)
           setUser(res.data)
         }
-
-        let timeStamp = postObject.post.createdAt.slice(0, 10)
-        setPostTime(relativeDays(new Date(timeStamp).getTime()))
-
-        if (postObject.post.desc) {
-          setCaption(postObject.post.desc.split(' '))
-        }
-        setIsLiked(postObject.post.likes.includes(userObject.user._id))
-        setComments(postObject.post.comments)
-
         getUser()
-    }, [postObject.post, userObject.user._id])
+    }, [post.userId])
 
     useEffect(() => {
       setNewComment('')
@@ -72,8 +80,8 @@ export default function PostPage() {
 
     const handleLike = async () => {
         try {
-          const res = await axios.put('/posts/' + postObject.post._id + '/like', { userId: userObject.user._id })
-          const res2 = await axios.put('/users/' + userObject.user._id + '/save', { postId: postObject.post._id })
+          const res = await axios.put('/posts/' + post._id + '/like', { userId: userObject.user._id })
+          const res2 = await axios.put('/users/' + userObject.user._id + '/save', { postId: post._id })
           console.log(res)
           console.log(res2)
         } catch (err) {
@@ -85,7 +93,7 @@ export default function PostPage() {
     const handleEdit = async (e) => {
       e.preventDefault()
       try {
-        await axios.put(`/posts/${postObject.post._id }`, {userId: userObject.user._id, desc: updatedCaption})
+        await axios.put(`/posts/${post._id }`, {userId: userObject.user._id, desc: updatedCaption})
         setCaption(updatedCaption.split(' '))
         setUpdatedCaption('')
         setIsEditing(false)
@@ -98,13 +106,13 @@ export default function PostPage() {
       e.preventDefault()
       console.log('deleting post')
       setIsDeleting(false)
-      const myURLObj = new URL(postObject.post.img)
+      const myURLObj = new URL(post.img)
       const parts = myURLObj.pathname.split('/')
       const parts2 = parts[parts.length - 1].split('.')
   
       const finalObject = {
-        userId: postObject.post.userId,
-        postId: postObject.post._id.split('"')[0],
+        userId: post.userId,
+        postId: post._id.split('"')[0],
         cloudinaryId: parts2[0]
       }
       
@@ -121,15 +129,15 @@ export default function PostPage() {
     const testCommentRoute = async ( comment ) => {
       setComments(comments => [{ username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment}, ...comments])
       try {
-        await axios.put('/posts/' + postObject.post._id + '/comment', 
+        await axios.put('/posts/' + post._id + '/comment', 
         { username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment})
       } catch (err) {
         console.error(err)
       }
     }
-    return postObject.post? (
+    return post? (
       <div className='postPageContainer'>
-        <div className='postLargeContainer' style={postObject.post.img? {display: 'flex'} : {}}>
+        <div className='postLargeContainer' style={post.img? {display: 'flex'} : {}}>
           {isDeleting && (
             <div className='confirmDelete'>
               <span className='confirmDeleteMessage'>Are you sure you wish to delete this post?</span>
@@ -139,7 +147,7 @@ export default function PostPage() {
               </div>
             </div>
           )}         
-            <img className='postLargeImage' src={postObject.post.img} alt='' />
+            <img className='postLargeImage' src={post.img} alt='' />
             <div className='postLargeSideBar'>
               <div className='postSideBarTop'>
                 <div className='postSideBarTopLeft'>
@@ -150,7 +158,7 @@ export default function PostPage() {
                     >{user.username}</Link>
                 </div>
                 <div className='postIconContainer'>
-                {(userObject.user._id === postObject.post.userId) && (
+                {(userObject.user._id === post.userId) && (
                     <MoreHorizIcon className='postSideBarIcon' onClick={() => setShowOptions(!showOptions)}/>
                 )}
                 {showOptions && (
@@ -219,11 +227,14 @@ export default function PostPage() {
                     setNewComment(e.target.value)
                   }}              
                 ></textarea>
-                <div className='newCommentButton' onClick={() => {
-                  testCommentRoute(newComment)
-                  setCommenting(false)   
-                }}>Post</div>
+                <div className='editPostOptions'> 
+                  <div className='submitEdit' onClick={() => {
+                    testCommentRoute(newComment)
+                    setCommenting(false)   
+                  }}>Post</div>
+                  <div className='submitEdit' onClick={() => setCommenting(false)}>Cancel</div>
                 </div>
+              </div>
               {comments?
                 <div className='comments'>
                   {comments.map((c) => (

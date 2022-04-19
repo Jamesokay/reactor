@@ -25,7 +25,7 @@ function App() {
         <Route path='/upload' element={<Upload />} />
         <Route path='/saved' element={<Saved />} />
         <Route path='/search' element={<Search />} />
-        <Route path='/post' element={<PostPage />} />
+        <Route path='/post/:id' element={<PostPage />} />
       </Routes>
     </>
   )

@@ -13,6 +13,11 @@
     height: 100%;
 }
 
+.postLink {
+  width: 100%;
+  height: 100%;
+}
+
 .profileImg {
   height: 30px;
   width: 30px;

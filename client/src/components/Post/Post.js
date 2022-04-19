@@ -1,18 +1,16 @@
 import './post.css'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
-import { PostContext } from '../../context/PostContext';
 import { AuthContext } from '../../context/AuthContext';
 
 export default function Post({ post }) {
   const [user, setUser] = useState({})
   const { userObject } = useContext(AuthContext)
-  const { postObject, setPostObject } = useContext(PostContext)
   const [isLiked, setIsLiked] = useState(post.likes.includes(userObject.user._id))
-  const navigate = useNavigate()
+  const [imgLoaded, setImgLoaded] = useState(false)
 
   useEffect(() => {
     
@@ -23,11 +21,6 @@ export default function Post({ post }) {
 
     getUser()
   }, [post.userId])
-
-  const enlargePost = () => {
-    setPostObject({post: post})
-    navigate('/post')
-  }
 
   const handleLike = async () => {
     try {
@@ -41,23 +34,14 @@ export default function Post({ post }) {
     setIsLiked(!isLiked)
   }
 
-  useEffect(() => {
-    if (postObject.postId === post._id) {
-      console.log('postObj = ' + postObject.postId + ' post id = ' + post._id)
-      console.log('post object like state = ' + postObject.isLiked)
-      setIsLiked(postObject.isLiked)
-    }
-  }, [postObject.postId, postObject.isLiked, post._id])
-
-    return post.img? (
-        <div className='post'>
-            <img className='postImg' src={post.img} alt='' onClick={() => enlargePost()}/>
+    return (
+        <div className='post' style={imgLoaded? {visibility: 'visible'} : {visibility: 'hidden'}}>
+          <Link to={`/post/${post._id}`} className='postLink'>
+            <img className='postImg' src={post.img} alt='' onLoad={() => setImgLoaded(true)} />
+          </Link>
             <div className='postBottom'>
               <div className='postBottomLeft'>
-                <img className='profileImg' 
-                     src={user.profilePicture}
-                     alt=''
-                />
+                <img className='profileImg' src={user.profilePicture} alt=''/>
                 <Link to={`/${user.username}`} className='profileName'>{user.username}</Link>
               </div>
               <div className='postBottomRight'>
@@ -72,9 +56,5 @@ export default function Post({ post }) {
               </div>
             </div>    
         </div>
-    )
-    :
-    (
-      <></>
     )
 }
