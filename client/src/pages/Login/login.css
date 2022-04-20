@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
 .loginContainer {
     width: 100%;
@@ -7,7 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #007B69;
+    background: #effdf3;
     overflow: hidden;
 }
 
@@ -24,10 +24,10 @@
 }
 
 .loginLogo {
-    color: white;
-    font-family: 'Permanent Marker', cursive;
+    color: #424651;
     font-size: 6rem;
     font-weight: bold;
+    font-family: 'Gruppo', cursive;
     margin-bottom: 2rem;
 }
 
@@ -65,8 +65,8 @@
     width: 250px;
     height: 40px;
     border-radius: 0.5rem;
-    background: #007B69;
-    color: white;
+    background: #ccf7d9;
+    color: #424651;
     border: none;
     font-size: 1.1rem;
     margin-bottom: 0.75rem;
@@ -75,7 +75,7 @@
 }
 
 .loginButton:hover {
-    background: #00AE95;
+    background: #bbf8cd;
 }
 
 .loginError {
@@ -95,7 +95,7 @@
     width: 250px;
     height: 40px;
     border-radius: 0.5rem;
-    background: rgb(41, 41, 41);
+    background: #424651;
     color: white;
     border: none;
     font-size: 1.1rem;

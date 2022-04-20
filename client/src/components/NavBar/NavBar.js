@@ -62,7 +62,7 @@ export default function NavBar() {
                     <SettingsIcon className='navMenuIcon' />
                     <span>Account Settings</span>
                   </li>
-                  <li className='navMenuOption' onClick={() => logOut()}>
+                  <li className='navMenuOption bottomOption' onClick={() => logOut()}>
                     <LogoutIcon className='navMenuIcon' />
                     <span>Log Out</span>
                   </li>

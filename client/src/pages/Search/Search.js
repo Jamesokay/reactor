@@ -62,9 +62,7 @@ export default function Search() {
             </div>
 
             {users.length !== 0 && (
-            <div className='userResultsContainer '>
-              <span className='resultTitle'>People</span>
-              <div className='userResults'>
+            <div className='userResultsContainer'>
               {users.map((u) => (
                 <Link key= {u._id} to={`/${u.username}`} className='userResult'>
                   {u.profilePicture?
@@ -77,7 +75,6 @@ export default function Search() {
                   <span className='userResultName'>{u.username}</span>
                 </Link>
               ))}
-              </div>
             </div>
             )}
               <Feed content={posts}/>   
