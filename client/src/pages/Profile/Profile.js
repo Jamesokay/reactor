@@ -140,23 +140,23 @@ export default function Profile() {
                   <div className='profileInfoTop'>
                     <span className='profileHeaderName'>{user.username}</span>
                     {user.username !== userObject.user.username && (
-                      <div className='followButton' onClick={() => follow()}>{isFollowed? 'Unfollow ': 'Follow'}</div>
+                      <div className='followButton' onClick={() => follow()}>{isFollowed? 'Followed': 'Follow'}</div>
                     )}
                   </div>
-
+                 {user.username === userObject.user.username?
                   <div className={isUpdating? 'updateProfileAbout' : 'profileAbout'}>
-                  {(user.username === userObject.user.username && isUpdating)?
-                  <div>
-                    <textarea
+                  {isUpdating?
+                    <div>
+                      <textarea
                        className='updateAbout'
                        value={newAbout}
                        type='text'
                        onChange={e => {
                        setNewAbout(e.target.value)
                        }} ></textarea>              
-                   </div>
-                     :
-                     <span className='aboutText'>{user.about}</span>
+                    </div>
+                  :
+                    <span>{user.about}</span>
                   }
 
                   {(user.username === userObject.user.username) && (
@@ -175,6 +175,9 @@ export default function Profile() {
                   </div>
                   )}
                   </div>
+                :
+                  <span className={user.about? 'aboutText' : ''}>{user.about}</span>
+                }
 
 
                   <div className='profileCounts'>

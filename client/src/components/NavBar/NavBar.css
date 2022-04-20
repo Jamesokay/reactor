@@ -9,11 +9,12 @@
     top: 0;
     left: 0;
     z-index: 999;
-    background: #B4F8C8;
+    background: #ccf7d9;
   }
 
   .navBarLeft {
     flex: 3;
+    padding-bottom: 0.35rem;
   }
 
   .navBarCenter {
@@ -102,15 +103,21 @@
     opacity: 1;
   }
 
+  @media (max-width: 550px)  {
+    .navBarIcons {
+      width: 200px;
+    }
+    .navBarImg {
+      margin-right: 0.25rem;
+    }
+  }
+
   @media (max-width: 450px)  {
     .navBarContainer {
       justify-content: center;
     }
     .navBarLeft {
       display: none;
-    }
-    .navBarIcons {
-      width: 200px;
     }
     .navBarCenter {
       flex: none;
@@ -121,9 +128,6 @@
       right: 0.5%;
       justify-content: center;
       padding-right: 0;
-    }
-    .navBarImg {
-      margin-right: 0.25rem;
     }
   }
 

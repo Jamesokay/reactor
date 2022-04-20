@@ -1,6 +1,7 @@
 .profileContainer {
     margin-top: 50px;
     display: flex;
+    overflow-x: hidden;
 }
 
 .profileHeader {
@@ -149,6 +150,10 @@
     margin-bottom: 1rem;
 }
 
+.aboutText {
+    margin-bottom: 1rem;
+}
+
 .updateProfileAbout {
     display: flex;
     flex-direction: column;
@@ -163,13 +168,21 @@
 .followButton {
     width: 90px;
     height: 30px;
-    background: #007B69;
+    background: #ccf7d9;
     border-radius: 0.25rem;
-    color: white;
+    color: #424651;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    transition: background 0.2s ease-in-out;
+}
+
+.followButton:hover {
+    background: #bbf8cd;
 }
 
 .profileCounts {
@@ -178,10 +191,6 @@
     width: 100%;
     justify-content: space-around;
 }
-
-/* .profileMetric {
-    margin-right: 1rem;
-} */
 
 .profileBody {
     overflow: hidden;
@@ -282,7 +291,7 @@
         margin-right: 2rem;
     }
     .profileInfo {
-        width: 300px;
+        width: 400px;
     }
     .profileInfoTop {
         flex-direction: row;
@@ -305,6 +314,14 @@
       grid-template-columns: 1fr 1fr 1fr;
       min-width: 800px !important;
     }
+    .followButton {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .aboutText {
+        margin-bottom: 0;
+        padding: 1rem;
+    }
   }
   
   @media (max-width: 825px)  {
@@ -317,13 +334,21 @@
       }
   }
   
-  @media (max-width: 450px)  {
+  @media (max-width: 605px)  {
     .profileHeader {
         flex-direction: column;
+        margin-bottom: 1rem;
         min-width: 200px !important;
     }
     .profileBody {
+        min-width: 200px !important;
+    }
+  }
+
+  @media (max-width: 515px)  {
+    .profileBody {
       grid-template-columns: 1fr;
-      min-width: 200px !important;
+      width: 100%;
+      padding: 0;
     }
   }

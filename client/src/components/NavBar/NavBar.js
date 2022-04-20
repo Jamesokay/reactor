@@ -13,17 +13,8 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 
 export default function NavBar() {
     const { userObject, setUserObject } = useContext(AuthContext)
-  //  const [photo, setPhoto] = useState('')
     const [menuVisible, setMenuVisible] = useState(false)
     const navigate = useNavigate()
-
-    // useEffect(() => {
-    //   if (!userObject.user) return
-    //   console.log(userObject.user.profilePicture)
-    //   setPhoto(userObject.user.profilePicture)
-    // }, [userObject, userObject.user.profilePicture])
-
-
 
     const logOut = () => {
       setMenuVisible(false)

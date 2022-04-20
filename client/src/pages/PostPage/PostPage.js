@@ -127,7 +127,7 @@ export default function PostPage() {
     }
 
     const testCommentRoute = async ( comment ) => {
-      setComments(comments => [{ username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment}, ...comments])
+      setComments(comments => [{ id: comments.length, username: userObject.user.username, commentText: comment}, ...comments])
       try {
         await axios.put('/posts/' + post._id + '/comment', 
         { username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment})

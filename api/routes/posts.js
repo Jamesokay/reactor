@@ -54,7 +54,6 @@ router.put("/:id/comment", async (req, res) => {
     const comment = {
       id: uuidv4(),
       username: req.body.username,
-      profileImg: req.body.profileImg,
       commentText: req.body.commentText
     }
     await post.updateOne({ $push: { comments: comment } });
