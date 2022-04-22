@@ -19,38 +19,12 @@
     margin-bottom: 2rem;
 }
 
-/* .inputField {
-    margin: auto;
-    width: 250px;
-    height: 40px;
-    background-color: white;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-} */
 .input {
-    width: 75%;
+    width: 90%;
     margin-left: 5%;
     border: none;
 }
 
 .input:focus {
     outline: none;
-}
-
-.signupButton {
-    width: 200px;
-    height: 40px;
-    border-radius: 0.5rem;
-    background: rgb(85, 38, 124);
-    color: white;
-    border: none;
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    transition: all 0.2s ease-in-out;
-}
-
-.signupButton:hover {
-    background: rgb(15, 51, 80);
 }

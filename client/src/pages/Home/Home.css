@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 .emptyFeed {
-  color: #262626;
-  font-family: 'Permanent Marker', cursive;
+  color: #424651;
   font-size: 2.5rem;
   font-weight: bold;
   position: absolute;
@@ -33,34 +32,6 @@
     overflow-x: hidden;
     height: 100vh;
 }
-
-/* .followingContainer {
-    width: 70%;
-    margin-top: 80px;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.followingUser {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: flex;
-    color: rgb(41, 41, 41);
-    flex-direction: column;   
-    align-items: center;
-    font-size: 0.8rem;
-}
-
-.followingImg {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid rgb(41, 41, 41);
-    object-fit: cover;
-    margin-bottom: 0.5rem;
-} */
 
 .loadContainer {
     width: 100%;

@@ -40,7 +40,7 @@
     cursor: pointer;
     font-size: 1.25rem;
     font-weight: bold;
-    color: rgb(41, 41, 41);
+    color: #424651;
 }
 
 .uploadOptions:hover {
@@ -55,7 +55,7 @@
 
 .captionContainer {
     display: flex;
-    color: rgb(41, 41, 41);
+    color: #424651;
     border: 1px solid #e2e0e0;
     padding: 0.5rem;
     background: #FAFAFA;
@@ -70,11 +70,11 @@
     resize: none;
     outline: none;
     border: none;
-    color: rgb(41, 41, 41) !important;
+    color: #424651 !important;
 }
 
 .caption::placeholder {
-    color: rgb(41, 41, 41);
+    color: #424651;
 }
 
 .caption:focus {
@@ -83,7 +83,7 @@
 
 .emojiPickerContainer {
     position: absolute;
-    bottom: 25%;
+    bottom: 23%;
 }
 
 .uploadForm {
@@ -93,20 +93,20 @@
 }
 
 .sendIt {
-    background: #007B69;
+    background: #ccf7d9;
     width: 80px;
     height: 40px;
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    transition: all 0.2s ease-in-out;
+    color: #424651;
+    transition: background 0.2s ease-in-out;
     cursor: pointer;
 }
 
 .sendIt:hover {
-    background: #00AE95;
+    background: #bbf8cd;
 }
   
 @media (max-width: 495px)  {

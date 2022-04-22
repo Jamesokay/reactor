@@ -10,28 +10,28 @@
     left: 0;
     z-index: 999;
     background: #ccf7d9;
-  }
+}
 
-  .navBarLeft {
-    flex: 3;
-  }
+.navBarLeft {
+   flex: 3;
+}
 
-  .navBarCenter {
+.navBarCenter {
     flex: 4;
     display: flex;
     justify-content: center;
-  }
+}
 
-  .navBarRight {
+.navBarRight {
     flex: 3;
     display: flex;
     align-items: center;
     justify-content: right;
     color: white;
     padding-right: 1.25rem;
-  }
+}
 
-  .navMenuContainer {
+.navMenuContainer {
     width: 200px;
     position: absolute;
     top: 50px;
@@ -41,35 +41,35 @@
     background: rgb(241, 241, 241);
     border-radius: 0rem 0rem 0.5rem 0.5rem;
     border: 1px solid rgb(218, 218, 218);
-  }
+}
 
-  .navMenu {
+.navMenu {
     list-style: none;
     width: 100%;
     padding: 0;
     color: #424651;
     cursor: pointer;
-  }
+}
 
-  .navMenuOption {
+.navMenuOption {
     padding: 0.5rem;
     display: flex;
     align-items: center;
-  }
+}
 
-  .bottomOption {
+.bottomOption {
     border-radius: 0rem 0rem 0.5rem 0.5rem;
-  }
+}
 
-  .navMenuOption:hover {
+.navMenuOption:hover {
     background: rgb(228, 228, 228);
-  }
+}
 
-  .navMenuIcon {
+.navMenuIcon {
     margin-right: 0.5rem;
-  }
+}
 
-  .logo {
+.logo {
     color: #424651;
     font-family: 'Gruppo', cursive;
     font-size: 24px;
@@ -77,35 +77,35 @@
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
-  }
+}
 
-  .navBarIcons {
+.navBarIcons {
     display: flex;
     justify-content: space-around;
     width: 300px;
-  }
+}
   
-  .navBarIconItem {
+.navBarIconItem {
     color: #424651;
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.2s ease-in-out;
-  }
+}
 
-  .navBarImg {
+.navBarImg {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
     margin-right: 1rem;
-  }
+}
 
-  .navBarIconItem:hover {
+.navBarIconItem:hover {
     opacity: 1;
-  }
+}
 
-  @media (max-width: 515px)  {
+@media (max-width: 515px)  {
     .navBarLeft {
       flex: 1;
     }
@@ -118,9 +118,9 @@
     .navBarImg {
       margin-right: 0.25rem;
     }
-  }
+}
 
-  @media (max-width: 450px)  {
+@media (max-width: 450px)  {
     .navBarContainer {
       justify-content: center;
     }
@@ -137,13 +137,13 @@
       justify-content: center;
       padding-right: 0;
     }
-  }
+}
 
-  @media (max-width: 300px)  {
+@media (max-width: 300px)  {
     .navBarIcons {
       width: 160px;
     }
     .navBarImg {
       display: none;
     }
-  }
+}

@@ -3,7 +3,7 @@ import './Home.css'
 import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
 
 
@@ -28,13 +28,13 @@ export default function Home() {
     getPosts()
   }, [userObject.user]) 
 
-    return (
+  return (
         <>
         {loading?
           <div className='loadContainer'>
-          <Box sx={{ display: 'flex' }}>
-            <CircularProgress />
-          </Box>
+            <Box sx={{ display: 'flex' }}>
+              <CircularProgress />
+            </Box>
           </div>
           :
           <div className='homeContainer'>

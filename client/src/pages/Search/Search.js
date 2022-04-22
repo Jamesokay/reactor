@@ -60,7 +60,6 @@ export default function Search() {
                 }}
               />
             </div>
-
             {users.length !== 0 && (
             <div className='userResultsContainer'>
               {users.map((u) => (

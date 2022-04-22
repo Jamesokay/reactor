@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: black;
+    color: #424651;
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -59,7 +59,7 @@
     align-items: center;
     padding-top: 0.5rem;
     padding-bottom: 1rem;
-    color: #262626;
+    color: #424651;
     width: 95%;
     border-bottom: 1px solid #e6e6e6;;
 }
@@ -80,7 +80,7 @@
 .postSideBarProfileName {
     font-weight: bold;
     text-decoration: none;
-    color: #262626;
+    color: #424651;
     cursor: pointer;
 }
 
@@ -98,7 +98,7 @@
 
 .postSideBarActions {
     padding-top: 1rem;
-    color: #262626;
+    color: #424651;
     display: flex;
     width: 95%;
     justify-content: space-between;
@@ -119,11 +119,11 @@
 }
 .postCaption {
     margin-top: 1rem;
-    color: #262626;
+    color: #424651;
 }
 
 .tagLink {
-    color: #007B69;
+    color: #065a92;
     cursor: pointer;
     margin-right: 0.25rem;
 }
@@ -148,11 +148,12 @@
 
 .postOptionsContainer {
     position: absolute;
-    background: rgb(21, 21, 21);
     width: 200px;
     right: 0%;
     bottom: -5rem;
-    border-radius: 0.25rem;
+    background: rgb(241, 241, 241);
+    border-radius: 0.5rem;
+    border: 1px solid rgb(218, 218, 218);
     display: flex;
     justify-content: center;
 }
@@ -161,7 +162,7 @@
     list-style: none;
     width: 100%;
     padding: 0;
-    color: rgb(221, 221, 221);
+    color: #424651;
     cursor: pointer;
 }
 
@@ -169,7 +170,14 @@
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    border-radius: 0.25rem;
+}
+
+.topOption {
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+}
+
+.bottomOption {
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
 }
 
 .postOptionIcon {
@@ -177,7 +185,7 @@
 }
 
 .postOption:hover {
-    color: white;
+    background: rgb(228, 228, 228);
 }
 
 .editPostContainer {
@@ -208,20 +216,19 @@
 .submitEdit {
     width: 60px;
     height: 30px;
-    color: white;
-    background: #007B69;
+    color: #424651;
+    background: #ccf7d9;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 0.25rem;
     margin-left: 0.25rem;
-    opacity: 0.8;
-    transition: opacity 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
     cursor: pointer;
 }
 
 .submitEdit:hover {
-    opacity: 1
+    background: #bbf8cd;
 }
 
 .newCommentContainer {
@@ -247,7 +254,7 @@
     height: 25px;
     font-size: 0.9rem;
     border-radius: 0.25rem;
-    background: #007B69;
+    background: #ccf7d9;
     display: flex;
     justify-content: center;
     align-items: center;

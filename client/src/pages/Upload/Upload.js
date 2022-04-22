@@ -4,8 +4,8 @@ import { AuthContext } from '../../context/AuthContext'
 import './upload.css'
 import Picker from 'emoji-picker-react'
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto'
-import CircularProgress from '@mui/material/CircularProgress';
-import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import CircularProgress from '@mui/material/CircularProgress'
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import Box from '@mui/material/Box'
 
 
@@ -110,7 +110,7 @@ export default function Upload() {
               setCaption(e.target.value)
             }}
           ></textarea>
-          <InsertEmoticonIcon onClick={() => setShowEmojis(!showEmojis)}/>
+          <InsertEmoticonIcon onClick={() => setShowEmojis(!showEmojis)} style={{cursor: 'pointer'}} />
         </div>
             <div onClick={handleSubmit} className='sendIt' style={uploading === 1 || uploading === 2? {visibility: 'hidden'} : {visibility: 'visible'}}>
               <span>Send It</span>

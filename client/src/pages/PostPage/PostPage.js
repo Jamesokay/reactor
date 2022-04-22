@@ -4,14 +4,14 @@ import { AuthContext } from '../../context/AuthContext'
 import { Link, useParams } from 'react-router-dom'
 import Comment from '../../components/Comment/Comment'
 import axios from 'axios'
-import CloseIcon from '@mui/icons-material/Close';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import CloseIcon from '@mui/icons-material/Close'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 
 export default function PostPage() {
     const [user, setUser] = useState({})
@@ -32,14 +32,13 @@ export default function PostPage() {
     function relativeDays(timestamp) {
         const rtf = new Intl.RelativeTimeFormat('en', {
           numeric: 'auto',
-        });
+        })
         const oneDayInMs = 1000 * 60 * 60 * 24;
         const daysDifference = Math.round(
           (timestamp - new Date().getTime()) / oneDayInMs,
-        );
-      
+        )    
         return rtf.format(daysDifference, 'day');
-      }
+    }
 
     useEffect(() => {
       if (!postId.id) return
@@ -50,7 +49,6 @@ export default function PostPage() {
           if (res.data.desc) {
             setCaption(res.data.desc.split(' '))
           }
-
           let timeStamp = res.data.createdAt.slice(0, 10)
           setPostTime(relativeDays(new Date(timeStamp).getTime()))
           setIsLiked(res.data.likes.includes(userObject.user._id))
@@ -126,7 +124,7 @@ export default function PostPage() {
   
     }
 
-    const testCommentRoute = async ( comment ) => {
+    const postComment = async ( comment ) => {
       setComments(comments => [{ id: comments.length, username: userObject.user.username, commentText: comment}, ...comments])
       try {
         await axios.put('/posts/' + post._id + '/comment', 
@@ -147,49 +145,46 @@ export default function PostPage() {
               </div>
             </div>
           )}         
-            <img className='postLargeImage' src={post.img} alt='' />
-            <div className='postLargeSideBar'>
-              <div className='postSideBarTop'>
-                <div className='postSideBarTopLeft'>
-                  <img className='postSideBarProfileImage' src={user.profilePicture} alt='' />
-                  <Link 
-                    to={`/${user.username}`}  
-                    className='postSideBarProfileName'  
-                    >{user.username}</Link>
-                </div>
-                <div className='postIconContainer'>
+          <img className='postLargeImage' src={post.img} alt='' />
+          <div className='postLargeSideBar'>
+            <div className='postSideBarTop'>
+              <div className='postSideBarTopLeft'>
+                <img className='postSideBarProfileImage' src={user.profilePicture} alt='' />
+                <Link to={`/${user.username}`} className='postSideBarProfileName'>{user.username}</Link>
+              </div>
+              <div className='postIconContainer'>
                 {(userObject.user._id === post.userId) && (
-                    <MoreHorizIcon className='postSideBarIcon' onClick={() => setShowOptions(!showOptions)}/>
+                  <MoreHorizIcon className='postSideBarIcon' onClick={() => setShowOptions(!showOptions)}/>
                 )}
                 {showOptions && (
                   <div className='postOptionsContainer'>
                     <ul className='postOptionsMenu'>
-                      <li className='postOption' onClick={() => setIsEditing(true)}>
+                      <li className='postOption topOption' onClick={() => setIsEditing(true)}>
                         <EditOutlinedIcon className='postOptionIcon' />
                         <span>Edit post</span>
                       </li>
-                      <li className='postOption' onClick={() => setIsDeleting(true)}>
+                      <li className='postOption bottomOption' onClick={() => setIsDeleting(true)}>
                         <CloseIcon className='postOptionIcon' />
                         <span>Delete post</span>
                       </li>
                     </ul>
                   </div>
                 )}      
-                </div>
               </div>
-              <div className='postSideBarActions'>
-                <div className='postSideBarActionsLeft'>
-                  {(isLiked)?
-                    <FavoriteIcon className='postSideBarIcon' onClick={() => handleLike()} style={{color:'#e30b5d'}} />
-                  :
-                      <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
-                  }
-                    <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' onClick={() => setCommenting(!commenting)}/>
-                    <ShareOutlinedIcon className='postSideBarIcon' />
-                </div>
-                <BookmarkBorderIcon className='postSideBarIcon' />
+            </div>
+            <div className='postSideBarActions'>
+              <div className='postSideBarActionsLeft'>
+                {(isLiked)?
+                  <FavoriteIcon className='postSideBarIcon' onClick={() => handleLike()} style={{color:'#e30b5d'}} />
+                :
+                  <FavoriteBorderIcon className='postSideBarIcon' onClick={() => handleLike()} />
+                }
+                <ChatBubbleOutlineOutlinedIcon className='postSideBarIcon' onClick={() => setCommenting(!commenting)}/>
+                <ShareOutlinedIcon className='postSideBarIcon' />
               </div>
-              <div className='postSideBarMiddle'>
+              <BookmarkBorderIcon className='postSideBarIcon' />
+            </div>
+            <div className='postSideBarMiddle'>
               {!isEditing?
                 <div className='postCaption'>
                   {caption &&
@@ -200,24 +195,24 @@ export default function PostPage() {
                         <span key={index} className='captionText'>{word}</span>
                     ))}
                 </div>
-                :
+              :
                 <div className='editPostContainer'>
                   <textarea
-                       className='editPost'
-                       value={updatedCaption}
-                       type='text'
-                       onChange={e => {
-                       setUpdatedCaption(e.target.value)
-                  }} ></textarea>  
+                    className='editPost'
+                    value={updatedCaption}
+                    type='text'
+                    onChange={e => {
+                      setUpdatedCaption(e.target.value)}}>
+                  </textarea>  
                   <div className='editPostOptions'>  
                     <div className='submitEdit' onClick={handleEdit}>Update</div>
                     <div className='submitEdit' onClick={() => setIsEditing(false)}>Cancel</div>
                   </div>
                 </div>
               }
-              </div>
-              <div className='postTime'>{postTime}</div>
-              <div className='commentsContainer'>
+            </div>
+            <div className='postTime'>{postTime}</div>
+            <div className='commentsContainer'>
               <div className='newCommentContainer' style={commenting? {display: 'flex'} : {display: 'none'}}>
                 <textarea 
                   id='newComment' 
@@ -229,7 +224,7 @@ export default function PostPage() {
                 ></textarea>
                 <div className='editPostOptions'> 
                   <div className='submitEdit' onClick={() => {
-                    testCommentRoute(newComment)
+                    postComment(newComment)
                     setCommenting(false)   
                   }}>Post</div>
                   <div className='submitEdit' onClick={() => setCommenting(false)}>Cancel</div>
@@ -244,14 +239,13 @@ export default function PostPage() {
               :
                 <div className='comments' />
               }
-
-              </div>
             </div>
+          </div>
         </div>
-    </div>
-    )
-    :
-    (
+  </div>
+  )
+  :
+  (
     <></>
-    )
+  )
 }
