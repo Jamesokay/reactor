@@ -39,7 +39,7 @@ export default function Upload() {
         formData.append('tags', JSON.stringify(tags))
      
         try {
-          const res = await axios.post('/posts/upload', formData)
+          const res = await axios.post('https://reactorsocial.herokuapp.com/api/posts/upload', formData)
           console.log(res.data)
           setUploading(2)
           setFileData(null)

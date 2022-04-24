@@ -20,7 +20,7 @@ export default function Profile() {
   useEffect(() => {
     if (!username) return
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`)
+      const res = await axios.get(`https://reactorsocial.herokuapp.com/api/users?username=${username}`)
       setIsFollowed(userObject.user.following.includes(res.data._id))
       setUser(res.data)
       setNewAbout(res.data.about)
@@ -31,7 +31,7 @@ export default function Profile() {
   useEffect(() => {
     if (!username) return
     const fetchPosts = async () => {
-      const res = await axios.get("/posts/profile/" + username)
+      const res = await axios.get("https://reactorsocial.herokuapp.com/api/posts/profile/" + username)
       setPosts(
         res.data.sort((p1, p2) => {
         return new Date(p2.createdAt) - new Date(p1.createdAt)
@@ -43,7 +43,7 @@ export default function Profile() {
   const follow = async () => {
     try {
       if (isFollowed) {
-        const res = await axios.put(`/users/${user._id}/unfollow`, { userId: userObject.user._id })
+        const res = await axios.put(`https://reactorsocial.herokuapp.com/api/users/${user._id}/unfollow`, { userId: userObject.user._id })
         console.log(res)
         console.log('Unfollowed')
         setUserObject({
@@ -51,7 +51,7 @@ export default function Profile() {
             user: {...userObject.user, 
               following: userObject.user.following.filter((f) => f !== user._id)}})
       } else {
-        const res = await axios.put(`/users/${user._id}/follow`, { userId: userObject.user._id })
+        const res = await axios.put(`https://reactorsocial.herokuapp.com/api/users/${user._id}/follow`, { userId: userObject.user._id })
         console.log(res)
         console.log('followed')
         setUserObject({
@@ -72,7 +72,7 @@ export default function Profile() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.put(`/users/${user._id}`, {userId: userObject.user._id, about: newAbout})
+      const res = await axios.put(`https://reactorsocial.herokuapp.com/api/users/${user._id}`, {userId: userObject.user._id, about: newAbout})
       console.log(res)
       setUser({...user, about: newAbout})
       setNewAbout('')
@@ -91,7 +91,7 @@ export default function Profile() {
       formData.append('userId', userObject.user._id)
       formData.append('profilePicture', fileData)
       try {
-        const res = await axios.post('/users/profilephoto', formData)
+        const res = await axios.post('https://reactorsocial.herokuapp.com/api/users/profilephoto', formData)
         setUserObject(userObject => ({
           ...userObject,
           user: {...userObject.user,

@@ -30,7 +30,8 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #dad9d9;
+    background: #FAFAFA;
+    border: 1px solid #e6e6e6;
     border-radius: 0.25rem;
 }
 

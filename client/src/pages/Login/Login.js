@@ -14,7 +14,7 @@ export default function Login() {
       e.preventDefault()
       setUserObject({...userObject, isFetching: true})
       try {
-          const res = await axios.post('auth/login', {email: email.current.value, password: password.current.value})
+          const res = await axios.post('https://reactorsocial.herokuapp.com/api/auth/login', {email: email.current.value, password: password.current.value})
           setUserObject({user: res.data, isFetching: false, error: false})
       } catch(err) {
           setErrorMessage(true)

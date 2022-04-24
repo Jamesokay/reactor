@@ -16,7 +16,7 @@ export default function Search() {
 
     const searchPosts = async () => {
       try {
-        const res = await axios.get(`/posts/search?q=${query}`)
+        const res = await axios.get(`https://reactorsocial.herokuapp.com/api/posts/search?q=${query}`)
         setPosts(res.data)
       } catch(err) {
         console.error(err)
@@ -25,7 +25,7 @@ export default function Search() {
 
     const searchUsers = async () => {
       try {
-        const res = await axios.get(`/users/search?q=${query}`)
+        const res = await axios.get(`https://reactorsocial.herokuapp.com/api/users/search?q=${query}`)
         console.log(res.data)
         setUsers(res.data)
       } catch(err) {

@@ -43,7 +43,7 @@ export default function PostPage() {
     useEffect(() => {
       if (!postId.id) return
         const getPost = async () => {
-          const res = await axios.get(`/posts/post/${postId.id}`)
+          const res = await axios.get(`https://reactorsocial.herokuapp.com/api/posts/post/${postId.id}`)
           console.log(res.data)
           setPost(res.data)
           if (res.data.desc) {
@@ -60,7 +60,7 @@ export default function PostPage() {
     useEffect(() => {
       if (!post.userId) return
         const getUser = async () => { 
-        const res = await axios.get(`/users?userId=${post.userId}`)
+        const res = await axios.get(`https://reactorsocial.herokuapp.com/api/users?userId=${post.userId}`)
           setUser(res.data)
         }
         getUser()
@@ -78,8 +78,8 @@ export default function PostPage() {
 
     const handleLike = async () => {
         try {
-          const res = await axios.put('/posts/' + post._id + '/like', { userId: userObject.user._id })
-          const res2 = await axios.put('/users/' + userObject.user._id + '/save', { postId: post._id })
+          const res = await axios.put('https://reactorsocial.herokuapp.com/api/posts/' + post._id + '/like', { userId: userObject.user._id })
+          const res2 = await axios.put('https://reactorsocial.herokuapp.com/api/users/' + userObject.user._id + '/save', { postId: post._id })
           console.log(res)
           console.log(res2)
         } catch (err) {
@@ -115,7 +115,7 @@ export default function PostPage() {
       }
       
       try {
-        const res = await axios.delete('/posts/delete', { data: finalObject })
+        const res = await axios.delete('https://reactorsocial.herokuapp.com/api/posts/delete', { data: finalObject })
         console.log('post deleted')
         console.log(res.data)
       } catch(err) {
@@ -127,7 +127,7 @@ export default function PostPage() {
     const postComment = async ( comment ) => {
       setComments(comments => [{ id: comments.length, username: userObject.user.username, commentText: comment}, ...comments])
       try {
-        await axios.put('/posts/' + post._id + '/comment', 
+        await axios.put('https://reactorsocial.herokuapp.com/api/posts/' + post._id + '/comment', 
         { username: userObject.user.username, profileImg: userObject.user.profilePicture, commentText: comment})
       } catch (err) {
         console.error(err)

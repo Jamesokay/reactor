@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {  
     const getPosts = async () => { 
       try {
-        const res = await axios.get(`posts/feed/${userObject.user._id}`)
+        const res = await axios.get(`https://reactorsocial.herokuapp.com/api/posts/feed/${userObject.user._id}`)
         setPosts(
           res.data.sort((p1, p2) => {
           return new Date(p2.createdAt) - new Date(p1.createdAt)

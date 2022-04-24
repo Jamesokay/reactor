@@ -15,7 +15,7 @@ export default function Post({ post }) {
   useEffect(() => {
     
     const getUser = async () => { 
-      const res = await axios.get(`users?userId=${post.userId}`)
+      const res = await axios.get(`https://reactorsocial.herokuapp.com/api/users?userId=${post.userId}`)
       setUser(res.data)
     }
 
@@ -24,8 +24,8 @@ export default function Post({ post }) {
 
   const handleLike = async () => {
     try {
-      const res = await axios.put('/posts/' + post._id + '/like', { userId: userObject.user._id })
-      const res2 = await axios.put('/users/' + userObject.user._id + '/save', { postId: post._id })
+      const res = await axios.put('https://reactorsocial.herokuapp.com/api/posts/' + post._id + '/like', { userId: userObject.user._id })
+      const res2 = await axios.put('https://reactorsocial.herokuapp.com/api/users/' + userObject.user._id + '/save', { postId: post._id })
       console.log(res)
       console.log(res2)
     } catch (err) {

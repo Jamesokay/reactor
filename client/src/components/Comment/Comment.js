@@ -8,7 +8,7 @@ export default function Comment({ comment }) {
   useEffect(() => {
     if (!comment) return
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${comment.username}`)
+      const res = await axios.get(`https://reactorsocial.herokuapp.com/api/users?username=${comment.username}`)
       setProfilePicture(res.data.profilePicture)
     }
     fetchUser()
