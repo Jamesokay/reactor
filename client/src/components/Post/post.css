@@ -39,6 +39,7 @@
 .postBottom {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 0.5rem;
@@ -52,6 +53,7 @@
 .postBottomLeft {
   display: flex;
   align-items: center;
+  width: fit-content;
 }
 
 .postBottomRight {
