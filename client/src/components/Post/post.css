@@ -28,7 +28,7 @@
 .profileName {
   cursor: pointer;
   text-decoration: none;
-  color: #424651;
+  color: white;
   font-size: 0.9rem;
 }
 
@@ -45,9 +45,8 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   height: 1.25rem;
-  background: rgb(241, 241, 241);
+  background: rgb(39, 39, 39);
   border-radius: 0rem 0rem 0.5rem 0.5rem;
-  border: 1px solid rgb(218, 218, 218);
 }
 
 .postBottomLeft {
@@ -59,11 +58,11 @@
 .postBottomRight {
   display: flex;
   align-items: center;
-  color: #424651;
+  color: white;
 }
 
 .postIcon {
-  color: #424651;
+  color: white;
   width: fit-content;
   margin-left: 0.75rem;
   opacity: 0.5;

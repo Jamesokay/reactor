@@ -18,11 +18,11 @@
     display: flex;
     width: 88%;
     font-size: 0.9rem;
-    color: #424651;
+    color: white;
 }
 
 .commentName {
-    color: #424651;
+    color: white;
     font-weight: bold;   
     margin-right: 0.5rem;
     cursor: pointer;

@@ -4,6 +4,6 @@
 }
 
 body {
-    overscroll-behavior: none;
-    background: #FAFAFA;
+    overscroll-behavior: none;   
+    background: rgb(18, 18, 18);
 }

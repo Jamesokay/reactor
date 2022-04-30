@@ -23,15 +23,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #424651;
+    color: white;
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #FAFAFA;
-    border: 1px solid #e6e6e6;
+    background: rgb(39, 39, 39);
     border-radius: 0.25rem;
 }
 
@@ -60,7 +59,7 @@
     align-items: center;
     padding-top: 0.5rem;
     padding-bottom: 1rem;
-    color: #424651;
+    color: white;
     width: 95%;
     border-bottom: 1px solid #e6e6e6;;
 }
@@ -81,7 +80,7 @@
 .postSideBarProfileName {
     font-weight: bold;
     text-decoration: none;
-    color: #424651;
+    color: white;
     cursor: pointer;
 }
 
@@ -99,7 +98,7 @@
 
 .postSideBarActions {
     padding-top: 1rem;
-    color: #424651;
+    color: white;
     display: flex;
     width: 95%;
     justify-content: space-between;
@@ -120,11 +119,11 @@
 }
 .postCaption {
     margin-top: 1rem;
-    color: #424651;
+    color: white;
 }
 
 .tagLink {
-    color: #065a92;
+    color: #1f5164;
     cursor: pointer;
     margin-right: 0.25rem;
 }
@@ -152,9 +151,8 @@
     width: 200px;
     right: 0%;
     bottom: -5rem;
-    background: rgb(241, 241, 241);
+    background: rgb(39, 39, 39);
     border-radius: 0.5rem;
-    border: 1px solid rgb(218, 218, 218);
     display: flex;
     justify-content: center;
 }
@@ -163,7 +161,7 @@
     list-style: none;
     width: 100%;
     padding: 0;
-    color: #424651;
+    color: white;
     cursor: pointer;
 }
 
@@ -186,7 +184,7 @@
 }
 
 .postOption:hover {
-    background: rgb(228, 228, 228);
+    background: rgb(58, 58, 58);
 }
 
 .editPostContainer {
@@ -217,8 +215,8 @@
 .submitEdit {
     width: 60px;
     height: 30px;
-    color: #424651;
-    background: #ccf7d9;
+    color: white;
+    background: #1f5164;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -229,7 +227,7 @@
 }
 
 .submitEdit:hover {
-    background: #bbf8cd;
+    background: #397b96;
 }
 
 .newCommentContainer {
@@ -255,7 +253,7 @@
     height: 25px;
     font-size: 0.9rem;
     border-radius: 0.25rem;
-    background: #ccf7d9;
+    background: #1f5164;
     display: flex;
     justify-content: center;
     align-items: center;
