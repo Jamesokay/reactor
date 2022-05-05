@@ -2,6 +2,7 @@
     margin-top: 50px;
     display: flex;
     overflow-x: hidden;
+    height: 100vh;
 }
 
 .profileHeader {
@@ -13,6 +14,8 @@
     flex-direction: column;
     align-items: center;
     cursor: default;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .profileHeaderPhotoContainer {
@@ -54,7 +57,7 @@
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -50px;
     font-weight: bold;
 }
 
@@ -121,7 +124,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    color: rgb(41, 41, 41);
     width: 100%;
 }
 
@@ -129,7 +132,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 0.25rem;
+    margin-bottom: 1rem;
 }
 
 .profileHeaderName {
@@ -142,7 +145,6 @@
     justify-content: center;
     align-items: flex-end;
     position: relative;
-    height: 2.5rem;
     margin-bottom: 1rem;
 }
 
@@ -164,7 +166,7 @@
 .followButton {
     width: 90px;
     height: 30px;
-    background: #1f5164;
+    background: rgb(41, 41, 41);
     border-radius: 0.25rem;
     color: white;
     display: flex;
@@ -172,29 +174,33 @@
     align-items: center;
     cursor: pointer;
     margin-top: 1rem;
-    margin-bottom: 1rem;
     font-weight: bold;
     transition: background 0.2s ease-in-out;
 }
 
 .followButton:hover {
-    background: #397b96;
+    background: rgb(61, 61, 61);
 }
 
 .profileCounts {
     margin-bottom: 1rem;
     display: flex;
-    width: 100%;
+    width: 90%;
     justify-content: space-around;
 }
 
+.profileBodyWrapper {
+    display: grid;
+    height: fit-content;
+  }
+
 .profileBody {
-    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1%;
     margin-left: 275px;
     padding: 1%;
+    padding-bottom: 4rem;
     align-items: center;
 }
 
@@ -229,10 +235,6 @@
 .imgInfo:hover {
     background: rgba(32, 32, 32, 0.5)
 }
-
-/* .imgIcon {
-    ;
-} */
 
 .imgLikes {
     display: inline-flex;
@@ -341,10 +343,10 @@
     }
   }
 
-  @media (max-width: 515px)  {
+  /* @media (max-width: 515px)  {
     .profileBody {
       grid-template-columns: 1fr;
       width: 100%;
       padding: 0;
     }
-  }
+  } */

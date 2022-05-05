@@ -107,7 +107,7 @@ export default function Profile() {
   
     return (
           <div className='profileContainer'>
-            <div className='profileHeader'>
+            <div className='profileHeader' style={user.username? {opacity: '1'} : {}}>
               {fileData?
                 <div className='profileHeaderPhotoContainer'>
                   <img className='profileHeaderPhoto' src={URL.createObjectURL(fileData)} alt='' />
@@ -139,7 +139,7 @@ export default function Profile() {
                 <div className='profileInfo'>
                   <div className='profileInfoTop'>
                     <span className='profileHeaderName'>{user.username}</span>
-                    {user.username !== userObject.user.username && (
+                    {(user.username && user.username !== userObject.user.username) && (
                       <div className='followButton' onClick={() => follow()}>{isFollowed? 'Followed': 'Follow'}</div>
                     )}
                   </div>
@@ -169,7 +169,6 @@ export default function Profile() {
                     :
                     <div className='editAboutOption'>
                       <EditOutlinedIcon />
-                      <span>Edit</span>
                     </div>       
                     }
                   </div>
@@ -187,6 +186,7 @@ export default function Profile() {
                   </div>
                 </div>
             </div>
+           <div className='profileBodyWrapper'>
             <div className='profileBody'>
               {posts.map((p) => (
                 <Link key={p._id} to={`/post/${p._id}`}>
@@ -208,6 +208,8 @@ export default function Profile() {
                 </Link>
               ))}
             </div>
+            </div> 
+
           </div>
     )
 }

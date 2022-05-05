@@ -37,11 +37,11 @@ export default function Post({ post }) {
     return (
         <div className='post' style={imgLoaded? {visibility: 'visible'} : {visibility: 'hidden'}}>
           <Link to={`/post/${post._id}`} className='postLink'>
-            <img className='postImg' src={post.img} alt='' onLoad={() => setImgLoaded(true)} />
+            <img className='postImg' src={post.img} alt='' />
           </Link>
             <div className='postBottom'>
               <div className='postBottomLeft'>
-                <img className='profileImg' src={user.profilePicture} alt=''/>
+                <img className='profileImg' src={user.profilePicture} alt='' onLoad={() => setImgLoaded(true)}/>
                 <Link to={`/${user.username}`} className='profileName'>{user.username}</Link>
               </div>
               <div className='postBottomRight'>

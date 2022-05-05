@@ -27,6 +27,7 @@ export default function PostPage() {
     const [isDeleting, setIsDeleting] = useState(false)
     const [updatedCaption, setUpdatedCaption] = useState('')
     const [postTime, setPostTime] = useState('')
+    const [imgLoaded, setImgLoaded] = useState(false)
     const postId = useParams()
 
     function relativeDays(timestamp) {
@@ -133,8 +134,8 @@ export default function PostPage() {
         console.error(err)
       }
     }
-    return post? (
-      <div className='postPageContainer'>
+    return (
+      <div className='postPageContainer' style={imgLoaded? {opacity: '1'} : {}}>
         <div className='postLargeContainer' style={post.img? {display: 'flex'} : {}}>
           {isDeleting && (
             <div className='confirmDelete'>
@@ -149,7 +150,7 @@ export default function PostPage() {
           <div className='postLargeSideBar'>
             <div className='postSideBarTop'>
               <div className='postSideBarTopLeft'>
-                <img className='postSideBarProfileImage' src={user.profilePicture} alt='' />
+                <img className='postSideBarProfileImage' src={user.profilePicture} alt='' onLoad={() => setImgLoaded(true)} />
                 <Link to={`/${user.username}`} className='postSideBarProfileName'>{user.username}</Link>
               </div>
               <div className='postIconContainer'>
@@ -243,9 +244,5 @@ export default function PostPage() {
           </div>
         </div>
   </div>
-  )
-  :
-  (
-    <></>
   )
 }

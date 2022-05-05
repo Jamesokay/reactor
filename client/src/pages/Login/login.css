@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: #1f5164;
+    background: #ebdcae;
 }
 
 .loginWrapper {
@@ -23,7 +23,7 @@
 }
 
 .loginLogo {
-    color: white;
+    color: rgb(41, 41, 41);
     font-size: 5rem;
     font-weight: bold;
     font-family: 'Comfortaa', cursive;
@@ -63,8 +63,8 @@
     width: 250px;
     height: 40px;
     border-radius: 0.5rem;
-    background: #1f5164;
-    color: white;
+    background: #ebdcae;
+    color: rgb(41, 41, 41);
     border: none;
     font-size: 1.1rem;
     margin-bottom: 0.75rem;
@@ -73,7 +73,7 @@
 }
 
 .loginButton:hover {
-    background: #397b96;
+    background: #f0d78e;
 }
 
 .loginError {

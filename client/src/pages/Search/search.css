@@ -2,7 +2,7 @@
 .searchContainer {
     display: flex;
     width: 100%;
-    color: white;
+    color: rgb(41, 41, 41);
     align-items: center;
     flex-direction: column;
     height: 100vh;
@@ -13,10 +13,10 @@
 .searchBar {
     width: 400px;
     height: 30px;
-    color: white;
+    color: rgb(41, 41, 41);
     display: inline-flex;
     align-items: center;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(41, 41, 41);;
 }
 
 .search {
@@ -24,11 +24,11 @@
     border: none;
     font-size: 1rem;
     background: none;
-    color: white;
+    color: rgb(41, 41, 41);
 }
 
 .search::placeholder {
-    color: rgb(172, 172, 172);
+    color: rgb(41, 41, 41);;
 }
 
 .search:focus {
@@ -53,7 +53,7 @@
     flex-direction: column;
     margin-right: 1rem;
     align-items: center;
-    color: white;
+    color: rgb(41, 41, 41);
     cursor: pointer;
     text-decoration: none;
 }

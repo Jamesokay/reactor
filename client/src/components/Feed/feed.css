@@ -6,11 +6,15 @@
     padding-bottom: 1rem;
 }
 
+.feedGridWrapper {
+  display: grid;
+}
+
 .feedGrid {
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.75rem;
+    gap: 1%;
     width: 75%;
 }
 

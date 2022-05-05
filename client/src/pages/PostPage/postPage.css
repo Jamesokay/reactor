@@ -7,7 +7,8 @@
     height: calc(100vh - 50px);
     overflow-x: hidden;
     position: relative;
-    
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .postLargeContainer {
@@ -49,7 +50,7 @@
     width: 400px;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: rgb(41, 41, 41);
     align-items: center;
 }
 
@@ -59,7 +60,7 @@
     align-items: center;
     padding-top: 0.5rem;
     padding-bottom: 1rem;
-    color: white;
+    color: rgb(41, 41, 41);
     width: 95%;
     border-bottom: 1px solid #e6e6e6;;
 }
@@ -80,7 +81,7 @@
 .postSideBarProfileName {
     font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: rgb(41, 41, 41);
     cursor: pointer;
 }
 
@@ -98,7 +99,7 @@
 
 .postSideBarActions {
     padding-top: 1rem;
-    color: white;
+    color: rgb(41, 41, 41);
     display: flex;
     width: 95%;
     justify-content: space-between;
@@ -119,7 +120,7 @@
 }
 .postCaption {
     margin-top: 1rem;
-    color: white;
+    color: rgb(41, 41, 41);
 }
 
 .tagLink {

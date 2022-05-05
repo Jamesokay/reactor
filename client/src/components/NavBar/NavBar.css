@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     z-index: 999;
-    background: #1f5164;
+    background: #ebdcae;
 }
 
 .navBarLeft {
@@ -27,7 +27,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    color: white;
     padding-right: 1.25rem;
 }
 
@@ -69,7 +68,7 @@
 }
 
 .logo {
-    color: white;
+    color: rgb(41, 41, 41);
     font-family: 'Comfortaa', cursive;
     font-size: 24px;
     margin-left: 1.25rem;
@@ -82,10 +81,11 @@
     display: flex;
     justify-content: space-around;
     width: 300px;
+    color: white !important;
 }
   
 .navBarIconItem {
-    color: white;
+    color: rgb(41, 41, 41);
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.2s ease-in-out;
