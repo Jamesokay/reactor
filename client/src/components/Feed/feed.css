@@ -8,14 +8,15 @@
 
 .feedGridWrapper {
   display: grid;
+  width: 75%;
+  margin: auto;
 }
 
 .feedGrid {
-    margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1%;
-    width: 75%;
+    width: 100%;   
 }
 
 .feedGrid div {
@@ -23,30 +24,42 @@
 }
 
 @media (max-width: 1250px)  {
-  .feedGrid {
+  .feedGridWrapper {
     width: 90%;
     min-width: 800px !important;
   }
 }
 
 @media (max-width: 825px)  {
-    .feedGrid {
+  .feedGridWrapper {
       width: 95%;
-      grid-template-columns: 1fr 1fr;
       min-width: 600px !important;
     }
+  .feedGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 515px)  {
   .feed {
-    padding-top: 50px;
+    padding-top: 40px;
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0;
+    background: rgb(245, 244, 244);
   }
-  .feedGrid {
+  .feedGridWrapper {
+    margin: 0;
     width: 100%;
-    grid-template-columns: 1fr;
+    display: flex;
     min-width: 200px !important;
   }
+  .feedGrid {
+    display: flex;
+    gap:unset;
+    flex-direction: column;
+  }
+  .feedGrid div {
+    aspect-ratio: unset;
+}
 }

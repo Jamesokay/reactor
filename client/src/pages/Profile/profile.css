@@ -1,7 +1,6 @@
 .profileContainer {
     margin-top: 50px;
     display: flex;
-    overflow-x: hidden;
     height: 100vh;
 }
 
@@ -185,7 +184,7 @@
 .profileCounts {
     margin-bottom: 1rem;
     display: flex;
-    width: 90%;
+    width: 87.5%;
     justify-content: space-around;
 }
 
@@ -295,8 +294,13 @@
         flex-direction: row;
     }
     .profileHeaderName {
-        margin-right: 1rem;
         margin-bottom: 0;
+    }
+    .profileCounts {
+        width: 70%;
+    }
+    .followButton {
+        margin-left: 1rem;
     }
     .profileAbout {
         height: 2rem;  
@@ -338,15 +342,37 @@
         margin-bottom: 1rem;
         min-width: 200px !important;
     }
+    .profileHeaderPhotoContainer {
+        margin-right: 0;
+    }
     .profileBody {
         min-width: 200px !important;
     }
   }
 
-  /* @media (max-width: 515px)  {
-    .profileBody {
-      grid-template-columns: 1fr;
-      width: 100%;
-      padding: 0;
+  @media (max-width: 515px)  {
+    .profileContainer {
+        margin-top: 40px;
     }
-  } */
+    .profileHeaderPhotoContainer {
+        height: 120px;
+        width: 120px;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .profileInfoTop {
+        margin-bottom: 0.5rem;
+    }  
+    .profileHeaderName {
+        font-size: 1.5rem;
+    }
+    .profileAbout {
+        margin-bottom: 0.5rem;
+    }  
+    .aboutText {
+        margin-bottom: 0.5rem;
+    }
+    .imgInfo {
+        display: none;
+    }
+  }

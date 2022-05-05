@@ -29,7 +29,6 @@
     color: white;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
     height: 100vh;
 }
 

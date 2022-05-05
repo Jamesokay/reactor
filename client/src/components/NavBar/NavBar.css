@@ -80,8 +80,7 @@
 .navBarIcons {
     display: flex;
     justify-content: space-around;
-    width: 300px;
-    color: white !important;
+    width: 225px;
 }
   
 .navBarIconItem {
@@ -105,17 +104,28 @@
 }
 
 @media (max-width: 515px)  {
+    .navBarContainer {
+      height: 40px;
+    }
     .navBarLeft {
-      flex: 1;
+      flex: 1.5;
     }
     .navBarRight {
-      flex: 1.4;
+      flex: 1.5;
     }
     .navBarIcons {
       width: 200px;
     }
     .navBarImg {
       margin-right: 0.25rem;
+    }
+    .logo {
+      font-size: 1rem;
+      margin-left: 1rem;
+    }
+    .navBarImg {
+      height: 1.5rem;
+      width: 1.5rem;
     }
 }
 
@@ -124,7 +134,12 @@
       justify-content: center;
     }
     .navBarLeft {
-      display: none;
+      flex: none;
+      position: absolute;
+      left: 1.5%;
+    }
+    .logo {
+      margin-left: 0;
     }
     .navBarCenter {
       flex: none;
@@ -132,13 +147,16 @@
     .navBarRight {
       flex: none;
       position: absolute;
-      right: 0.5%;
+      right: 1.5%;
       justify-content: center;
       padding-right: 0;
     }
 }
 
 @media (max-width: 300px)  {
+    .navBarLeft {
+      display: none;
+    }
     .navBarIcons {
       width: 160px;
     }

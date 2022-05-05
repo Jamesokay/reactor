@@ -301,6 +301,9 @@
 }
 
 @media (max-width: 515px)  {
+    .postPageContainer {
+        margin-top: 40px;
+    }
     .postLargeContainer {
         display: flex;
         flex-direction: column;

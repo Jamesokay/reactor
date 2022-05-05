@@ -45,8 +45,11 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   height: 1.25rem;
-  border: 1px solid rgb(235, 233, 233);
   border-radius: 0rem 0rem 0.5rem 0.5rem;
+  border-left: 1px solid rgb(235, 233, 233);
+  border-bottom: 1px solid rgb(235, 233, 233);
+  border-right: 1px solid rgb(235, 233, 233);
+  background: white;
 }
 
 .postBottomLeft {
@@ -71,4 +74,18 @@
 
 .postIcon:hover {
   opacity: 1;
+}
+
+@media (max-width: 515px)  {
+  .post {
+    width: 100vw;
+    margin: 0;
+    margin-bottom: 1.5rem;
+  }
+  .postImg {
+    height: 100vw;
+  }
+  .postBottom {
+    margin-top: -5px;
+  }
 }
