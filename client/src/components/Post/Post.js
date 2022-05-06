@@ -5,22 +5,13 @@ import { Link } from "react-router-dom"
 import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext';
+import { LoadContext } from '../../context/LoadContext'
 
 export default function Post({ post }) {
-  const [user, setUser] = useState({})
   const { userObject } = useContext(AuthContext)
+  const { loadCount, setLoadCount } = useContext(LoadContext)
   const [isLiked, setIsLiked] = useState(post.likes.includes(userObject.user._id))
-  const [imgLoaded, setImgLoaded] = useState(false)
 
-  useEffect(() => {
-    
-    const getUser = async () => { 
-      const res = await axios.get(`https://reactorsocial.herokuapp.com/api/users?userId=${post.userId}`)
-      setUser(res.data)
-    }
-
-    getUser()
-  }, [post.userId])
 
   const handleLike = async () => {
     try {
@@ -35,14 +26,14 @@ export default function Post({ post }) {
   }
 
     return (
-        <div className='post' style={imgLoaded? {visibility: 'visible'} : {visibility: 'hidden'}}>
+        <div className='post'>
           <Link to={`/post/${post._id}`} className='postLink'>
             <img className='postImg' src={post.img} alt='' />
           </Link>
             <div className='postBottom'>
               <div className='postBottomLeft'>
-                <img className='profileImg' src={user.profilePicture} alt='' onLoad={() => setImgLoaded(true)}/>
-                <Link to={`/${user.username}`} className='profileName'>{user.username}</Link>
+                <img className='profileImg' src={post.userImg} alt='' onLoad={() => setLoadCount(loadCount + 1)}/>
+                <Link to={`/${post.username}`} className='profileName'>{post.username}</Link>
               </div>
               <div className='postBottomRight'>
               {(isLiked)?

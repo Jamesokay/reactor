@@ -186,6 +186,7 @@ export default function Profile() {
                   </div>
                 </div>
             </div>
+
            <div className='profileBodyWrapper'>
             <div className='profileBody'>
               {posts.map((p) => (
@@ -203,12 +204,13 @@ export default function Profile() {
                         </span>
                       </div>
                     </div>
-                    <img className='profilePostImg' src={p.img} alt=''/>
+                    <img className='profilePostImg' src={p.img} alt='' />
                   </div>
                 </Link>
               ))}
             </div>
             </div> 
+          
 
           </div>
     )

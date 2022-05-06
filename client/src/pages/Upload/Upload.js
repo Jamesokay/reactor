@@ -37,6 +37,8 @@ export default function Upload() {
         formData.append('img', fileData)
         formData.append('caption', caption)
         formData.append('tags', JSON.stringify(tags))
+        formData.append('username', userObject.user.username)
+        formData.append('userImg', userObject.user.profilePicture)
      
         try {
           const res = await axios.post('https://reactorsocial.herokuapp.com/api/posts/upload', formData)

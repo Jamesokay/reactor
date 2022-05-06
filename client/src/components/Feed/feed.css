@@ -17,6 +17,8 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1%;
     width: 100%;   
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .feedGrid div {
