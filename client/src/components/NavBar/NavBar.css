@@ -107,6 +107,10 @@
     .navBarContainer {
       height: 40px;
     }
+    .navMenuContainer {
+      top: 34px;
+      right: -5px;
+    }
     .navBarLeft {
       flex: 1.5;
     }
