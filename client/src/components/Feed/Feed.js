@@ -16,6 +16,10 @@ export default function Feed({ content }) {
       if (content.length === loadCount) {
         setIsLoaded(true)
       }
+
+      return () => {
+        setIsLoaded(false)
+      }
     }, [content.length, loadCount])
 
 

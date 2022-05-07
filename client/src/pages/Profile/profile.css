@@ -191,6 +191,7 @@
 .profileBodyWrapper {
     display: grid;
     height: fit-content;
+    visibility: hidden;
   }
 
 .profileBody {

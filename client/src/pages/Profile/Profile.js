@@ -16,6 +16,8 @@ export default function Profile() {
   const [fileData, setFileData] = useState(null)
   const [isUpdating, setIsUpdating] = useState(false)
   const [newAbout, setNewAbout] = useState('')
+  const [loadCount, setLoadCount] = useState(0)
+  const [showBody, setShowBody] = useState(false)
 
   useEffect(() => {
     if (!username) return
@@ -104,6 +106,19 @@ export default function Profile() {
     }
     changePhoto()
   }, [fileData, userObject.user._id, user._id, setUserObject])
+
+  useEffect(() => {
+    if (!posts) return
+
+    if (posts.length === loadCount) {
+      setShowBody(true)
+    }
+
+    return () => {
+      setShowBody(false)
+    }
+
+  }, [posts, loadCount])
   
     return (
           <div className='profileContainer'>
@@ -187,7 +202,7 @@ export default function Profile() {
                 </div>
             </div>
 
-           <div className='profileBodyWrapper'>
+           <div className='profileBodyWrapper' style={showBody? {visibility: 'visible'} : {}}>
             <div className='profileBody'>
               {posts.map((p) => (
                 <Link key={p._id} to={`/post/${p._id}`}>
@@ -204,7 +219,7 @@ export default function Profile() {
                         </span>
                       </div>
                     </div>
-                    <img className='profilePostImg' src={p.img} alt='' />
+                    <img className='profilePostImg' src={p.img} alt='' onLoad={() => setLoadCount(loadCount + 1)}/>
                   </div>
                 </Link>
               ))}
