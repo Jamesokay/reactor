@@ -13,7 +13,7 @@ export default function Feed({ content }) {
     }, [setLoadCount])
 
     useEffect(() => {
-      if (content.length === loadCount) {
+      if (loadCount >= content.length - 1) {
         setIsLoaded(true)
       }
 
