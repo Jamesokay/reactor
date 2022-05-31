@@ -11,8 +11,12 @@ MERN stack photo-sharing application for desktop with responsive design for mobi
 -	Deployed on [Heroku](https://reactorsocialmedia.herokuapp.com/)
 <br>
 
-<img width="700" alt="reactorfeed" src="https://user-images.githubusercontent.com/78640728/169686283-143d2f8e-dfae-4ea2-933e-deaffcf75b6a.png">
+<img width="700" alt="reactor login page" src="https://user-images.githubusercontent.com/78640728/171156184-96f0d426-0dce-442b-ad6a-12d9bcb5f616.png">
 <br>
-<img width="700" alt="reactorprofile" src="https://user-images.githubusercontent.com/78640728/169686379-0cddac62-2977-473c-ad77-47858f67d163.png">
+<img width="700" alt="reactor feed" src="https://user-images.githubusercontent.com/78640728/171156527-f57a0e77-e9cd-4f27-a70e-5e04046aa188.png">
 <br>
-<img width="700" alt="reactorpost" src="https://user-images.githubusercontent.com/78640728/169686470-3a056d79-b13e-4609-8a4f-21cb837cccb2.png">
+<img width="700" alt="reactor profile" src="https://user-images.githubusercontent.com/78640728/171156761-93a779f7-09fe-4e1b-8724-162ceec0a53b.png">
+<br>
+<img width="700" alt="reactor post" src="https://user-images.githubusercontent.com/78640728/171156845-e4d45cb4-9733-4c23-b470-02bdaae21934.png">
+<br>
+<img width="700" alt="reactor upload" src="https://user-images.githubusercontent.com/78640728/171157091-36b6fd46-7f2b-41d6-a900-701182347f37.png">
